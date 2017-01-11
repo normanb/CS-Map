@@ -1,3 +1,12 @@
+# Do Not Use!
+
+This is a work in progress, original source code is at
+
+https://svn.osgeo.org/metacrs/csmap/trunk/CsMapDev/
+
+
+
+
 Building CS-MAP on Windows and Linux
 
 The CS-MAP distribution will produce a series of nine directories:
@@ -71,7 +80,7 @@ On Windows based platforms, you will first need to import to the environment the
 This procedure has been tested with Visual Studio 2008 (Version 9.0), Visual Studio 2010 (Version 10.0), and Visual Studio 2012 (version 11.0). Examination of the makefiles will show that minor tweaks to the makefiles will enable Release/Debug builds of all three compiler releases on the same system concurrently.  Check the detailed comments in the appropriate makefile.
 
 Finally, also notice that in the directories named CsMapDev\VC90, CsMapDev\VC100, and CsMapDev\VC110 you will find complete Visual Studio solution and project files which can be used to make the entire product; one set of files for each of the supported Visual Studio releases.
-	
+
 Defects and Enhancements
 
 Please report any defects in the code, build process, and/or documentation using the Trac facility located at "trac.osgeo.org/csmap"  While CS-MAP shares a subversion repository with other coordinate system related products, it has its own defect tracking database at the indicated location.  You will need to create a login for yourself to record a bug, but anyone can create a login and there is no fee.  You can also use this means to request an enhancement to the product.
