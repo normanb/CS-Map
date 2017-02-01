@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to CS-Map\n\n\nThis is a work in progress, original code and site should be taken from \nhere\n\n\nInstallation\n\n\nPlease follow the instructions \nhere\n\n\nLicense\n\n\nPlase see \nlicense", 
+            "text": "Welcome to CS-Map\n\n\nThis is a work in progress, original code and site should be taken from \nhere\n\n\nGithub\n\n\nAll code is maintained as a github svn clone of the original repository.\n\n\nThe documentation for installation and usage is maintained here.", 
             "title": "Home"
         }, 
         {
@@ -11,14 +11,9 @@
             "title": "Welcome to CS-Map"
         }, 
         {
-            "location": "/#installation", 
-            "text": "Please follow the instructions  here", 
-            "title": "Installation"
-        }, 
-        {
-            "location": "/#license", 
-            "text": "Plase see  license", 
-            "title": "License"
+            "location": "/#github", 
+            "text": "All code is maintained as a github svn clone of the original repository.  The documentation for installation and usage is maintained here.", 
+            "title": "Github"
         }, 
         {
             "location": "/installation/", 
