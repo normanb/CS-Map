@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to CS-Map\n\n\nThis is a work in progress, original code and site should be taken from \nhere\n\n\nGithub\n\n\nAll code is maintained as a github svn clone of the original repository.\n\n\nThe documentation for installation and usage is maintained here.", 
+            "text": "Welcome to CS-Map\n\n\nThis is a work in progress, original code and site should be taken from \nhere\n\n\nCS-Map is part of a bigger OSGeo project called MetaCRS that gathers several open source projections, and coordinate system related technologies.\n\n\nGithub\n\n\nAll code is maintained as a github svn clone of the original repository.\n\n\nThe documentation for installation and usage is maintained here.", 
             "title": "Home"
         }, 
         {
             "location": "/#welcome-to-cs-map", 
-            "text": "This is a work in progress, original code and site should be taken from  here", 
+            "text": "This is a work in progress, original code and site should be taken from  here  CS-Map is part of a bigger OSGeo project called MetaCRS that gathers several open source projections, and coordinate system related technologies.", 
             "title": "Welcome to CS-Map"
         }, 
         {
