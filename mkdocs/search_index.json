@@ -1,0 +1,39 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Welcome to CS-Map\n\n\nThis is a work in progress, original code and site should be taken from \nhere\n\n\nInstallation\n\n\nPlease follow the instructions \nhere\n\n\nLicense\n\n\nPlase see \nlicense", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#welcome-to-cs-map", 
+            "text": "This is a work in progress, original code and site should be taken from  here", 
+            "title": "Welcome to CS-Map"
+        }, 
+        {
+            "location": "/#installation", 
+            "text": "Please follow the instructions  here", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/#license", 
+            "text": "Plase see  license", 
+            "title": "License"
+        }, 
+        {
+            "location": "/installation/", 
+            "text": "Installation", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/installation/#installation", 
+            "text": "", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/license/", 
+            "text": "Copyright \u00a9 \n2008\n, \nAutodesk, Inc.\n\n\nAll rights reserved.\n\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n\n\n\nRedistributions of source code must retain the above copyright\n   notice, this list of conditions and the following disclaimer.\n\n\nRedistributions in binary form must reproduce the above copyright\n   notice, this list of conditions and the following disclaimer in the\n   documentation and/or other materials provided with the distribution.\n\n\nNeither the name of the \nAutodesk, Inc.\n nor the\n   names of its contributors may be used to endorse or promote products\n   derived from this software without specific prior written permission.\n\n\n\n\nTHIS SOFTWARE IS PROVIDED BY \nAutodesk, Inc.\n \u201cAS IS\u201d AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL \nAutodesk, Inc.\n BE LIABLE FOR ANY\nDIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.", 
+            "title": "License"
+        }
+    ]
+}
