@@ -51,6 +51,35 @@
                     <li class="active">
                         <a href="./">Installation</a>
                     </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../userguide/releasenotes/">Release Notes</a>
+</li>
+                            
+<li >
+    <a href="../userguide/desc/">Descriptions/Discussions</a>
+</li>
+                            
+<li >
+    <a href="../userguide/executables/">Executables</a>
+</li>
+                            
+<li >
+    <a href="../userguide/libraryfunctions/">Library Functions</a>
+</li>
+                            
+<li >
+    <a href="../userguide/cartographicprojections/">Cartographic Projection Functions</a>
+</li>
+                            
+<li >
+    <a href="../userguide/datamodules/">Data Modules</a>
+</li>
+                        </ul>
+                    </li>
                     <li >
                         <a href="../license/">License</a>
                     </li>
@@ -68,7 +97,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../license/">
+                        <a rel="prev" href="../userguide/releasenotes/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -81,11 +110,121 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#installation">Installation</a></li>
+            <li><a href="#windows">Windows</a></li>
+            <li><a href="#linux">Linux</a></li>
+            <li><a href="#ms-vc-2005-version-8">MS VC++ 2005 (Version 8):</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="installation">Installation</h1></div>
+<h1 id="installation">Installation</h1>
+<p>Building CS-MAP on Windows and Linux</p>
+<p>The CS-MAP distribution will produce a series of five directories:</p>
+<ul>
+<li>Include: Contains all header files referenced the source code in the Source directory.</li>
+<li>Source: Contains all the source code for the CS-MAP library itself.</li>
+<li>Dictionaries: Contains the coordinate system dictionaries in source form, and the source code for a compiler which will convert the dictionary source to the operational binary form.</li>
+<li>Test: Contains the source code for a console type test program and the test data which it uses.</li>
+<li>Data: Contains a series of data files used to construct name mapping files.</li>
+</ul>
+<p>Building the entire product is a series of five steps:</p>
+<ol>
+<li>Build the CS-MAP library.</li>
+<li>Build the dictionary compiler.</li>
+<li>Run the dictionary compiler.</li>
+<li>Build the console test program.</li>
+<li>Execute the console test program.</li>
+</ol>
+<p>After installation, and before building, it will be best to obtain a copy of the Canadian National
+Transformation file (NTV2_0.gsb) and copy it to the Dictionaries/Canada directory.  This data file may
+not be distributed by OSGeo.  Geomatics Canada reserves the right to distribute this file and maintain a
+list of those using it.  Therefore, since we do not distribute the file as part of this open source
+distribution, we recommend strongly that you simply obtain a copy, even if for testing purposes only.
+Chances are very good you already have a copy of this file on your system already.  If not, you can
+obtain one (no fee) at: <a href="http://www.geod.nrcan.gc.ca">http://www.geod.nrcan.gc.ca</a></p>
+<p>The TEST.DAT data file in the Test directory contains several hundred test points which are directly
+related to the above mentioned grid shift data file.  To prevent confusion and unnecessary technical
+support, tests related to the Canadian National Transformation data file are commented out in the
+distribution.  After obtaining a copy of the above mentioned data file, these test should be
+"uncommented" back in, so that the test program will test this feature.</p>
+<p>OK. Now for building on your system:</p>
+<h2 id="windows">Windows</h2>
+<ol>
+<li>
+<p>Build the CS-MAP Library:</p>
+<ul>
+<li>Make the <code>Source</code> directory your current working directory.</li>
+<li>Use the MSVC set variables script to set the environmental variables correctly.</li>
+<li>Use the <code>nmake</code> command and supply it with the <code>Library.nmk</code> make file.  E.g. <code>nmake /fLibrary.nmk</code></li>
+</ul>
+</li>
+<li>
+<p>Build the Dictionary Compiler (<code>CS_comp</code>)</p>
+<ul>
+<li>Make the 'Dictionaries' directory your current working directory.</li>
+<li>Use the MSVC set variables script to set the environmental variables correctly.</li>
+<li>Use the <code>nmake</code> command and supply it with the <code>Compiler.nmk</code> make file.  E.g. <code>nmake /fCompiler.nmk</code></li>
+</ul>
+</li>
+<li>
+<p>Run the Dictionary Compiler</p>
+<ul>
+<li>Make the <code>Dictionaries</code> directory your current working directory.</li>
+<li>Execute the <code>CS_comp</code> program.  E.g. <code>CS_Comp . .</code></li>
+<li>Note that the first argument to this command is the folder containing the dictionary source, the second argument is the directory to which the binary dictionary files are to be written.</li>
+</ul>
+</li>
+<li>
+<p>Build the Console Test program (<code>CS_Test</code>)</p>
+<ul>
+<li>Make the <code>Test</code> directory your current working directory.</li>
+<li>Use the MSVC set variables script to set the environmental variables correctly.</li>
+<li>Use the <code>nmake</code> command and supply it with the <code>Test.nmk</code> make file.  E.g. <code>nmake /fTest.nmk</code></li>
+</ul>
+</li>
+<li>Execute the console test program<ul>
+<li>Make the <code>Test</code> directory your current working directory.</li>
+<li>Execute the <code>CS_Test</code> program.  E.g. <code>CS_Test /d..\Dictionaries</code></li>
+<li>Note that the /d argument is the directory which the test program is to look to for the dictionaries and related data files.</li>
+</ul>
+</li>
+</ol>
+<h2 id="linux">Linux</h2>
+<ol>
+<li>Build the CS-MAP Library:<ul>
+<li>Make the <code>Source</code> directory your current working directory.</li>
+<li>Use the <code>make</code> command and supply it with the <code>Library.mak</code> make file.  E.g. <code>make -fLibrary.mak</code></li>
+</ul>
+</li>
+<li>Build the Dictionary Compiler (<code>CS_Comp</code>)<ul>
+<li>Make the <code>Dictionaries</code> directory your current working directory.</li>
+<li>Use the <code>make</code> command and supply it with the <code>Compiler.mak</code> make file.  E.g. <code>make -f Compiler.mak</code></li>
+</ul>
+</li>
+<li>Run the Dictionary Compiler<ul>
+<li>Make the <code>Dictionaries</code> directory your current working directory.</li>
+<li>Execute the <code>CS_Comp</code> program.  E.g. <code>./CS_Comp . .</code></li>
+<li>Note that the first argument is the directory containing the dictionary source, the second argument is the directory to which the binary dictionary files are written.</li>
+</ul>
+</li>
+<li>Build the Console Test program (<code>CS_Test</code>)<ul>
+<li>Make the <code>Test</code> directory your current working directory.</li>
+<li>Use the <code>make</code> command and supply it with the <code>Test.mak</code> make file.  E.g. <code>make -fTest.mak</code></li>
+</ul>
+</li>
+<li>Execute the console test program<ul>
+<li>Make the <code>Test</code> directory your current working directory.</li>
+<li>Execute the <code>CS_Test</code> program.  E.g. <code>./CS_Test -d../Dictionaries</code></li>
+<li>Note that the /d argument is the directory which the test program is to look to for the dictionaries and related data files.</li>
+</ul>
+</li>
+</ol>
+<h2 id="ms-vc-2005-version-8">MS VC++ 2005 (Version 8):</h2>
+<p>The CS-MAP Open Source distribution will deposit in the primary directory a Microsoft Visual C++
+Version 8.0 (VC2005) solution file.  This file references project files in the Source, Dictionaries, and
+Test directories.  This solution file and its related project files can be used to manufacture the library,
+dictionary compiler, and the test module.  No provisions have been made for executing the dictionary
+compiler or the test module.</p></div>
         </div>
 
         <footer class="col-md-12">

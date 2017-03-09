@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Library Functions - CS-Map</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">CS-Map</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                    <li >
+                        <a href="../../installation/">Installation</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../releasenotes/">Release Notes</a>
+</li>
+                            
+<li >
+    <a href="../desc/">Descriptions/Discussions</a>
+</li>
+                            
+<li >
+    <a href="../executables/">Executables</a>
+</li>
+                            
+<li class="active">
+    <a href="./">Library Functions</a>
+</li>
+                            
+<li >
+    <a href="../cartographicprojections/">Cartographic Projection Functions</a>
+</li>
+                            
+<li >
+    <a href="../datamodules/">Data Modules</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../license/">License</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../executables/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../cartographicprojections/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#library-functions">Library Functions</a></li>
+        <li class="main "><a href="#high-level-interface-functions">High Level Interface Functions</a></li>
+            <li><a href="#cs_altdr-alternate-directory">CS_altdr Alternate Directory</a></li>
+            <li><a href="#cs_atof-ascii-to-floating-point">CS_atof Ascii to floating point</a></li>
+            <li><a href="#cs_azddll-latlong-azimuth-distance-calculator">CS_azddll LatLong Azimuth Distance calculator</a></li>
+            <li><a href="#cs_azsphr-azimuth-on-a-sphere">CS_azsphr Azimuth on a Sphere</a></li>
+            <li><a href="#cs_cnvrg-convergence-function">CS_cnvrg Convergence function</a></li>
+            <li><a href="#cs_cnvrt-generalized-convert-function">CS_cnvrt generalized convert function</a></li>
+            <li><a href="#cs_cnvrt3d-3d-generalized-convert-function">CS_cnvrt3D 3D generalized Convert function</a></li>
+            <li><a href="#cs_csenum-coordinate-system-enumerator">CS_csEnum Coordinate System Enumerator</a></li>
+            <li><a href="#cs_csisvalid-coordinate-system-key-name-is-valid">CS_csIsValid Coordinate System key name Is Valid</a></li>
+            <li><a href="#cs_csrangeenum-coordinate-system-useful-range-enumerator">CS_csRangeEnum Coordinate System Useful Range Enumerator</a></li>
+            <li><a href="#cs_csrangeenumsetup-coordinate-system-range-enumeration-setup">CS_csRangeEnumSetup Coordinate System Range Enumeration Setup</a></li>
+            <li><a href="#cs_dtenum-datum-enumerator">CS_dtEnum Datum Enumerator</a></li>
+            <li><a href="#cs_dtisvalid-datum-key-name-is-valid">CS_dtIsValid Datum key name is valid</a></li>
+            <li><a href="#cs_elenum-ellipsoid-enumerator">CS_elEnum Ellipsoid Enumerator</a></li>
+            <li><a href="#cs_elisvalid-ellipsoid-key-name-is-valid">CS_elIsValid Ellipsoid key name is valid</a></li>
+            <li><a href="#cs_errmsg-error-message">CS_errmsg Error Message</a></li>
+            <li><a href="#cs_erpt-error-report">CS_erpt Error Report</a></li>
+            <li><a href="#cs_fast-fast-mode">CS_fast FAST mode</a></li>
+            <li><a href="#cs_ftoa-floating-point-to-ascii">CS_ftoa floating point TO Ascii</a></li>
+            <li><a href="#cs_geoctrsetup-geocentric-setup">CS_geoctrSetUp Geocentric setup</a></li>
+            <li><a href="#cs_geoctrgetxyz-geocentric-get-xyz">CS_geoctrGetXyz Geocentric get XYZ</a></li>
+            <li><a href="#cs_geoctrgetllh-geocentric-get-latlonghgt">CS_geoctrGetLlh Geocentric get LatLongHgt</a></li>
+            <li><a href="#cs_getcountyfips-get-county-federal-information-processing-standard-code">CS_getCountyFips Get County Federal Information Processing Standard code</a></li>
+            <li><a href="#cs_getdatadirectory-get-data-directory">CS_getDataDirectory GET DATA DIRECTORY</a></li>
+            <li><a href="#cs_getdatumof-get-datum-of-a-coordinate-system">CS_getDatumOf Get Datum of a Coordinate System</a></li>
+            <li><a href="#cs_getdescriptionof-get-description-of-a-coordinate-system">CS_getDescriptionOf Get Description of a Coordinate System</a></li>
+            <li><a href="#cs_getellipsoidof-get-ellipsoid-of-a-coordinate-system">CS_getEllipsoidOf Get Ellipsoid Of a Coordinate System</a></li>
+            <li><a href="#cs_getreferenceof-get-reference-of-a-coordinate-system">CS_getReferenceOf Get Reference Of a Coordinate System</a></li>
+            <li><a href="#cs_getsourceof-get-source-of-coordinate-system">CS_getSourceOf Get Source Of Coordinate System</a></li>
+            <li><a href="#cs_getunitsof-get-units-of-a-coordinate-system">CS_getUnitsOf Get Units of a Coordinate System</a></li>
+            <li><a href="#cs_getelvalues-get-ellipsoid-values">CS_getElValues Get Ellipsoid Values</a></li>
+            <li><a href="#cs_getcurvatureat-get-curvature-at-specified-latitude">CS_getCurvatureAt get curvature at specified latitude</a></li>
+            <li><a href="#cs_isgeo-is-geographic">CS_isgeo is geographic</a></li>
+            <li><a href="#cs_llazdd-latlong-to-azimuth-and-distance-calculator">CS_llazdd Lat/Long to Azimuth and Distance calculator</a></li>
+            <li><a href="#cs_llfrommgrs-calculate-latlong-from-mgrs">CS_llFromMgrs calculate Lat/Long from MGRS</a></li>
+            <li><a href="#cs_mgrsfromll-calculate-mgrs-from-latlong">CS_mgrsFromLl calculate MGRS from Lat/Long</a></li>
+            <li><a href="#cs_mgrssetup-mgrs-setup">CS_mgrsSetUp MGRS setup</a></li>
+            <li><a href="#cs_recvr-recover-resources">CS_recvr recover resources</a></li>
+            <li><a href="#cs_scale-grid-scale-factor-function">CS_scale grid SCALE factor function</a></li>
+            <li><a href="#cs_scalk-grid-scale-factork-function">CS_scalk grid SCALE factor(K) function</a></li>
+            <li><a href="#cs_sethelppath-set-help-path">CS_setHelpPath SET HELP PATH</a></li>
+            <li><a href="#cs_spzonenbrmap-state-plane-zone-number-mapper">CS_spZoneNbrMap State Plane Zone Number Mapper</a></li>
+            <li><a href="#cs_unenum-units-enumerator">CS_unEnum Units Enumerator</a></li>
+            <li><a href="#cs_unitlu-unit-look-up">CS_unitlu unit look up</a></li>
+        <li class="main "><a href="#high-performance-interface">High Performance Interface</a></li>
+            <li><a href="#cs_audflt-angular-unit-default">CS_audflt Angular unit default</a></li>
+            <li><a href="#cs_cs2ll-coordinate-system-to-latitudelongitude">CS_cs2ll Coordinate System to Latitude/Longitude</a></li>
+            <li><a href="#cs_cscnv-coordinate-system-convergence">CS_cscnv Coordinate System Convergence</a></li>
+            <li><a href="#cs_csdef-coordinate-system-definition-locator">CS_csdef Coordinate System definition locator</a></li>
+            <li><a href="#cs_csdel-coordinate-system-definition-delete">CS_csdel Coordinate System definition delete</a></li>
+            <li><a href="#cs_csenumbygroup-coordinate-system-enumerator-by-group">CS_csEnumByGroup Coordinate System Enumerator By Group</a></li>
+            <li><a href="#cs_csgrpenum-coordinate-system-grour-enumerator">CS_csGrpEnum Coordinate System grour enumerator</a></li>
+            <li><a href="#cs_csloc-coordinate-system-locate-and-initialize">CS_csloc Coordinate System locate and initialize</a></li>
+            <li><a href="#cs_cssch-coordinate-system-scale-h-along-a-meridian">CS_cssch Coordinate System Scale H, along a meridian</a></li>
+            <li><a href="#cs_cssck-coordinate-system-scale-k-along-a-parallel">CS_cssck Coordinate System Scale K, along a parallel</a></li>
+            <li><a href="#cs_csscl-coordinate-system-scale">CS_csscl Coordinate System Scale</a></li>
+            <li><a href="#cs_csupd-coordinate-system-dictionary-update">CS_csupd Coordinate system dictionary update</a></li>
+            <li><a href="#cs_dtcls-datum-conversion-close">CS_dtcls Datum conversion close</a></li>
+            <li><a href="#cs_dtcsu-datum-conversion-set-up">CS_dtcsu Datum conversion set up</a></li>
+            <li><a href="#cs_dtcvt-datum-convert">CS_dtcvt Datum Convert</a></li>
+            <li><a href="#cs_dtdef-datum-definition-locator">CS_dtdef Datum Definition locator</a></li>
+            <li><a href="#cs_dtdel-datum-definition-delete">CS_dtdel DaTum definition delete</a></li>
+            <li><a href="#cs_dtdflt-datum-default">CS_dtdflt Datum default</a></li>
+            <li><a href="#cs_dtloc-datum-locate">CS_dtloc Datum locate</a></li>
+            <li><a href="#cs_dtupd-datum-dictionary-update">CS_dtupd Datum dictionary update</a></li>
+            <li><a href="#cs_eldel-ellipsoid-definition-delete">CS_eldel Ellipsoid definition delete</a></li>
+            <li><a href="#cs_eldflt-ellipsoid-default">CS_eldflt Ellipsoid default</a></li>
+            <li><a href="#cs_elenum-ellipsoid-enumerator_1">CS_elEnum Ellipsoid enumerator</a></li>
+            <li><a href="#cs_elupd-ellipsoid-dictionary-update">CS_elupd Ellipsoid dictionary update</a></li>
+            <li><a href="#cs_errmsg-error-message_1">CS_errmsg Error message</a></li>
+            <li><a href="#cs_ll2cs-latitudelongitude-to-coordinate-system">CS_ll2cs Latitude/Longitude TO Coordinate System</a></li>
+            <li><a href="#cs_llchk-latlong-limits-check">CS_llchk Lat/Long limits check</a></li>
+            <li><a href="#cs_ludflt-linear-unit-default">CS_ludflt linear unit default</a></li>
+            <li><a href="#cs_xychk-x-and-y-limits-check">CS_xychk X and Y limits check</a></li>
+            <li><a href="#cs_usrunitptr-units-look-up-hook-function">CS_usrUnitPtr - Units look up hook function</a></li>
+            <li><a href="#cs_unitadd-add-unit-to-table">CS_unitAdd - Add  unit to table</a></li>
+            <li><a href="#cs_unitdel-delete-unit-from-table">CS_unitDel -- Delete unit from table</a></li>
+        <li class="main "><a href="#low-level-interface-functions">Low level interface functions</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="library-functions">Library Functions</h1>
+<p>This section includes a technical description of 500+ functions in the CS-MAP library. The descriptions are organized by the interface of which they are a part. An index is provided elsewhere in this document.</p>
+<h1 id="high-level-interface-functions">High Level Interface Functions</h1>
+<p>Functions described in this section are designed to be called from high level languages such as Visual Basic. Therefore, descriptions of most functions in this section also include a function declaration appropriate for use in Visual Basic and Delphi in addition to the standard C prototype.</p>
+<h2 id="cs_altdr-alternate-directory">CS_altdr Alternate Directory</h2>
+<pre><code class="c">Function CS_altdr (ByVal new_dir As String) As Integer function CS_altdr (alt_dr :PChar):Integer;
+int CS_altdr (Const char alt_dir);
+</code></pre>
+
+<p>Normally, all functions in the Coordinate System Mapping Package library expect to find data files in the <code>C:\MAPPING</code> directory as defined in <code>CSdata</code>. <code>CS_altdr</code> can be used to specify an alternate directory at run time; that indicated by the <strong>alt_dir</strong> argument. <code>CS_altdr</code> returns zero if a coordinate system dictionary was indeed found in the directory provided; otherwise, it returns -1.</p>
+<p>Calling <code>CS_altdr</code> with the <code>NULL</code> pointer as its argument instructs <code>CS_altdr</code> to use the value of the environmental variable <strong>CS_MAP_DIR</strong> as the location of the CS-MAP data files. Again a zero is returned if this was successful, -1 if not. (The string defining the name of the environmental variable name is defined in the <code>cs_map.h</code> header file.)</p>
+<p>Calling <code>CS_altdr</code> with the <strong>alt_dir</strong> argument pointing to the null string instructs <code>CS_altdr</code> to use the current directory on the current drive as the location of CS-MAP data files. Again a zero is returned if this selection produces a directory which contains a Coordinate System Dictionary File. Otherwise -1 is returned.</p>
+<p>Notice, that using the return status as a guide, several attempts at locating the CS-MAP data directory can be made in any application.</p>
+<p>The name of the directory which is searched for all data files is maintained in a global character array <code>cs_Dir</code>, which is defined in the <code>CSdata</code> module. The <code>cs_Dir</code> array must, initially, contain a null terminated string, the last non-null character of which must be the directory separator character. The global character pointer <code>cs_DirP</code> (also defined in <code>CSdata</code>) is expected to point to the terminating null character of the string in <code>cs_Dir</code>. Under this scheme, Coordinate System Mapping Package data files
+are accessed as follows:</p>
+<pre><code class="c">extern char cs_Dir [];
+extern char *cs_DirP;
+:
+strcpy (cs_DirP,&quot;file_name&quot;);
+fd = open (cs_Dir,O_MODE);
+:
+</code></pre>
+
+<p>Achieving this particular setup is relatively easy using <code>CS_stcpy</code>:</p>
+<pre><code class="c">cs_DirP = CS_stcpy (cs_Dir,&quot;C:\\MAPPING\\&quot;);
+</code></pre>
+
+<h3 id="bugs">BUGS</h3>
+<p>The purpose of this function is to insulate the library from system implementation issues. Without a function of this nature, all applications using CS-MAP would have to implement a specific directory on a specific drive. Not very pleasant. There does not appear to be a nice clean solution to this problem.</p>
+<h2 id="cs_atof-ascii-to-floating-point">CS_atof Ascii to floating point</h2>
+<pre><code class="c">Function CS_atof (ByRef result As Double,ByVal value As String) As Long
+function CS_atof (var result :double;value: PChar) :LongInt;
+long CS_atof (double *result,Const char *value);
+</code></pre>
+
+<p><code>CS_atof</code> will convert the ASCII, null terminated string provided by the <strong>value</strong> argument to double precision floating point form, returning this result in the location pointed to by the <strong>result</strong> argument. Obviously, the string provided by <strong>value</strong> is expected to be an ASCII representation of a numeric value.</p>
+<p><code>CS_atof</code> has several features built into it for handling numeric formats that are commonly used in mapping, specifically, large numbers, and values in degrees, minutes, and seconds format. Use of thousands separators is supported and, when present, their improper use is reported. Other than leading white space, spaces in the input value are interpreted to indicate degrees, minutes, and seconds format. Values can be entered using minutes only (a single space) or minutes and seconds (two spaces encountered). Use of either directional characters (i.e. N, S, E, W) or plus and hyphen characters for sign is also supported. <code>CS_atof</code> returns a long that carries a complete specification of the format used to enter the value, suitable for use by <code>CS_ftoa</code> for formatting the value for output. <code>CS_atof</code> will also correctly process scale factors entered as ratios, and this feature can be mixed with the thousands separator feature. Thus, scale reduction for state plane coordinate systems can be entered as "1:17,000."</p>
+<p>The return value is a bitmap of information used to contain precision, formatting specifications, and error status values. The following descriptions refer to constants defined in the various header files. Construct a format specification by inclusively or'ing the desired options:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_ATOF_PRCMSK</code></td>
+<td>The least significant five bits are used to indicate the number of digits found after the decimal point. The value is actually the number of digits plus one. (Zero is reserved to indicate automatic precision determination on output.) This constant is a mask that will mask out the precision value.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_VALLNG</code></td>
+<td>The value processed is acceptable for a longitude value.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_VALLAT</code></td>
+<td>The value processed is acceptable for a latitude value.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_MINSEC</code></td>
+<td>The value processed was in degrees, minutes, and seconds form.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_MINUTE</code></td>
+<td>The value processed was in degrees and minutes form.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_EXPNT</code></td>
+<td>The value processed was in scientific notation form.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_COMMA</code></td>
+<td>The value processed included thousands separators to the left of the decimal point.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_DIRCHR</code></td>
+<td>The value processed included directional characters to indicate sign.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_XEAST</code></td>
+<td>The directional characters used to indicate the sign came from the E and W set, as opposed to the N and S set.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_MINSEC0</code></td>
+<td>The value processed included leading zeros in the minutes or seconds fields.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_DEG0</code></td>
+<td>The value processed included leading zeros in the degrees field.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_0BLNK</code></td>
+<td>The value processed was the null string.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_FORCE3</code></td>
+<td>The value processed used minutes or minutes and seconds format, and 3 digits of degrees were encountered; implying a longitude value.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_RATIO</code></td>
+<td>The processed value was provided in the form of a ratio, e.g. 1:2500, to indicate a value such as, for example, 0.9996.</td>
+</tr>
+</tbody>
+</table>
+<p>Bits defined by the following constants are set to indicate the associated error condition. The <strong>cs_ATOF_FMTERR</strong> bit is set if any error condition is detected and forces the return value to negative. In all such cases, <code>CS_atof</code> will report the error condition and a subsequent call to <code>CS_errmsg</code> will return an appropriate error message.</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_ATOF_SECS60</code></td>
+<td>What was interpreted to be the seconds field of the processed value produced a value greater than or equal to 60.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_MINS60</code></td>
+<td>What was interpreted to be the minutes field of the processed value produced a value greater than or equal to 60.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_MLTPNT</code></td>
+<td>More than one decimal point was encountered in the input value.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_MLTSGN</code></td>
+<td>More than one sign indication was encountered in the input value.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_ERRCMA</code></td>
+<td>Improper positioning of the thousands separator character was detected in the input value.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_RATERR</code></td>
+<td>A string that contained the ratio character, usually ':', did not conform to the normal convention for a ratio. Usually, the character immediately left of the colon was not a '1'.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_FMTERR</code></td>
+<td>A general format error, not covered by the above, was encountered in the input value.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_ERRFLG</code></td>
+<td>This bit is set, producing a negative return value, if any of the above error conditions are encountered during processing. Whenever this bit is set, the error condition will have been reported to <code>CS_erpt</code>, and a subsequent call to <code>CS_errmsg</code> will produce an appropriate error message.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_azddll-latlong-azimuth-distance-calculator">CS_azddll LatLong Azimuth Distance calculator</h2>
+<pre><code class="c">Function CS_azddll ( ByVal e_rad As Double, ByVal e_sq As Double, ByRef ll_fromAs Double,
+                      ByVal azimuth As Double,
+                      ByVal distance As Double,
+                      ByRef ll_to As Double) As Integer
+function CS_azddl (e_rad, e_sq: Double; var ll_from: Double; azimuth, distance : Double; var ll_to: Double): Integer;
+int CS_azddl (double e_rad, double e_sq, double ll_from[3], double azimuth, double dist, double ll_to[3]);
+</code></pre>
+
+<p><code>CS_azddll</code> calculates the latitude and longitude of a target point given an initial point, an azimuth from the initial point, and a distance. The initial point and the result are in degrees, where the longitude occupies the first element in the array and latitude the second element. The reference of the longitude is immaterial, as both (the initial point and the calculated point) will share the same reference whatever it is. Currently, the third element in each array is unused (i.e. un-referenced and unmodified). This may change in future releases. <strong>e_rad</strong> is the equatorial radius, and <strong>e_sq</strong> the eccentricity squared, of the ellipsoid to be used. The units of the radius are immaterial other than they must be the same as that used to specify the <strong>distance</strong>. <strong>Azimuth</strong> is the azimuth at the initial point given in degrees east of north. <strong>distance</strong> is the distance traveled in the same units as used to specify the equatorial radius of the ellipsoid. The result is returned in the array pointed to by the <strong>ll_to</strong> argument.</p>
+<p><code>CS_azddll</code> returns a zero to indicate success, -1 for failure. Failure of the internal Newton Rhapson iterative calculation is the only possible cause of failure. This can be caused by rather strange input values, specifically values that would produce results that are antipodal to the initial point.</p>
+<p>The algorithm used is known as: "Solution of the geodetic inverse problem after T. Vincenty modified Rainsford's Method with Helmert's elliptical terms," whatever all that means. This algorithm is appropriate for any combination of points that are not antipodal.</p>
+<h2 id="cs_azsphr-azimuth-on-a-sphere">CS_azsphr Azimuth on a Sphere</h2>
+<pre><code class="c">Function CS_azsphr (ByRef ll_1 As Double, ByRef ll_2 As Double) As Double
+function CS_azsphr (var ll_1, ll_2 :Double) : Double;
+double CS_azshpr (Const double ll0 [2],Const double ll1 [2]);
+</code></pre>
+
+<p><code>CS_azsphrl</code> returns the azimuth, in degrees east of north, from the geographic location given by <strong>ll0</strong> to the geographic location given by <strong>ll1</strong>. The calculation assumes a spherical earth, so a radius and eccentricity is not required.</p>
+<h2 id="cs_cnvrg-convergence-function">CS_cnvrg Convergence function</h2>
+<pre><code class="c">Function CS_cnvrg (ByVal cs_name As String, ByRef ll_ary As Double) As Double
+function CS_cnvrg (cs_name :PChar;var ll_ary :double) :Double;
+double CS_cnvrg (Const char *cs_name, Const double ll_ary [2]);
+</code></pre>
+
+<p><code>CS_cnvrg</code> returns the convergence angle of the coordinate system whose key name is provided by the <strong>cs_name</strong> argument, at the location provided by the <strong>ll_ary</strong> argument. The position provided by the <strong>ll_ary</strong> argument must be in longitude and latitude form, in degrees, where the first element of the array is the longitude and the second element of the array is the latitude. Use negative values for west longitude and south latitude. The returned value is in degrees, east of north.</p>
+<p><code>CS_cnvrg</code> uses the same cache of coordinate system definitions as does <code>CS_cnvrt</code>, therefore, the performance penalty of using this very simple function is not as great as one might expect.</p>
+<h3 id="errors">Errors</h3>
+<p><code>CS_cnvrg</code> will return a value of -360.0 (clearly a bogus value for a convergence angle) if an error is detected during the calculation. The most common cause of errors is an invalid coordinate system name.</p>
+<h2 id="cs_cnvrt-generalized-convert-function">CS_cnvrt generalized convert function</h2>
+<pre><code class="c">Function CS_cnvrt (ByVal src_cs As String,ByVal trg_cs As String, ByRef coord As Double) As Integer
+function CS_cnvrt (src_cs,trg_cs :PChar;var coord :double) :Integer;
+int CS_cnvrt (Const char *src_cs,Const char *trg_cs,double coord [3]);
+</code></pre>
+
+<p><code>CS_cnvrt</code> is in essence a High Level Interface to the CS_MAP library. Using this single function, one can convert coordinates from any defined system to any other. Simply provide the key name of the source system via the <strong>src_cs</strong> argument, and the key name of the destination coordinate system via the <strong>trg_cs</strong> argument, and <code>CS_cnvrt</code> will cause the coordinate in the array given by the <strong>coord</strong> argument is converted from the source system to the destination system. <code>CS_cnvrt</code> returns zero if the conversion completed successfully without incident. Otherwise, a CS-MAP error code value is returned (see <code>cs_map.h</code>).</p>
+<p><code>CS_cnvrt</code> relies on a cache of coordinate systems, and for each conversion linearly searches the cache for the definitions of the two coordinate system definitions, and the datum conversion definition, it needs to perform its function. Thus, the performance penalty incurred from using this High Level Interface is not as great as one may think.</p>
+<p>Currently, the third element of the <strong>coord</strong> argument is unused; but may be used in the future.</p>
+<h2 id="cs_cnvrt3d-3d-generalized-convert-function">CS_cnvrt3D 3D generalized Convert function</h2>
+<pre><code class="c">
+Function CS_cnvrt3D (ByVal src_cs As String, ByVal dst_cs As String, ByRef coor d As Doubl e) As Integer
+function CS_cnvrt3D (src_cs,dst_cs :PChar; var coord :Double):Integer
+int CS_cnvrt3D (Const char *src_cs, Const char *dst_cs, double coord [3]);
+</code></pre>
+
+<p><code>CS_cnvrt3D</code> is in essence a High Level Interface with regard to three dimensional conversions. Using this single function, one can convert three dimensional coordinates from any defined system to any other. Simply provide the key name of the source system via the <strong>src_cs</strong> argument, and the key name of the destination coordinate system via the <strong>dst_cs</strong> argument, and <code>CS_cnvrt3D</code> will cause the coordinate in the array given by the <strong>coord</strong> argument to be converted from the source system to the destination system. <code>CS_cnvrt3D</code> returns a zero if the conversion completed successfully without incident. Otherwise, a CS_MAP error code value is returned.</p>
+<p><code>CS_cnvrt3D</code> relies on a cache of coordinate systems, and for each conversion linearly searches the cache for the definitions of the two coordinate system definitions, and the datum conversion definition, it needs to perform its function. Thus, the performance penalty incurred from using this High Level Interface is not as great as one may think.</p>
+<p>Use <code>CS_cnvrt3D</code> only when converting data maintained in a three dimensional database. Note that if the application is able to supply the returned Z value during an inverse calculation, the inverted result may not match the original values.</p>
+<h2 id="cs_csenum-coordinate-system-enumerator">CS_csEnum Coordinate System Enumerator</h2>
+<pre><code>Function CS_csEnum ( ByVal index As Integer , ByVal key_name As String, ByVal size As Integer) As Integer
+function CS_csEnum(index: Integer; key_name: Pchar; size: Integer):Integer;
+int CS_csEnum(int index, char *key_name, int size);
+</code></pre>
+
+<p><code>CS_csEnum</code> is used to enumerate all coordinate systems in the Coordinate System Dictionary. <code>CS_csEnum</code> returns in the memory buffer pointer to by the <strong>key_name</strong> argument the key name of the <strong>index</strong>'th entry in the Coordinate System Dictionary. <code>CS_csEnum</code> will never write more than size bytes to the indicated location. <strong>Index</strong> is a zero based index; the index of the first entry in the Coordinate System Dictionary is zero.</p>
+<p><code>CS_csEnum</code> returns a positive 1 to indicate success. If <strong>index</strong> is too large, a zero is returned.</p>
+<h3 id="errors_1">Errors</h3>
+<p><code>CS_csEnum</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_CSDICT</code></td>
+<td>The Coordinate System Dictionary could not be found or otherwise opened. See CS_altdr.</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in accessing the Coordinate System Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_CS_BAD_MAGIC</code></td>
+<td>The file assumed to be the Coordinate System Dictionary by virtue of its name was not a Coordinate System Dictionary; it had an invalid magic number or was of an incompatible release level.</td>
+</tr>
+<tr>
+<td><code>cs_INV_INDX</code></td>
+<td>The index argument was negative.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_csisvalid-coordinate-system-key-name-is-valid">CS_csIsValid Coordinate System key name Is Valid</h2>
+<pre><code class="c">Function CS_csIsValid (ByVal key_name As String) As Integer
+function CS_csIsValid (key_name: PChar) :Integer;
+int CS_csIsValid (Const char *key_name);
+</code></pre>
+
+<p><code>CS_csIsValid</code> is used to validate coordinate system key names. <code>CS_csIsValid</code> returns a positive 1 if <strong>key_name</strong> is a valid coordinate system key name, a zero if not.</p>
+<h3 id="errors_2">Errors</h3>
+<p><code>CS_csEnum</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_CSDICT</code></td>
+<td>The Coordinate System Dictionary could not be found or otherwise opened. (See <code>CS_altdr</code>.)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in accessing the Coordinate System Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_CS_BAD_MAGIC</code></td>
+<td>The file assumed to be the Coordinate System Dictionary by virtue of its name was not a Coordinate System Dictionary; it had an invalid magic number. This can also be caused by an incompatible release.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_csrangeenum-coordinate-system-useful-range-enumerator">CS_csRangeEnum Coordinate System Useful Range Enumerator</h2>
+<pre><code class="c">Function CS_csRangeEnum (ByVal index As Integer, ByVal csKeyName As String,
+ByVal size As Integer) As Integer
+function CS_csRangeEnum(index: Integer; csKeyName: Pchar; size: Integer):Integer;
+int CS_csRangeEnum (int index, char * csKeyName, int size);
+</code></pre>
+
+<p><code>CS_csRangeEnum</code> is used to enumerate all coordinate systems which were located by the last call to the <code>CS_csRangeEnumSetup</code> function. Using these two functions, it is possible to obtain a list of only those coordinate systems whose useful range include a specific point. <code>CS_csRangeEnum</code> returns in the memory buffer pointer to by the key_name argument the key name of the <strong>index</strong>'th entry in the list generated by <code>CS_csRangeEnumSetup</code>. <code>CS_csRangeEnum</code> will never write more than <strong>size</strong> bytes to the indicated location. <strong>Index</strong> is a zero based index; the index of the first entry in the Coordinate System Dictionary is zero.</p>
+<p><code>CS_csEnum</code> returns a positive 1 to indicate success. If <strong>index</strong> is too large, a zero is returned. A negative value is returned for a serious error, such as failure to call <code>CS_csRangeEnumSetup</code> prior to calling this function.</p>
+<h2 id="cs_csrangeenumsetup-coordinate-system-range-enumeration-setup">CS_csRangeEnumSetup Coordinate System Range Enumeration Setup</h2>
+<pre><code class="c">Function CS_csRangeEnumSetup (ByVal longitude As Double, ByVal latitude As Double) As Integer
+function CS_csRangeEnumSetup (longitude, latitutde :Double) : Integer
+int CS_csRangeEnumSetup (double longitude, double latitude);
+</code></pre>
+
+<p>Use this function to set the base location for subsequent <code>CS_csEnumRange</code> usage. That is, use this function to produce (internally) a list of all coordinate systems whose useful range includes the given location. Essentially, this function will generate the list, and the application programmer then uses the <code>CS_csEnumRange</code> function to enumerate the list.</p>
+<p>The location is specified in geographical terms (i.e. latitude and longitude). These values must be in degrees, relative to Greenwich. Since datum differences are on the order of, at most, a few hundred meters, the datum upon which these coordinates are based is immaterial for the purpose of this function.</p>
+<p><code>CS_csRangeEnumSetup</code> will return a negative value in the event of a serious error, such as being unable to access the Coordinate System Dictionary. Use <code>CS_errmsg</code> to get a textual description of the error which can be reported to the application user. Otherwise, <code>CS_csRangeEnumSetup</code> will return the number of coordinate systems located, which can be zero.</p>
+<p>Finally, note that the <code>CS_recvr</code> function will recover all allocated resources, including the list of coordinate systems generated by the last call to this function.</p>
+<h2 id="cs_dtenum-datum-enumerator">CS_dtEnum Datum Enumerator</h2>
+<pre><code class="c">Function CS_dtEnum(ByVal index As Integer, ByVal key_name As String, ByVal size As Integer) As Integer
+function CS_dtEnum(index: Integer; key_name: Pchar; size: Integer) :Integer;
+int CS_dtEnum(int index, char *key_name, int size);
+</code></pre>
+
+<p><code>CS_dtEnum</code> is used to enumerate all datums in the Datum Dictionary. <code>CS_dtEnum</code> returns in the memory buffer pointer to by the <strong>key_name</strong> argument the key name of the <strong>index</strong>'th entry in the Datum Dictionary. <code>CS_dtEnum</code> will never write more than <strong>size</strong> bytes to the indicated location. <strong>Index</strong> is a zero based index; the index of the first entry in the Datum Dictionary is zero.</p>
+<p><code>CS_dtEnum</code> returns a positive 1 to indicate success. If <strong>index</strong> is too large, a zero is returned.</p>
+<h3 id="errors_3">ERRORS</h3>
+<p><code>CS_dtEnum</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_DTDICT</code></td>
+<td>The Datum Dictionary could not be found or otherwise opened. (See <code>CS_altdr</code>.)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in accessing the Datum Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_DT_BAD_MAGIC</code></td>
+<td>The file assumed to be the Datum Dictionary by virtue of its name was not a Datum Dictionary; it had an invalid magic number. This can also be caused by a dictionary file of an incompatible release.</td>
+</tr>
+<tr>
+<td><code>cs_INV_INDX</code></td>
+<td>The index argument was negative.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_dtisvalid-datum-key-name-is-valid">CS_dtIsValid Datum key name is valid</h2>
+<pre><code class="c">Function CS_dtIsValid (ByVal key_name As String) As Integer
+function CS_dtIsValid (key_name: PChar): Integer;
+int CS_dtIsValid (Const char *key_name);
+</code></pre>
+
+<p><code>CS_dtIsValid</code> is used to validate datum key names. <code>CS_dtIsValid</code> returns a positive 1 if <strong>key_name</strong> is a valid datum key name, a zero if not.</p>
+<h3 id="errors_4">ERRORS</h3>
+<p><code>CS_dtIsValid</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_DTDICT</code></td>
+<td>The Datum Dictionary could not be found or otherwise opened. (See <code>CS_altdr</code>.)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in accessing the Datum Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_DT_BAD_MAGIC</code></td>
+<td>The file assumed to be the Datum Dictionary by virtue of its name was not a Datum Dictionary; it had an invalid magic number. This can also be caused by a dictionary file of an incompatible release.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_elenum-ellipsoid-enumerator">CS_elEnum Ellipsoid Enumerator</h2>
+<pre><code class="c">Function CS_elEnum(ByVal index As Integer, ByVal key_name As String, ByVal size As Integer) As Integer
+function CS_elEnum(index: Integer; key_name: Pchar; size: Integer): Integer;
+int CS_elEnum(int index, char *key_name, int size);
+</code></pre>
+
+<p><code>CS_elEnum</code> is used to enumerate all ellipsoids in the Ellipsoid Dictionary. <code>CS_elEnum</code> returns in the memory buffer pointer to by the <strong>key_name</strong> argument the key name of the <strong>index</strong>'th entry in the Ellipsoid Dictionary. <code>CS_elEnum</code> will never write more than size bytes to the indicated location. <strong>Index</strong> is a zero based index; the index of the first entry in the Ellipsoid Dictionary is zero.</p>
+<p><code>CS_elEnum</code> returns a positive 1 to indicate success. If <strong>index</strong> is too large, a zero is returned.</p>
+<h3 id="errors_5">ERRORS</h3>
+<p><code>CS_elEnum</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_ELDICT</code></td>
+<td>The Ellipsoid Dictionary could not be found or otherwise opened. (See <code>CS_altdr</code>.)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in accessing the Ellipsoid Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_DT_BAD_MAGIC</code></td>
+<td>The file assumed to be the Ellipsoid Dictionary by virtue of its name was not an Ellipsoid Dictionary; it had an invalid magic number. Note that dictionary magic numbers can be different for different releases.</td>
+</tr>
+<tr>
+<td><code>cs_INV_INDX</code></td>
+<td>The index argument was negative.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_elisvalid-ellipsoid-key-name-is-valid">CS_elIsValid Ellipsoid key name is valid</h2>
+<pre><code class="c">Function CS_elIsValid (ByVal key_name As String) As Integer
+function CS_elIsValid (key_name: PChar): Integer;
+int CS_elIsValid (Const char *key_name);
+</code></pre>
+
+<p><code>CS_elIsValid</code> is used to validate ellipsoid key names. <code>CS_elIsValid</code> returns a positive 1 if <strong>key_name</strong> is a valid ellipsoid key name, a zero if not.</p>
+<h3 id="errors_6">Errors</h3>
+<p><code>CS_elIsValid</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_ELDICT</code></td>
+<td>The Ellipsoid Dictionary could not be found or otherwise opened. (See <code>CS_altdr</code>.)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in accessing the Ellipsoid Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_EL_BAD_MAGIC</code></td>
+<td>The file assumed to be the Ellipsoid Dictionary by virtue of its name was not a Ellipsoid Dictionary; it had an invalid magic number. Note that magic numbers can be different for different releases.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_errmsg-error-message">CS_errmsg Error Message</h2>
+<pre><code class="c">Sub CS_errmsg (ByVal my_bufr As String, ByVal bufr_size As Integer)
+procedure CS_errmsg (msg_bufr: PChar; bufr_size: Integer);
+void CS_errmsg (char msg_bufr, int bufr_size);
+</code></pre>
+
+<p><code>CS_errmsg</code> returns to the calling function a null terminated string which describes the last error condition detected by the CS_MAP library. The result is returned in the buffer pointed to by the <strong>msg_bufr</strong> argument, which is assumed to be <strong>bufr_size</strong> bytes long. The message is returned in one character per byte ANSI code characters.</p>
+<p><code>CS_errmsg</code> will return the null string if called before any error condition is detected.</p>
+<h3 id="bugs_1">BUGS</h3>
+<p>After returning an error message to the user, <code>CS_errmsg</code> should reset itself to the null string preventing the same error message from being returned a second time. It should, but it doesn't.</p>
+<h2 id="cs_erpt-error-report">CS_erpt Error Report</h2>
+<pre><code class="c">extern int cs_Error,cs_Errno;
+void CS_erpt (int err_num);
+</code></pre>
+
+<p><code>CS_erpt</code> is called by all functions in the Coordinate System Mapping Package whenever an error condition is detected. The value of <strong>err_num</strong> indicates the specific error condition detected and <strong>must</strong> be one of the manifest constants defined in <code>cs_map.h</code>.</p>
+<p>At the current time, <code>CS_erpt</code> does nothing other than set the value of global variable <code>cs_Error</code> to the supplied value of <strong>err_num</strong> and set the global variable of <code>cs_Errno</code> to the current value of the system's global variable <code>errno</code>.</p>
+<p>It is expected that users will want to write their own <code>CS_erpt</code> function that will properly inform the operator of the nature of the problem encountered.</p>
+<p>Each function in the Coordinate System Mapping Package is programmed to clean up after itself after return from <code>CS_erpt</code>. That is, upon return from <code>CS_erpt</code>, all memory <code>malloc</code>'ed by the function detecting the error is <code>free</code>'ed and any temporary file created by the function detecting the error is removed.</p>
+<h2 id="cs_fast-fast-mode">CS_fast FAST mode</h2>
+<pre><code class="c">Sub CS_fast(ByVal fast As Integer)
+procedure CS_fast(fast: Integer);
+void CS_fast(int fast);
+</code></pre>
+
+<p><code>CS_fast</code> can be used to improve the performance of applications using the High Level Interface. When incorporated into a DLL, the High Level Interface normally verifies the veracity of each pointer argument provided by the application. This is convenient, of course, but also somewhat time consuming. Calling <code>CS_fast</code> with a non-zero value for the fast argument will disable this checking. It is recommended that calling <code>CS_fast</code> be added to your application only after it has been debugged. Fast mode can be turned off by calling <code>CS_fast</code> with
+argument fast set to zero.</p>
+<h2 id="cs_ftoa-floating-point-to-ascii">CS_ftoa floating point TO Ascii</h2>
+<pre><code class="c">Function CS_ftoa(ByVal buffer As String, ByVal size As Integer, ByVal value As Double, ByVal format As Long) As Long
+function CS_ftoa buffer: Pchar; size: Integer; value: Double; format: Longint) :Longint;
+long CS_ftoa(char *buffer, int size, double value, long format);
+</code></pre>
+
+<p><code>CS_ftoa</code> formats the double precision floating point value provided by the <strong>value</strong> argument into ASCII form returning the result in the character array pointed to by the <strong>buffer</strong> argument. The result is always a null terminated string, and the length of the string is never longer than <strong>size</strong> - 1 characters. The format of the character string is controlled by the <strong>format</strong> argument. <code>CS_ftoa</code> returns a long that indicates the actual format used to format the value. The returned format specification may be different from the requested format if the buffer provided was not large enough, or if the requested format is not appropriate for the value provided.</p>
+<p><code>CS_ftoa</code> is intended to be a generalized formatting function that accommodates the formats commonly used in mapping. That is, large numbers and values in degrees minutes and seconds form. The somewhat awkward <strong>format</strong> argument is designed such that the value returned by <code>CS_atof</code> is suitable for use by <code>CS_ftoa</code>.</p>
+<p>The original intent behind the design of the format specification was to enable users to indicate the desired format of output by simply entering a suitable value in the form they desire. The application would then use <code>CS_atof</code> to convert the value to binary form. If no errors occurred during the conversion, the returned long could then be used to format output. Experience will determine the success of this approach.</p>
+<p>The <strong>format</strong> argument is a bitmap of information used to contain precision, formatting specifications, and error status values. The following descriptions refer to constants defined in the various header files. Construct a format specification by inclusively or'ing the desired options.</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_ATOF_PRCMSK</code></td>
+<td>The least significant five bits are used to indicate the number of digits to be produced after the decimal point. The value is actually the number of desired digits plus one. Zero indicates that the precision is to be calculated automatically. This constant is a mask that will mask out the precision value.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_MINSEC</code></td>
+<td>Output is to be in degrees, minutes, and seconds form.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_MINUTE</code></td>
+<td>Output is to be in degrees and minutes form.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_EXPNT</code></td>
+<td>This bit is set in the returned value if <code>CS_ftoa</code> had to resort to scientific notation in order to format the value in the space provided.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_OVRFLW</code></td>
+<td>This bit is set in the returned value if <code>CS_ftoa</code> could only output the overflow indication (i.e. <em>.</em>) in the space provided.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_COMMA</code></td>
+<td>Output is to include thousands separators to the left of the decimal point as appropriate.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_DIRCHR</code></td>
+<td>Output is to include directional characters to indicate the sign of the numbers rather than plus or minus signs.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_XEAST</code></td>
+<td>Meaningful only when the <code>cs_ATOF_DIRCHR</code> bit is set. Indicates that character set used to indicate positive or negative are E and W as opposed to N and S.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_MINSEC0</code></td>
+<td>Output is to include leading zeros in the minutes and seconds fields instead of leading spaces.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_DEG0</code></td>
+<td>Output is to include leading zeros in the degrees field rather than spaces.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_0BLNK</code></td>
+<td>Output a null string if the provided value is zero.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_FORCE3</code></td>
+<td>Used to force at least three character output in the degree field. Usually used when formatting a longitude.</td>
+</tr>
+<tr>
+<td><code>cs_ATOF_RATIO</code></td>
+<td>Output the result in a ratio format, e.g. 1:2500. Can be used in conjunction with <code>cs_ATOF_COMMA</code> to get something like 1:2,500.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_geoctrsetup-geocentric-setup">CS_geoctrSetUp Geocentric setup</h2>
+<pre><code class="c">Function CS_geoctrSetUp (ByVal ellipsoid As String) As Integer
+function CS_geoctrSetUp (ellipsoid: PChar): Integer;
+int CS_geoctrSetUp (const char *ellipsoid);
+</code></pre>
+
+<p>Use this function to specify the ellipsoid definition that is to be used in geocentric coordinate calculations. The ellipsoid argument must be the key name of an <strong>ellipsoid</strong> defined in the ellipsoid dictionary. Zero is returned on success, -1 on error. Errors are usually caused by invalid ellipsoid names.</p>
+<h2 id="cs_geoctrgetxyz-geocentric-get-xyz">CS_geoctrGetXyz Geocentric get XYZ</h2>
+<pre><code class="c">Function CS_geoctrGetXyz (ByRef xyz As Double, ByRef llh As Double) As Integer
+function CS_geoctrGetXyz (var xyz, llh: Double): Integer;
+int CS_geoctrGetXyz (double xyz[3], double llh[3]);
+</code></pre>
+
+<p>Given the geographic coordinates of a point via the <strong>llh</strong> argument, <code>CS_geoctrGetXyz</code> returns the corresponding geographic coordinate in the array indicated by the <strong>xyz</strong> argument. Use the <code>CS_geoctrSetUp</code> to specify the ellipsoid that is to be used in the calculation. Note that the returned geocentric coordinates will be in meters, and the third element of the <strong>llh</strong> argument is considered to be the ellipsoidal height in meters. <code>CS_geoctrGetXyz</code> returns zero on success and –1 on failure. Failure can be caused by failing to specify an ellipsoid by calling <code>CS_geoctrSetUp</code>, or providing a bogus set of geographic coordinates.</p>
+<h2 id="cs_geoctrgetllh-geocentric-get-latlonghgt">CS_geoctrGetLlh Geocentric get LatLongHgt</h2>
+<pre><code class="c">Function CS_geoctrGetLlh (ByRef llh As Double, ByRef xyz As Double) As Integer
+function CS_geoctrGetLlh (var llh, xyz :Double): Integer;
+int CS_geoctrGetLlh (double llh[3], double xyz[3]);
+</code></pre>
+
+<p>Given the geocentric coordinates of a point via the <strong>xyz</strong> argument, <code>CS_geoctrGetLlh</code> returns the corresponding geographic coordinate in the array indicated by the <strong>llh</strong> argument. Use the <code>CS_geoctrSetUp</code> to specify the ellipsoid that is to be used in the calculation. Note that the geocentric coordinates must be in meters, and the height (i.e. the third element of the <strong>llh</strong> result) is the ellipsoidal height in meters. <code>CS_geoctrGetLlh</code> returns zero on success and –1 on failure. Failure can be caused by failing to specify an ellipsoid by calling <code>CS_geoctrSetUp</code>, or providing a bogus set of geocentric coordinates.</p>
+<h2 id="cs_getcountyfips-get-county-federal-information-processing-standard-code">CS_getCountyFips Get County Federal Information Processing Standard code</h2>
+<pre><code class="c">Function CS_getCountyFips ( ByVal stateFips As Integer , ByVal count yName As String) As Integer
+function CS_getDataDirectory (stateFips :Integer; countyName :PChar) : Integer;
+int CS_getCountyFips ( int stateFips, Const char * count yName);
+</code></pre>
+
+<p>This function returns the Federal Information Processing Standard code value assigned to a county indicated by the <strong>countyName</strong> argument. This is appropriate for the US only. You can obtain the appropriate value for the <strong>stateFips</strong> argument by using <code>CS_getStateFips</code>. Note, that countyName must be the complete official name of the county without any punctuation. The lookup procedure is NOT case sensitive. The function returns zero if the information provided by the two arguments fails to produce a county code.</p>
+<h2 id="cs_getdatadirectory-get-data-directory">CS_getDataDirectory GET DATA DIRECTORY</h2>
+<pre><code class="c">Function CS_getDataDirectory (ByVal data_dir As String, ByVal dir_sz As Integer) As Integer
+function CS_getDataDirectory (data_dir: PChar; dir_sz: Integer): Integer;
+int CS_getDataDirectory (char *data_dir, int dir_sz);
+</code></pre>
+
+<p><code>CS_getDataDirectory</code> will return in the character array pointed to by the <strong>data_dir</strong> argument the full path to the directory it is searching for supporting data file. It will always return a null terminated string, but never write more than <strong>dir_sz</strong> characters to the array. <code>CS_getDataDirectory</code> will return <strong>TRUE</strong> if the directory returned does indeed contain a Coordinate System Dictionary file (i.e. a file named COORDSYS).</p>
+<h2 id="cs_getdatumof-get-datum-of-a-coordinate-system">CS_getDatumOf Get Datum of a Coordinate System</h2>
+<pre><code class="c">Function CS_getDatumOf ( ByVal csKeyName As String, ByVal datumName As String, ByVal size As Integer) As Integer
+function CS_getDatumOf (csKeyName, datumName: PChar; size: Integer) : Integer;
+int CS_get DatumOf ( Const char * csKeyName, char * datumName, int size);
+</code></pre>
+
+<p>Use this function to obtain the key name of the datum assigned to the coordinate system whose key name is provided by the <strong>csKeyName</strong> argument. The datum key name is returned in the string pointed to by the <strong>datumName</strong> argument. <code>CS_getDatumOf</code> will never write more than size characters to the <strong>datumName</strong> string. A zero value is returned for success, and -1 for failure. Failure is almost always caused by providing an invalid coordinate system key name. The string at <strong>datumName</strong> will be the empty string if the coordinate system referred to is cartographically referenced (i.e. referenced directly to an ellipsoid).</p>
+<h2 id="cs_getdescriptionof-get-description-of-a-coordinate-system">CS_getDescriptionOf Get Description of a Coordinate System</h2>
+<pre><code class="c">Function CS_getDescriptionOf ( ByVal csKeyName As String, ByVal description As String,
+ByVal size As Integer) As Integer
+function CS_getDescriptonOf (csKeyName, description :PChar; size :Integer) : Integer;
+int CS_getDescriptionOf (Const char *csKeyName, char *description, int size);
+</code></pre>
+
+<p>Use this function to obtain the description the coordinate system whose key name is provided by the <strong>csKeyName</strong> argument. The description is returned in the string pointed to by the description argument. <code>CS_get DescriptionOf</code> will never write more than <strong>size</strong> characters to the <strong>datumName</strong> string. A zero value is returned for success, and -1 for failure. Failure is almost always caused by providing an invalid coordinate system key name. Note that description field of a coordinate system definition is limited to 63 characters, and <strong>size</strong> is typically 64 (to accommodate for the null terminating character used in C).</p>
+<h2 id="cs_getellipsoidof-get-ellipsoid-of-a-coordinate-system">CS_getEllipsoidOf Get Ellipsoid Of a Coordinate System</h2>
+<pre><code class="c">Function CS_getEllipsoidOf ( ByVal csKeyName As String, ByVal ellipsoidName As String, ByVal size As Integer) As Integer
+function CS_getEllipsoidOf (csKeyName, ellipsoidName: PChar; size :Integer) :Integer;
+int CS_getEllipsoidOf (Const char *csKeyName, char *ellipsoidName, int size);
+</code></pre>
+
+<p>Use this function to obtain the ellipsoid referenced by the coordinate system whose key name is provided by the <strong>csKeyName</strong> argument. The ellipsoid key name is returned in the string pointed to by the <strong>ellipsoidName</strong> argument. <code>CS_getEllipsoidOf</code> will never write more than size characters to the <strong>ellipsoidName</strong> string. A zero value is returned for success, and -1 for failure. Failure is almost always caused by providing an invalid coordinate system key name. Note that key names are limited to 23 characters, and <strong>size</strong> is typically 24 (to accommodate for the null terminating character used in</p>
+<p>This function usually returns the empty string as most coordinate systems are referenced to a datum rather than an ellipsoid. Use this function only in those cases where the <code>CS_getDatumOf</code> function returns the empty string, indicating a coordinate system which is cartographically referenced.</p>
+<h2 id="cs_getreferenceof-get-reference-of-a-coordinate-system">CS_getReferenceOf Get Reference Of a Coordinate System</h2>
+<pre><code class="c">Function CS_getReferenceOf ( ByVal csKeyName As String, ByVal reference As String, ByVal size As Integer) As Integer
+function CS_getReferenceOf ( csKeyName, reference : PChar; size :Integer) :Integer;
+int CS_getReferenceOf (Const char *csKeyName, char *reference, int size);
+</code></pre>
+
+<p>Use this function to obtain an ASCII representation of what the coordinate system referenced by the <strong>csKeyName</strong> argument is referenced to. This operates correctly for both geodetic and cartographic references. The returned ASCII string will include an indication of the type of reference, and also the keyname involved. The reference description is returned in the string pointed to by the <strong>reference</strong> argument. CS_getRefernceOf will never write more than <strong>size</strong> characters to the <strong>reference</strong> string. A zero value is returned for success, and -1 for failure. Failure is almost always caused by providing an invalid coordinate system key name. 32 is a customary value for the <strong>size</strong> argument. A geodetic reference looks something like: <em>Datum: WGS84</em>.</p>
+<h2 id="cs_getsourceof-get-source-of-coordinate-system">CS_getSourceOf Get Source Of Coordinate System</h2>
+<pre><code class="c">Function CS_getSourceOf ( ByVal csKeyName As String, ByVal source As String, ByVal size As Integer) As Integer
+function CS_getSourceOf (csKeyName, source: PChar; size: Integer): Integer;
+int CS_getSourceOf (Const char *csKeyName,char *source,int size);
+</code></pre>
+
+<p>Use this function to obtain the source of information field of the coordinate system definition whose key name is provided by the <strong>csKeyName</strong> argument. The source information is returned in the string pointed to by the source argument. <code>CS_getSourceOf</code> will never write more than <strong>size</strong> characters to the <strong>source</strong> string. A zero value is returned for success, and -1 for failure. Failure is almost always caused by providing an invalid coordinate system key name. Note that source of information field of a coordinate system definition is limited to 63 characters, and <strong>size</strong> is typically 64 (to accommodate for the null terminating character used in C).</p>
+<h2 id="cs_getunitsof-get-units-of-a-coordinate-system">CS_getUnitsOf Get Units of a Coordinate System</h2>
+<pre><code class="c">Function CS_getUnitsOf (ByVal csKeyName As String,ByVal units As String, ByVal size As Integer) As Integer
+function CS_getUnitsOf (csKeyName, units: PChar; size: Integer) :Integer;
+int CS_getUnitsOf (Const char *csKeyName, char *units, int size);
+</code></pre>
+
+<p>Use this function to obtain the key name of the units of the coordinate system definition whose key name is provided by the <strong>csKeyName</strong> argument. The unit key name is returned in the string pointed to by the <strong>units</strong> argument. <code>CS_ge UnitsOf</code> will never write more than <strong>size</strong> characters to the <strong>units</strong> string. A zero value is returned for success, and -1 for failure. Failure is almost always caused by providing an invalid coordinate system key name. Note that unit key name field of a coordinate system definition is limited to 23 characters, and <strong>size</strong> is typically 24 (to accommodate for the null terminating character used in C).</p>
+<h2 id="cs_getelvalues-get-ellipsoid-values">CS_getElValues Get Ellipsoid Values</h2>
+<pre><code class="c">Function CS_getElValues ( ByVal elKeyName As String, ByRef eRadius As Double, ByRef eSquared As Double) As Integer
+function CS_getElVal ues ( elKeyName: PChar ; var eRadius, eSquared : Double) : Integer;
+int CS_getElValues ( Const char * el KeyName, double * eRadius, double * eSquared ;
+</code></pre>
+
+<p>Use this function to obtain the equatorial radius and the eccentricity squared values for the ellipsoid referenced by <strong>elKeyName</strong> argument. The appropriate values are returned in the double variables pointed to by the <strong>eRadius</strong> and <strong>eSquared</strong> arguments.. A zero value is returned for success, and -1 for failure. Failure is almost always caused by providing an invalid ellipsoid key name. Note that the value returned in <strong>eRadius</strong> is the equatorial radius and is always in meters. The value returned in the <strong>eSquared</strong> variable is unit less, and will be zero if the ellipsoid definition referenced by the <strong>elKeyName</strong> argument is actually the definition of a sphere.</p>
+<h2 id="cs_getcurvatureat-get-curvature-at-specified-latitude">CS_getCurvatureAt get curvature at specified latitude</h2>
+<pre><code class="c">Function CS_getCurvatureAt ( ByVal csKeyName As String, ByVal latitude As Double) As Double
+function CS_getCurvatureAt (csKeyName, source: PChar; latitude: double) : Double;
+double CS_getCurvatureAt ( Const char * csKeyName, double latitude);
+</code></pre>
+
+<p>This function uses the ellipsoid underlying the coordinate system definition indicated by the <strong>csKeyName</strong> argument, and computes the Gaussian curvature at the specified <strong>latitude</strong>. The key name argument must be that of a coordinate system definition, and the latitude argument is specified in degrees.</p>
+<p>The function returns a hard zero in the event of an error, which can be caused by providing an invalid coordinate system key name. The latitude argument is not checked and used as is, since only the sine of the latitude is necessary for the calculation (and all real values have, technically, a sine value).</p>
+<h2 id="cs_isgeo-is-geographic">CS_isgeo is geographic</h2>
+<pre><code class="c">Function CS_isgeo (ByVal key_nmAs String) As Integer
+function CS_isgeo (key_nm: PChar): Integer;
+int * CS_isgeo (Const char * key_nm);
+</code></pre>
+
+<p><code>CS_isgeo</code> will check the coordinate system definition with the key name indicated by the <strong>key_nm</strong> argument and return +1 (i.e. TRUE) if the coordinate system does return geographic coordinates. A zero is returned if the named coordinate system is not geographic.
+<code>CS_isgeo</code> returns a negative value in the event of a hard error. The most frequent cause of a hard error is providing an invalid coordinate system name.</p>
+<h2 id="cs_llazdd-latlong-to-azimuth-and-distance-calculator">CS_llazdd Lat/Long to Azimuth and Distance calculator</h2>
+<pre><code class="c">
+Function CS_llazdd(ByVal e_rad As Double, ByVal e_sq As Double, ByRef ll_from As Double, ByRef ll_to As Double, ByRef dist As Double) As Double
+function CS_llazdd(e_rad, e_sq: Double; var ll_from, ll_to: Double; var dist: Double): Double;
+double CS_llazdd (double e_rad, double e_sq, Const double ll_from[2], Const double ll_to [2], double *dist);
+</code></pre>
+
+<p><code>CS_llazdd</code> returns the ellipsoidal azimuth and distance between two points on the surface of an ellipsoid specified in terms of latitude and longitude. <strong>e_rad</strong> specifies the equatorial radius and <strong>e_sq</strong> specifies the square of the eccentricity of the ellipsoid. The returned azimuth is calculated from the location specified by <strong>ll_from</strong> to that specified by <strong>ll_to</strong>, and the distance between the two points is returned at the location pointed to by <strong>dist</strong>. The units of the returned distance are the same as those used to specify the equatorial radius.</p>
+<p>Latitude and longitude values are in degrees where the first element in each array is the longitude and the second element is the latitude. West longitude and south latitude are negative.</p>
+<p>The algorithm used is known as: "Solution of the geodetic inverse problem after T. Vincenty modified Rainsford's Method with Helmert's elliptical terms."</p>
+<h3 id="errors_7">ERRORS</h3>
+<p><code>CS_llazdd</code> makes no checks for possible errors. The algorithm used is appropriate for any combination of points that are not antipodal. That is, the points used must not be exactly opposite each other, i.e. on the endpoints of a straight line that passes through the center of the earth.</p>
+<h2 id="cs_llfrommgrs-calculate-latlong-from-mgrs">CS_llFromMgrs calculate Lat/Long from MGRS</h2>
+<pre><code class="c">Function CS_mgrsFromLl(ByRef latLng As Double, ByVal mgrs As String) As Integer
+function CS_mgrsFromLl(var latLng: Double; mgrs: PChar) :Integer;
+double CS_mgrsFromLl (double latLng[2], const char *mgrs);
+</code></pre>
+
+<p><code>CS_llFromMgrs</code> returns in the array indicated by the <strong>latLng</strong> argument the geographic coordinate equivalent of the MGRS (Military Grid Reference System) string provided by the <strong>mgrs</strong> argument. This function is aware of the poles and the rather strange stuff that happens in the northern Europe.</p>
+<p><code>CS_llFromMgrs</code> returns a zero for success, and –1 for failure. Failure can be caused by failing to call the <code>CS_mgrsSetUp</code> prior to calling <code>CS_llFromMgrs</code> or providing an invalid MGRS string.</p>
+<h2 id="cs_mgrsfromll-calculate-mgrs-from-latlong">CS_mgrsFromLl calculate MGRS from Lat/Long</h2>
+<pre><code class="c">Function CS_mgrsFromLl(ByVal mgrs As String, ByRef latLng As Double, ByVal precision As Integer) As Integer
+function CS_mgrsFromLl(mgrs :PChar; var latLng :Double; precision :Integer) : Integer;
+double CS_mgrsFromLl (char *mgrs, double latLng [2], int precision);
+</code></pre>
+
+<p><code>CS_mgrsFromLl</code> returns the MGRS (Military Grid Reference System) equivalent of the geographic position provided by the <strong>latLng</strong> argument in the character array (string) indicated by the <strong>mgrs</strong> argument. The <strong>precision</strong> of the result is controlled by the precision argument that must have a value between 1 and 5 (inclusive). The result array is assumed to be at least 16 bytes in length. The <strong>latLng</strong> argument must adhere to the convention established for internal coordinates. This function is aware of the poles and the rather strange stuff that happens in the northern Europe.</p>
+<p><code>CS_mgrsFromLl</code> returns a zero for success, and –1 for failure. Failure can be caused by failing to call the <code>CS_mgrsSetUp</code> prior to calling <code>CS_mgrsFromLl</code> or providing an invalid geographic coordinate.</p>
+<h2 id="cs_mgrssetup-mgrs-setup">CS_mgrsSetUp MGRS setup</h2>
+<pre><code class="c">Function CS_mgrsSetUp (ByVal ellipsoid As String, ByVal bessel As Integer) As Integer
+function CS_mgrsSetUp (ellipsoid: PChar; bessel: Integer): Integer;
+double CS_mgrsSetUp (const char* ellipsoid, int bessel);
+</code></pre>
+
+<p>Use the <code>CS_mgrsSetUp</code> to specify the ellipsoid that is to be used in the MGRS (Military Grid Reference System) calculations. Use the <strong>ellipsoid</strong> argument to provide the key name of the ellipsoid definition that is to be used. There are two alphabetic code sequences used with MGSR. A zero value for the <strong>bessel</strong> argument causes the normal code sequence to be used, a value of +1 indicates that the code sequence associated with the Bessel ellipsoid is to be used.</p>
+<p><code>CS_mgrsFromLl</code> returns a zero for success, and –1 for failure. Failure is usually caused by a invalid ellipsoid name.</p>
+<h2 id="cs_recvr-recover-resources">CS_recvr recover resources</h2>
+<pre><code class="c">Sub CS_recvr
+procedure CS_recvr;
+void CS_rcvr (void);
+</code></pre>
+
+<p><code>CS_rcvr</code> will release all system resources allocated by use of the single function user interface functions <code>CS_cnvrt</code>, <code>CS_cnvrg</code>, and <code>CS_scale</code>. It essentially frees up the coordinate system cache and the datum conversion cache established by these functions to enhance performance.</p>
+<h2 id="cs_scale-grid-scale-factor-function">CS_scale grid SCALE factor function</h2>
+<pre><code class="c">Function CS_scale (ByVal cs_name As String, ByRef ll As Double) As Double
+function CS_scale (cs_name: PChar; var ll :Double): Double;
+double CS_scale (Const char *cs_name, double ll[2]);
+</code></pre>
+
+<p><code>CS_scale</code> returns the grid scale factor of the coordinate system whose key name is provided by the <strong>cs_name</strong> argument, at the location provided by the <strong>ll</strong> argument. The position provided by the <strong>ll</strong> argument <strong>must</strong> be in longitude and latitude form, in degrees, where the first element of the array is the longitude and the second element of the array is the latitude. Use negative values for west longitude and south latitude. The returned value is the grid scale factor.</p>
+<p><code>CS_scale</code> uses the same cache of coordinate system definitions as does <code>CS_cnvrt</code>, therefore, the performance penalty of using this very simple function is not as great as one might expect.</p>
+<p>In the case of a conformal projection, the K and H scale factors are the same; there is no ambiguity. For non-conformal projections, however, the K and H functions are not the same. In these cases, this function will return the more interesting of the two factors. For example, for the Equidistant Conic, the K factor is always 1.0, and this function would return the H factor for this projection.</p>
+<h3 id="errors_8">ERRORS</h3>
+<p><code>CS_scale</code> will return a negative one (i.e. -1.0) if an error occurs. Providing an invalid coordinate system name is the most common source of error.</p>
+<p>C## S_scalh grid scale factor(H) function</p>
+<pre><code class="c">Function CS_scalh (ByVal cs_name As String, ByRef ll As Double) As Double
+function CS_scalh (cs_name: PChar; var ll: Double) :Double;
+double CS_scalh (Const char *cs_name, double ll[2]);
+</code></pre>
+
+<p><code>CS_scalh</code> returns the grid scale factor along a meridian of the coordinate system whose key name is provided by the <code>cs_name</code> argument, at the location provided by the <strong>ll</strong> argument. The position provided by the <strong>ll</strong> argument <strong>must</strong> be in longitude and latitude form, in degrees, where the first element of the array is the longitude and the second element of the array is the latitude. Use negative values for west longitude and south latitude. The returned value is the grid scale factor.</p>
+<p><code>CS_scalh</code> uses the same cache of coordinate system definitions as does <code>CS_cnvrt</code>, therefore, the performance penalty of using this very simple function is not as great as one might expect.</p>
+<h3 id="errors_9">ERRORS</h3>
+<p><code>CS_scalh</code> will return a negative one (i.e. -1.0) if an error occurs. Providing an invalid coordinate system name is the most common source of error.</p>
+<h2 id="cs_scalk-grid-scale-factork-function">CS_scalk grid SCALE factor(K) function</h2>
+<pre><code class="c">Function CS_scalk (ByVal cs_name As String, ByRef ll As Double) As Double
+function CS_scalk (cs_name: PChar; var ll: Double): Double;
+double CS_scalk (Const char *cs_name, double ll[2]);
+</code></pre>
+
+<p><code>CS_scalk</code> returns the grid scale factor along a parallel of the coordinate system whose key name is provided by the <strong>cs_name</strong> argument, at the location provided by the <strong>ll</strong> argument. The position provided by the <strong>ll</strong> argument <strong>must</strong> be in longitude and latitude form, in degrees, where the first element of the array is the longitude and the second element of the array is the latitude. Use negative values for west longitude and south latitude. The returned value is the grid scale factor.</p>
+<p><code>CS_scalk</code> uses the same cache of coordinate system definitions as does <code>CS_cnvrt</code>, therefore, the performance penalty of using this very simple function is not as great as one might expect.</p>
+<h3 id="errors_10">ERRORS</h3>
+<p><code>CS_scalk</code> will return a negative one (i.e. -1.0) if an error occurs. Providing an invalid coordinate system name is the most common source of error.</p>
+<h2 id="cs_sethelppath-set-help-path">CS_setHelpPath SET HELP PATH</h2>
+<pre><code class="c">Function CS_setHelpPath (ByVal helpPath As String) As Integer
+function CS_setHelpPath (helpPath: PChar): Integer;
+int CS_setHelpPath (const char *helpPath);
+</code></pre>
+
+<p>Use the <code>CS_setHelpPath</code> function to set the directory that you desire to have CS-MAP search when seeking the MFC dialog help file. The <strong>helpPath</strong> argument must point to a null terminated string that carries the full path to the desired directory.</p>
+<p><code>CS_setHelpPath</code> returns +1 (i.e. TRUE) if a properly named file exists in the indicated directory. Zero (i.e. FALSE) is returned if such a file does not exist.</p>
+<h2 id="cs_spzonenbrmap-state-plane-zone-number-mapper">CS_spZoneNbrMap State Plane Zone Number Mapper</h2>
+<pre><code class="c">Function CS_spzone (ByValue csKeyName As String,ByVal is83 As Integer) As Integer
+function CS_spzone (csKeyName: PChar; is83: Integer): Integer
+int CS_spzone (char *csKeyName, int is83);
+</code></pre>
+
+<p><code>CS_spZoneNbrMap</code> examines the character array provided by the <strong>csKeyName</strong> argument and if it determines that the array contains a valid state plane zone number specification, the contents of the array is replaced with the appropriate corresponding coordinate system key name. If the <strong>is83</strong> parameter is non-zero, the zone number is interpreted as a NAD83 zone number. Otherwise, the zone number is interpreted as a NAD27 zone number.</p>
+<p>If the original content of the character array pointed to be the <strong>csKeyName</strong> argument is not a valid state plane zone number, the contents of the array remains unchanged.</p>
+<p><code>CS_spZoneNbrMap</code> returns 0 if a substitution was made. A positive one is returned if a substitution was not made because the value passed was not considered to be a valid state plane zone number. Minus one is returned if the original passed value is close to a state plane zone number (i.e. consisted of three or four digits), but did not match a valid state plane zone number.</p>
+<h2 id="cs_unenum-units-enumerator">CS_unEnum Units Enumerator</h2>
+<pre><code class="c">Function CS_unEnum(ByVal ByVal ByVal index As Integer,ByVal type As Integer, key_name As String, name_sz As Integer) As Integer
+function CS_unEnum(index, type: Integer; key_name: Pchar; name_sz: Integer): Integer;
+int CS_unEnum(int index, int type, char *key_name, int nm_size);
+</code></pre>
+
+<p><code>CS_unEnum</code> is used to enumerate all units of a specific type in the CS-MAP units table. <code>CS_unEnum</code> returns in the memory buffer pointer to by the <strong>key_name</strong> argument the name of the <strong>index</strong>'th entry in the unit table of the type specified by the type argument. <code>CS_unEnum</code> will never write more than <strong>nm_size</strong> bytes to the indicated location. Index is a zero based index; the index of the first entry in the unit table is zero.</p>
+<p>Currently, only two types of units supported, length and angular measure. Manifest constants defined in the <code>cs_map.h</code> header file are used to distinguish the desired type. These are <code>cs_UTYP_LEN</code>, for linear units, and <code>cs_UTYP_ANG</code>, for angular units. The <strong>type</strong> argument must be one of these values.</p>
+<p><code>CS_unEnum</code> returns a positive 1 to indicate success. If <strong>index</strong> is too large, a zero is returned.</p>
+<h3 id="errors_11">Errors</h3>
+<p><code>CS_unEnum</code> will return a -1 and set <code>csError</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_INV_INDX</code></td>
+<td>The index argument was negative.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bugs_2">BUGS</h3>
+<p>If called with an invalid type, <code>CS_unEnum</code> should probably return an error condition, but it doesn't. Calling <code>CS_unEnum</code> with an invalid type causes a return value of zero for all positive values of the <strong>index</strong> argument.</p>
+<h2 id="cs_unitlu-unit-look-up">CS_unitlu unit look up</h2>
+<pre><code class="c">Function CS_unitlu (ByVal type As Integer, ByVal unit_nmAs String) As Double
+function CS_unitlu (type: Integer; unit_nm: PChar): Double;
+double CS_unitlu (short type, Const char *unit_nm);
+</code></pre>
+
+<p>Given the type of measurement, either length or angular, as specified by the <strong>type</strong> argument and the unit name as specified by the <strong>unit_nm</strong> argument, <code>CS_unitlu</code> will return a double which represents the multiplier required to convert a value in the unit system indicated by <strong>unit_nm</strong> to units of meters or degrees.</p>
+<p>Currently, only two types of units supported, length and angular measure. Manifest constants defined in the <code>cs_map.h</code> header file are used to distinguish the desired type. These are <code>cs_UTYP_LEN</code> and <code>cs_UTYP_ANG</code>. The <strong>type</strong> argument must be one of these values.</p>
+<p><strong>unit_nm</strong> must be a null terminated string matching one of the supported units as defined in <code>CSdataU</code>. <code>CS_unitlu</code> returns zero in the event the provided unit name is not known. <strong>unit_nm</strong> may be one of the supported abbreviations for any of the units defined in the unit table.</p>
+<p>For example, to convert a value in feet to meters, one could code:</p>
+<pre><code class="c">double CS_unitlu(); {
+  meters = feet * CS_unitlu(cs_UTYP_LEN, &quot;FOOT&quot;);
+}
+</code></pre>
+
+<p>Or to convert degrees to grads:</p>
+<pre><code class="c">double CS_unitlu (); {
+  grads = degrees / CS_unitlu (cs_UTYP_ANG, &quot;GRAD&quot;);
+}
+</code></pre>
+
+<p><code>CS_unitlu</code> knows about the first and second abbreviations provided for in the <code>cs_Unittab_</code> structure.
+Therefore, the following are equivalent to the above:</p>
+<pre><code class="c">double CS_unitlu(); {
+  meters = feet * CS_unitlu (cs_UTYP_LEN,&quot;FT&quot;);
+}
+
+double CS_unitlu(); {
+  grads = degrees / CS_unitlu (cs_UTYP_ANG,&quot;GR&quot;);
+}
+</code></pre>
+
+<h3 id="errors_12">ERRORS</h3>
+<p><code>CS_unitlu</code> will return zero and set <code>cs_Error</code> to <code>cs_INV_UNIT</code> if the unit name pointed to by <strong>unit_nm</strong> is not defined in <code>cs_Unittab</code> for the specified type, or the specified type is not valid.</p>
+<h1 id="high-performance-interface">High Performance Interface</h1>
+<p>Functions which are considered part of the High Performance Interface are described in this section. Several of these functions return addresses (i.e. pointers to) malloc'ed memory, and therefore these functions are not suitable for all languages. Function prototype definitions are given in the C syntax only.</p>
+<h2 id="cs_audflt-angular-unit-default">CS_audflt Angular unit default</h2>
+<pre><code class="c">char *CS_audlt (Const char *new_dflt);
+</code></pre>
+
+<p>Use <code>CS_audflt</code> to control the status of the "defaultable" angular unit reference feature of CS-MAP. new_dflt must be either a pointer to a valid angular unit name, a pointer to the null string, or the <strong>NULL</strong> pointer. In the case where <strong>new_dflt</strong> is a pointer to a valid angular unit name, <code>CS_audflt</code> causes the default angular unit feature to be activated, using the angular unit name provided as the, possibly new, default value. When <strong>new_dflt</strong> is a pointer to the null string, <code>CS_audflt</code> disables the default angular unit feature. When <strong>new_dflt</strong> is the <strong>NULL</strong> pointer, the status of the angular unit default feature remains unchanged.</p>
+<p>In all cases, <code>CS_audflt</code> returns the previous status (or in the case of <strong>new_dflt == NULL</strong>, the current status) in the form of a pointer to a static character array that contains the name of the previous default angular unit. Should the returned pointer point to a null string, the indicated previous status is disabled.</p>
+<h3 id="errors_13">ERRORS</h3>
+<p><code>CS_audflt</code> will return the <strong>NULL</strong> pointer if the key name provided is not that of a valid angular unit. In this event, the current status of the default angular unit feature remains unchanged.</p>
+<h2 id="cs_cs2ll-coordinate-system-to-latitudelongitude">CS_cs2ll Coordinate System to Latitude/Longitude</h2>
+<pre><code class="c">void CS_cs2ll(Const struct cs_Csprm_ *csprm,double ll[2], Const double xy[2]);
+</code></pre>
+
+<p>Given the definition of the coordinate system, <code>csprm</code>, such as returned by <code>CS_csloc</code>, <code>CS_cs2ll</code> will convert the coordinates <strong>xy</strong> to latitude and longitude, returning the results in <strong>ll</strong>. The <strong>ll</strong> and <strong>xy</strong> arguments may point to the same array.</p>
+<p>In the array arguments, the X coordinate and the longitude occupy the first element, the Y coordinate and the latitude the second element. West longitudes and south latitudes are negative. The returned values are in degrees.</p>
+<h2 id="cs_cscnv-coordinate-system-convergence">CS_cscnv Coordinate System Convergence</h2>
+<pre><code class="c">double CS_cscnv(Const struct cs_Csprm_ *csprm, Const double ll[2]);
+</code></pre>
+
+<p>Given the definition of the coordinate system, <code>csprm</code>, such as returned by <code>CS_csloc</code>, <code>CS_cscnv</code> will return the convergence angle in degrees east of north at the location given by <strong>ll</strong>.</p>
+<p>The location, as given by <strong>ll</strong> is in terms of latitude and longitude. The longitude is the first element of the <strong>ll</strong> array, latitude is the second, and both must be given in degrees. Positive values are used to specify north latitude and east longitude, negative values are used to specify south latitude and west longitude.</p>
+<h2 id="cs_csdef-coordinate-system-definition-locator">CS_csdef Coordinate System definition locator</h2>
+<pre><code class="c">struct cs_Csdef_ * CS_csdef (Const char* key_nm);
+</code></pre>
+
+<p><code>CS_csdef</code> will return a pointer to a <code>malloc</code>'ed <code>cs_Csdef_</code> structure that contains the definition of the coordinate system indicated by <strong>key_nm</strong>. <strong>Key_nm</strong> must point to an array that contains the null terminated key name of the desired coordinate system. The memory allocated for the coordinate system definition may be released by calling <code>CS_free</code> when no longer needed.</p>
+<h3 id="errors_14">ERRORS</h3>
+<p><code>CS_csdef</code> will return a <strong>NULL</strong> pointer and set <code>cs_Error</code> if any of the following conditions are detected:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_CSDICT</code></td>
+<td>The Coordinate System Dictionary file could not be found or otherwise opened. (See <code>CS_altdr</code>).</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred during access to the Coordinate System Dictionary file.</td>
+</tr>
+<tr>
+<td><code>cs_CS_BAD_MAGIC</code></td>
+<td>The file accessed under the assumption that it was a Coordinate System Dictionary wasn't a Coordinate System Dictionary after all; it had an invalid magic number on the front end.</td>
+</tr>
+<tr>
+<td><code>cs_CS_NOT_FND</code></td>
+<td>A coordinate system definition with the name given by key_nm was not found in the Coordinate System Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_NO_MEM</code></td>
+<td>Insufficient dynamic memory was available to allocate space for the <code>cs_Csdef_</code> structure.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_csdel-coordinate-system-definition-delete">CS_csdel Coordinate System definition delete</h2>
+<pre><code class="c">int CS_csdel(struct cs_Csdef_ *csdef);
+</code></pre>
+
+<p><code>CS_csdel</code> will delete from the Coordinate System Dictionary the definition of the coordinate system pointed to by <strong>csdef</strong>.</p>
+<p>The delete is accomplished by creating a new Coordinate System Dictionary file and copying all but the referenced coordinate system definitions from the existing dictionary to the new one. This implies that sufficient disk space must exist to perform the copy. A zero is returned if the delete was successfully completed, a -1 if a problem occurred. An attempt to delete a non-existent coordinate system definition is <strong>NOT</strong> considered an error.</p>
+<p>If the value of the global variable <code>cs_Protect</code> is greater than or equal to zero, <code>CS_csdel</code> will not delete a coordinate system which is marked as being a distribution coordinate system (i.e. <code>cs_Csdef_.protect == 1</code>). If the value of <code>cs_Protect</code> is greater than zero, it is interpreted as the number of days after which a user defined coordinate system is protected. For example, is
+<code>cs_Protect</code> is 60, a user-defined coordinate system becomes protected 60 days after it is last modified.</p>
+<h3 id="errors_15">ERRORS</h3>
+<p><code>CS_csdel</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_CSDICT</code></td>
+<td>The Coordinate System Dictionary could not be found or otherwise opened. (See <code>CS_altdr</code>)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in copying the Coordinate System Dictionary to the new file.</td>
+</tr>
+<tr>
+<td><code>cs_CS_BAD_MAGIC</code></td>
+<td>The file assumed to be the Coordinate System Dictionary by virtue of its name was not a Coordinate System Dictionary; it had an invalid magic number.</td>
+</tr>
+<tr>
+<td><code>cs_TMP_CRT</code></td>
+<td>The attempt to create a new file, to which the modified Coordinate System Dictionary was to be copied, failed.</td>
+</tr>
+<tr>
+<td><code>cs_DISK_FULL</code></td>
+<td>Insufficient disk space was available to accommodate the copying of the Coordinate System Dictionary to the new file.</td>
+</tr>
+<tr>
+<td><code>cs_UNLINK</code></td>
+<td>The request to remove the old copy of the Coordinate System Dictionary failed.</td>
+</tr>
+<tr>
+<td><code>cs_RENAME</code></td>
+<td>The request to rename the new Coordinate System Dictionary file from its temporary name to COORDSYS failed.</td>
+</tr>
+<tr>
+<td><code>cs_CS_PROT</code></td>
+<td>The coordinate system to be deleted is a distribution coordinate system and may not be deleted.</td>
+</tr>
+<tr>
+<td><code>cs_CS_UPROT</code></td>
+<td>The coordinate system is a user defined coordinate system that has not been modified for 60 days and is therefore protected.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_csenumbygroup-coordinate-system-enumerator-by-group">CS_csEnumByGroup Coordinate System Enumerator By Group</h2>
+<pre><code class="c">int CS_csEnumByGroup (int index, Const char * grp_name, struct cs_Csgrplst_ * cs_descr);
+</code></pre>
+
+<p><code>CS_csEnumByGroup</code> is used to enumerate a specific group of coordinate systems in the Coordinate System Dictionary. <code>CS_csEnumByGroup</code> returns a completed <code>cs_Csgrplst_</code> structure at the location given by the <strong>cs_descr</strong> argument containing information that describes the <strong>index</strong>'th entry in the coordinate system group named by the <strong>grp_name</strong> argument. <strong>Index</strong> is a zero based index; the index of the first coordinate system in any group is zero. The next element of the returned <code>cs_Csgrplst_</code> structure is always set to the NULL pointer.</p>
+<p><code>CS_csEnumByGroup</code> returns a positive 1 to indicate success. If <strong>index</strong> is too large, a zero is returned.</p>
+<h3 id="errors_16">ERRORS</h3>
+<p><code>CS_csEnumByGroup</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_CSDICT</code></td>
+<td>The Coordinate System Dictionary could not be found or otherwise opened. (See <code>CS_altdr</code>)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in accessing the Coordinate System Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_CS_BAD_MAGIC</code></td>
+<td>The file assumed to be the Coordinate System Dictionary by virtue of its name was not a Coordinate System Dictionary; it had an invalid magic number.</td>
+</tr>
+<tr>
+<td><code>cs_CSGRP_INVKEY</code></td>
+<td>The <strong>grp_name</strong> argument was not that of a valid group name.</td>
+</tr>
+<tr>
+<td><code>cs_INV_INDX</code></td>
+<td>The index argument was negative.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_csgrpenum-coordinate-system-grour-enumerator">CS_csGrpEnum Coordinate System grour enumerator</h2>
+<pre><code class="c">int CS_csGrpEnum(int index, char *grp_name, int name_sz, char *grp_dscr, int dscr_sz);
+</code></pre>
+
+<p><code>CS_csGrpEnum</code> is used to enumerate all groups in the Coordinate System Group table. <code>CS_csGrpEnum</code> returns in the memory buffer pointer to by the <strong>grp_name</strong> argument the key name of the <strong>index</strong>'th entry in the Coordinate System Group Table. <code>CS_csGrpEnum</code> will never write more than <strong>name_sz</strong> bytes to the indicated location. Similarly, <code>CS_csGrpEnum</code> returns the Coordinate System Group description in the buffer pointed to be <strong>grp_dscr</strong> and whose size in indicated by <strong>dscr_sz</strong>. The <strong>grp_name</strong> and/or the <strong>grp_dscr</strong> arguments may be the <strong>NULL</strong> pointer to suppress return of the indicated item.</p>
+<p><strong>Index</strong> is a zero based index; the index of the first entry in the Coordinate System Group Table is zero. <code>CS_dtEnum</code> returns a positive 1 to indicate success. If <strong>index</strong> is too large, a zero is returned. Inactive groups (a feature planned for a future release) are ignored, and are not considered to exist as far as <strong>index</strong> is concerned.</p>
+<h3 id="errors_17">ERRORS</h3>
+<p><code>CS_csGrpEnum</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_INV_INDX</code></td>
+<td>The index argument was negative.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_csloc-coordinate-system-locate-and-initialize">CS_csloc Coordinate System locate and initialize</h2>
+<pre><code class="c">struct cs_Csprm_ *CS_csloc(Const char *cs_nam);
+struct cs_Csprm_ *Cscsloc1(Const struct cs_Csdef_ *cs_ptr);
+struct cs_Csprm_ *Cscsloc2(Const struct cs_Csdef_ *csPtr,
+                          Const struct cs_Dtdef_ *dtPtr,
+                          Const struct cs_Eldef_ *elPtr);
+struct cs_Csprm_ *Cscsloc(Const struct cs_Csdef_ *csPtr,
+                          Const struct cs_Dtdef_ *dtPtr);
+</code></pre>
+
+<p><code>CS_csloc</code> locates the coordinate system definition indicated by <strong>cs_nam</strong> and returns a pointer to a <code>malloc</code>'ed, coordinate system parameter structure initialized for the specified coordinate system. The return value is the argument required by <code>CS_cs2ll</code>, <code>CS_ll2cs</code>, <code>CS_csscl</code>, and <code>CS_cscnv</code>. When no longer needed, the memory pointed to by the returned pointer should be released using <code>CS_free</code>.</p>
+<p><code>CS_csloc</code> accesses the definition dictionaries as is necessary to accomplish its task. The alternative functions enable applications to create coordinate system parameter structures using definitions that may have been obtained from sources other than the dictionaries. For example, certain applications may store definitions in vehicles other than the dictionaries, and then desire to construct a coordinate system parameter structure from these definitions.</p>
+<p>Note that <code>Cscsloc1</code> does not need to access the coordinate system dictionary as the coordinate system definition is provided by the <strong>cs_ptr</strong> argument. However, it will need to access the datum and ellipsoid dictionaries to resolve datum and ellipsoid references. <code>Cscsloc2</code> is completely independent of all dictionaries as all three definitions must be provided. <code>CScsloc</code> is simply a basic function is encapsulates the basic functions of <code>CS_csloc</code> and its alternatives, and thus prevents duplication of large amounts of code.</p>
+<h3 id="errors_18">ERRORS</h3>
+<p><code>CS_csloc</code>, <code>CScsloc1</code>, <code>CScsloc2</code>, and <code>CScsloc</code> return a <strong>NULL</strong> pointer and set <code>cs_Error</code> through the use of <code>CS_erpt</code> if any of the following conditions occur:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_UNKWN_PROJ</code></td>
+<td>The projection specified in the coordinate system definition is unknown to the system.</td>
+</tr>
+</tbody>
+</table>
+<p><code>CS_csloc</code> uses the following functions that detect a majority of the exceptional conditions that may occur:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CS_csdef</code></td>
+<td>Locates and fetches the coordinate system definition from the Coordinate System Dictionary.</td>
+</tr>
+<tr>
+<td><code>CS_dtloc</code></td>
+<td>Locates and fetches the datum definition from the Datum Dictionary.</td>
+</tr>
+<tr>
+<td><code>CS_eldef</code></td>
+<td>Locates and fetches the ellipsoid definition from the Ellipsoid Dictionary.</td>
+</tr>
+</tbody>
+</table>
+<p><code>CScsloc1</code> uses the following functions that detect a majority of the exceptional conditions that may occur:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CS_dtloc</code></td>
+<td>Locates and fetches the datum definition from the Datum Dictionary.</td>
+</tr>
+<tr>
+<td><code>CS_eldef</code></td>
+<td>Locates and fetches the ellipsoid definition from the Ellipsoid Dictionary.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_cssch-coordinate-system-scale-h-along-a-meridian">CS_cssch Coordinate System Scale H, along a meridian</h2>
+<pre><code class="c">double CS_cssch (Const struct cs_Csprm_ *csprm, Const double ll[2]);
+</code></pre>
+
+<p>Given the definition of the coordinate system, <em>csprm</em>, such as returned by <code>CS_csloc</code>, <code>CS_cssch</code> will compute the grid scale factor along a meridian at the location given by <strong>ll</strong> and return this value. See <code>CS_cssck</code> for the grid scale factor along a parallel. Note that in conformal projections, the grid scale along a parallel equals the grid scale along a meridian at any point.</p>
+<p>The location, as given by <strong>ll</strong>, is in terms of latitude and longitude. The longitude is the first element of the <strong>ll</strong> array, latitude is the second, and both must be given in degrees. Positive values are used to specify north latitude and east longitude, negative values are used to specify south latitude and west longitude.</p>
+<h2 id="cs_cssck-coordinate-system-scale-k-along-a-parallel">CS_cssck Coordinate System Scale K, along a parallel</h2>
+<pre><code class="c">double CS_cssck (Const struct cs_Csprm_ *csprm, Const double ll[2]);
+</code></pre>
+
+<p>Given the definition of the coordinate system, <strong>csprm</strong>, such as returned by <code>CS_csloc</code>, <code>CS_cssck</code> will compute the grid scale factor along a parallel at the location given by <strong>ll</strong> and return this value. See <code>CS_cssch</code> for the grid scale factor along a meridian. Note that in conformal projections, the grid scale along a parallel equals the grid scale along a meridian at any point.</p>
+<p>The location, as given by <strong>ll</strong> is in terms of latitude and longitude. The longitude is the first element of the <strong>ll</strong> array, latitude is the second, and both must be given in degrees. Positive values are used to specify north latitude and east longitude, negative values are used to specify south latitude and west longitude.</p>
+<h2 id="cs_csscl-coordinate-system-scale">CS_csscl Coordinate System Scale</h2>
+<pre><code class="c">double CS_csscl (Const struct cs_Csprm_ *csprm, Const double ll[2]);
+</code></pre>
+
+<p>Given the definition of the coordinate system, <strong>csprm</strong>, such as returned by <code>CS_csloc</code>, <code>CS_csscl</code> will compute the grid scale factor at the location given by <strong>ll</strong> and return this value.</p>
+<p>The location, as given by <strong>ll</strong>, is in terms of latitude and longitude. The longitude is the first element of the <strong>ll</strong> array, latitude is the second, and both must be given in degrees. Positive values are used to specify north latitude and east longitude, negative values are used to specify south latitude and west longitude.</p>
+<p>Non-conformal projections have two different grid scale factors: the scale along a meridian and the scale along a parallel. In the case of azimuthal projections, the two scale factors are along a radial line from the origin and normal to such radial lines, respectively. In these cases, <code>CS_csscl</code> will return the more interesting of the two. For example, in the American Polyconic, the grid scale factor along all parallels is always 1.0; therefore <code>CS_csscl</code> return the grid scale factor along a meridian for this projection.</p>
+<h2 id="cs_csupd-coordinate-system-dictionary-update">CS_csupd Coordinate system dictionary update</h2>
+<pre><code class="c">int CS_csupd (struct cs_Csdef_ *csdef, int crypt);
+</code></pre>
+
+<p><code>CS_csupd</code> will cause coordinate system definition pointed to by <strong>csdef</strong> to be added to the Coordinate System Dictionary. If a coordinate system with the same key name already exists, it is replaced by the definition provided. If no such definition exists, the new definition is added to the dictionary. If <strong>crypt</strong> is non-zero, the entry will be encrypted before being written to the dictionary.</p>
+<p>In the event that the indicated coordinate system already exists, <code>CS_csupd</code> will return a 1 to indicate a successful update. In the event that the provided coordinate system had to be added to the Coordinate System Dictionary, a zero is returned. A -1 is returned if the update failed for any reason.</p>
+<p>Please note that the addition of a new coordinate system definition requires the sorting of the Coordinate System Definition file. This may take a few seconds to complete, depending upon the size of the Coordinate System Dictionary.</p>
+<p>If the value of the global variable <code>cs_Protect</code> is greater than or equal to zero, <code>CS_csupd</code> will not change a coordinate system which is marked as being a distribution coordinate system (i.e. <code>cs_Csdef_.protect == 1</code>). If the value of <code>cs_Protect</code> is greater than zero, it is interpreted as the number of days after which a user defined coordinate system is protected. For example, if <code>cs_Protect</code> is 60, a user-defined coordinate system becomes protected 60 days after it is last modified.</p>
+<p>Additionally, if the value of the global character variable <code>cs_Unique</code> is not the null character, <code>CS_csupd</code> will not add a coordinate system definition if its key name does not contain the character indicated. For example, if <code>cs_Unique</code> is set to the colon character, <code>CS_csupd</code> will not add a coordinate system whose key name does not contain a colon character.</p>
+<h3 id="errors_19">ERRORS</h3>
+<p><code>CS_csupd</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered during the update:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_CSDICT</code></td>
+<td>The Coordinate System Dictionary file could not be opened. (See <code>CS_altdr</code>).</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred during the update process.</td>
+</tr>
+<tr>
+<td><code>cs_CS_BAD_MAGIC</code></td>
+<td>The file that, by virtue of its name and location, was supposed to be a Coordinate System Dictionary wasn't a Coordinate System Dictionary; its magic number was invalid.</td>
+</tr>
+<tr>
+<td><code>cs_DISK_FULL</code></td>
+<td>There was insufficient disk space available to add the coordinate system definition to the dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_CS_PROT</code></td>
+<td>The coordinate system to be updated is a distribution coordinate system and may not be updated.</td>
+</tr>
+<tr>
+<td><code>cs_CS_UPROT</code></td>
+<td>The coordinate system is a user defined coordinate system that has not been modified for 60 days and is therefore protected.</td>
+</tr>
+<tr>
+<td><code>cs_UNIQUE</code></td>
+<td>The coordinate system provided does not already exist and would need to be added; but the key name does not contain the unique character.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_dtcls-datum-conversion-close">CS_dtcls Datum conversion close</h2>
+<pre><code class="c">void CS_dtcls (struct cs_Dtcprm_ *dtc_ptr);
+</code></pre>
+
+<p>Initializing a datum conversion can use file descriptors (handles) and allocate memory from the heap. Applications may need to recover these system resources for other use prior to exiting. <code>CS_dtcls</code> will release all system resources allocated to the datum conversion indicated by the <strong>dtc_ptr</strong> argument (as returned by <code>CS_dtcsu</code>). This function is, essentially, the inverse of <code>CS_dtcsu</code>.</p>
+<h2 id="cs_dtcsu-datum-conversion-set-up">CS_dtcsu Datum conversion set up</h2>
+<pre><code class="c">struct cs_Dtcprm_ *CS_dtcsu (Const struct cs_Csprm_ *src_cs, Const struct cs_Crprm_ *dest_cs, int dat_err, int blk_err);
+</code></pre>
+
+<p><code>CS_dtcsu</code>, <code>CS_dtcvt</code>, and <code>CS_dtcls</code>, are designed to provide a generic application interface for datum conversion. The objective is to enable application programmers to incorporate datum conversion capabilities into applications with a minimum of impact. Therefore, application programmers use <code>CS_dtcsu</code> to set up a datum conversion and <code>CS_dtcvt</code> to perform the actual conversions independently of the number or type of datum conversions that may or may not be supported. <code>CS_dtcls</code> provides a means of recovering any system resources that may be allocated by the activation of a datum conversion.</p>
+<p>Application programmers use <code>CS_dtcsu</code> to initiate a datum conversion process. <strong>Src_cs</strong> points to the coordinate system definition of the source data that is to be converted while <strong>dest_cs</strong> points to the coordinate system definition for the results. <code>CS_dtcsu</code> examines the datum references in these coordinate systems, initializes the appropriate datum shift conversion, and returns a pointer to a <code>malloc</code>'ed datum conversion parameter block. The returned pointer is a required argument for the <code>CS_dtcvt</code> function.</p>
+<p>As is often the case, should the source and destination coordinate systems share the same datum, the null datum conversion is activated. That is, source latitudes and longitudes are copied directly to the destination array without modification.</p>
+<p>The <strong>dat_err</strong> argument is used to indicate the desired disposition of certain errors that are encountered during the setup of the datum conversion. The error disposition control afforded by <strong>dat_err</strong> applies only to errors indicating that an unsupported datum conversion was requested. System errors, such as physical I/O or insufficient memory for example, are always treated as fatal errors and a <strong>NULL</strong> pointer is returned.</p>
+<p>The following values for <strong>dat_err</strong> are recognized:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_DTCFLG_DAT_I</code></td>
+<td>Ignore unsupported datum conversion request errors and, in the event of such an error, silently activate the null conversion.</td>
+</tr>
+<tr>
+<td><code>cs_DTCFLG_DAT_W</code></td>
+<td>In the event of an unsupported datum conversion request error, report the condition as a warning to <code>CS_erpt</code> (<code>cs_DTC_DAT_W</code>) and activate the null conversion. In this case, the user is notified, but data processing continues.</td>
+</tr>
+<tr>
+<td><code>cs_DTCFLG_DAT_F</code></td>
+<td>In the event of any error, report the condition as a fatal error to <code>CS_erpt</code> (<code>cs_DTC_DAT_F</code>) and return the NULL pointer.</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>blk_err</strong> argument is used to indicate the desired disposition of certain errors that are encountered during the conversion of individual coordinate values. The error disposition control afforded by <strong>blk_err</strong> applies only to errors indicating that the required data for the geographic region containing the coordinate to be converted is not available. System errors, such as physical I/O or insufficient memory for example, are always treated as fatal errors.</p>
+<p>The following values for <strong>blk_err</strong> are recognized:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_DTCFLG_BLK_I</code></td>
+<td>Ignore datum conversion errors caused by data availability problems and silently use the null conversion for the specific coordinate that could not be converted and cause <code>CS_dtcvt</code> to return a zero value.</td>
+</tr>
+<tr>
+<td><code>cs_DTCFLG_BLK_W</code></td>
+<td>In the event a datum conversion fails due to data availability, report a warning through <code>CS_erpt</code> (<code>cs_DTC_BLK_W</code>), convert the coordinate using the null conversion, and cause a <code>CS_dtcvt</code> to return a positive non-zero value for the specific coordinate that could not be converted. The warning message is issued for each coordinate that could not be converted.</td>
+</tr>
+<tr>
+<td><code>cs_DTCFLG_BLK_1</code></td>
+<td>In the event a datum conversion fails due to data availability, cause <code>CS_dtcvt</code> to return a positive non-zero value for the specific coordinate that could not be converted. That such an error has been reported is recorded in the datum parameter block and this is used to suppress repeated reporting of the error with regard to the same block.</td>
+</tr>
+<tr>
+<td><code>cs_DTCFLG_BLK_F</code></td>
+<td>Report a fatal condition through <code>CS_erpt</code> (<code>cs_DTC_BLK_F</code>), convert the coordinate using the null conversion, and cause <code>CS_dtcvt</code> to return a negative non-zero value to indicate that the expected conversion did not take place.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="special-cases">Special cases</h3>
+<p>Three special cases have been coded into this function. Normally, the geographic coodinates of the source datum are converted to WGS84 values, and the resulting WGS84 values are then converted to the target datum.</p>
+<p>There are three cases where this genberal technique proved to be unsatisfactory. In these three cases, <code>CS_dtcsu</code> has been expressly coded to look at the source and target datums, and implement direct conversions where appropriate. Note, that in each case, a specific Geodetic Data Catalog file is also involved. Thus, if the required Geodetic Data Catalog file is not present, all of the special processing is disabled.</p>
+<p>The following table defines the special cases:</p>
+<table>
+<thead>
+<tr>
+<th>Source Datum</th>
+<th>Target Datum</th>
+<th>Geodetic Data Catalog</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NAD27</td>
+<td>ATS77</td>
+<td>Nad27ToAts77.gdc</td>
+<td>Converts directly from NAD27 to ATS77 using the very special <code>TRANSFORM</code> algorithm.</td>
+</tr>
+<tr>
+<td>ATS77</td>
+<td>CSRS</td>
+<td>Ats77ToCsrs.gdc</td>
+<td>Converts directly as direct NTv2 format files are generally available.</td>
+</tr>
+<tr>
+<td>NAD27</td>
+<td>CSRS</td>
+<td>Nad27ToCsrs.gdc</td>
+<td>Converts directly as direct NTv2 format files are generally available.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="errors_20">ERRORS</h3>
+<p>Should the requested datum conversion requested be unsupported, <code>CS_dtcsu</code> will perform as indicated by the <strong>dat_err</strong> argument. Should the initialization of a supported datum conversion fail due to a system error, the <code>NULL</code> pointer will be returned and <code>cs_Error</code> set to indicate the nature of failure. Should a datum conversion for which appropriate code is present fail because a required data file is not present, the failure is treated as an unsupported datum conversion request.</p>
+<h2 id="cs_dtcvt-datum-convert">CS_dtcvt Datum Convert</h2>
+<pre><code class="c">int CS_dtcvt (struct cs_Dtcprm_ *dtc_ptr, Const double src_ll[2], double dest_ll[2]);
+</code></pre>
+
+<p><code>CS_dtcvt</code> performs the datum conversion indicated by <strong>dtc_ptr</strong> returning in the array pointed to by <strong>dest_ll</strong> the result of converting the latitude and longitude values pointed to by <strong>src_ll</strong>. <strong>Src_ll</strong> and <strong>dest_ll</strong> may point to the same array. Latitude and longitude values must be given in degrees, where negative values indicate south and west. The longitude is carried in the first element of the array and the latitude is carried in the second element. The <strong>dtc_ptr</strong> argument is that which is returned by <code>CS_dtcsu</code>.</p>
+<h3 id="errors_21">ERRORS</h3>
+<p>Should a system error occur during the conversion (e.g. a physical I/O error or insufficient memory) <code>CS_dtcvt</code> returns a negative non-zero value and sets <code>cs_Error</code> to indicate the cause of the failure.</p>
+<p>Conversion failures caused by a lack of data covering the specific coordinate to be converted are handled as indicated by the <code>blk_err</code> element of the <code>cs_Dtcprm_</code> structure pointed to by the <code>**tc_ptr** argument. The **blk_err** element is set by</code>CS_dtcsu<code>to the value of its **blk_err** argument prior to returning **dtc_ptr**. Refer to</code>CS_dtcsu` for a detailed description of how such errors are handled.</p>
+<p>In all cases, the null conversion is always performed before any other processing is attempted.</p>
+<h3 id="example">EXAMPLE</h3>
+<p>This function, and its companion <code>CS_dtcsu</code> have been designed such that the following sequence of code is all that is necessary to perform a complete coordinate conversion, including a datum conversion (error handling omitted):</p>
+<pre><code class="c">#define XX 0
+#define YY 1
+struct cs_Csprm * src_cs, * dest_cs;
+struct cs_Dtcprm_ *dtc_ptr;
+double src_xy [2], ll[2], dest_xy[2];
+.
+.
+src_cs = CS_csloc ( src_name) ;
+dest_cs = CS_csloc (dest_name);
+dtc_ptr = CS_dtcsu ( src_cs, dest_cs, cs_DTCFLG_DAT_F, cs_DTCDLG_BLK_1) ; .
+.
+while (TRUE)
+{
+.
+.
+src_xy[XX] = ???;
+src_xy[YY] = ???;
+CS_cs2ll (src_cs,ll,src_xy); CS_dtcvt (dtc_ptr,ll,ll); CS_ll2cs (dest_cs,dest_xy,ll);
+??? = dest_xy[XX]; ??? = dest_xy[YY]; .
+.
+}
+CS_free (src_cs); CS_free (dest_cs); CS_dtcls (dtc_ptr);
+</code></pre>
+
+<p>Notice, that adding the datum conversion to a simple cartographic conversion requires only the insertion of three lines of code (error handling aside) to the simple High Performance Interface described elsewhere in this manual.</p>
+<h2 id="cs_dtdef-datum-definition-locator">CS_dtdef Datum Definition locator</h2>
+<pre><code class="c">struct cs_Dtdef_ * CS_dtdef ( Const char * key_nm) ;
+</code></pre>
+
+<p><code>CS_dtdef</code> will return a pointer to a <code>malloc</code>'ed <code>cs_Dt def_</code> structure which contains the definition of the datum indicated by <strong>key_nm</strong>. <strong>Key_nm</strong> must point to an array that contains the null terminated key name of the desired datum definition. The memory allocated for the datum definition should be released by using <code>CS_free</code> when no longer needed.</p>
+<h3 id="errors_22">ERRORS</h3>
+<p><code>CS_dtdef</code> will return a <strong>NULL</strong> pointer and set <code>cs_Error</code> if any of the following conditions are detected:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_DTDICT</code></td>
+<td>The Datum Dictionary file could not be found or otherwise opened. (See <code>CS_altdr</code>)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred during access to the Datum Dictionary file.</td>
+</tr>
+<tr>
+<td><code>cs_DT_BAD_MAGIC</code></td>
+<td>The file accessed under the assumption that it was a Datum Dictionary wasn't a Datum Dictionary after all; it had an invalid magic number on the front end.</td>
+</tr>
+<tr>
+<td><code>cs_DT_NOT_FND</code></td>
+<td>A datum definition with the name given by <strong>key_nm</strong> was not found in the Datum Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_NO_MEM</code></td>
+<td>Insufficient dynamic memory was available to allocate space for the <code>cs_Dtdef_</code> structure.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_dtdel-datum-definition-delete">CS_dtdel DaTum definition delete</h2>
+<pre><code class="c">int CS_dtdel (struct cs_Dtdef_ *dtdef);
+</code></pre>
+
+<p><code>CS_dtdel</code> will delete from the Datum Dictionary the definition of the Datum pointed to by <strong>dtdef</strong>.</p>
+<p>The delete is accomplished by creating a new Datum Dictionary file and copying all but the referenced datum definition from the existing dictionary to the new one. This implies that sufficient disk space must be available to perform this copy. A zero is returned if the delete was successfully completed, a - 1 if a problem occurred. An attempt to delete a non-existent datum definition is <strong>NOT</strong> considered a problem.</p>
+<p>If the value of the global variable <code>cs_Protect</code> is greater than or equal to zero, <code>CS_dtdel</code> will not delete a datum definition which is marked as being a distribution datum definition (i.e. <code>cs_Dt def_.protect == 1</code>). If the value of <code>cs_Protect</code> is greater than zero, it is interpreted as the number of days after which a user defined datum is protected. For example, is <code>cs_Protect</code> is 60, a user-defined datum becomes protected 60 days after it is last modified.</p>
+<h3 id="errors_23">ERRORS</h3>
+<p><code>CS_dtdel</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_DTDICT</code></td>
+<td>The Datum Dictionary file could not be found or otherwise opened. (See <code>CS_altdr</code>)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in copying the Datum Dictionary to the new file.</td>
+</tr>
+<tr>
+<td><code>cs_DT_BAD_MAGIC</code></td>
+<td>The file assumed to be the Datum Dictionary by virtue of its name and location was not a Datum Dictionary; it had an invalid magic number.</td>
+</tr>
+<tr>
+<td><code>cs_TMP_CRT</code></td>
+<td>The attempt to create a new file, to that the modified Datum Dictionary was to be copied, failed.</td>
+</tr>
+<tr>
+<td><code>cs_DISK_FULL</code></td>
+<td>Insufficient disk space was available to accommodate the copying of the Datum Dictionary to the new file.</td>
+</tr>
+<tr>
+<td><code>cs_UNLINK</code></td>
+<td>The request to remove the old copy of the Datum Dictionary failed.</td>
+</tr>
+<tr>
+<td><code>cs_RENAME</code></td>
+<td>The request to rename the new Datum Dictionary file from its temporary name to DATUMS failed.</td>
+</tr>
+<tr>
+<td><code>cs_DT_PROT</code></td>
+<td>The datum definition to be updated is a distribution datum definition and may not be deleted.</td>
+</tr>
+<tr>
+<td><code>cs_DT_UPROT</code></td>
+<td>The datum is a user-defined datum which has not been modified for 60 days and is therefore protected.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_dtdflt-datum-default">CS_dtdflt Datum default</h2>
+<pre><code class="c">char *CS_dtdflt (Const char *new_dflt);
+</code></pre>
+
+<p>Use <code>CS_dtdflt</code> to control the status of the "defaultable" datum reference feature of CS-MAP. <strong>New_dflt</strong> must be either a valid datum key name, a pointer to the null string, or the <strong>NULL</strong> pointer. In the case where <strong>new_dflt</strong> is a pointer to a valid datum definition key name, <code>CS_dtdflt</code> causes the default datum feature to be active, using the datum key name provided as the default value. When <strong>new_dflt</strong> is a pointer to the null string, <code>CS_dtdflt</code> disables the default datum feature. When <strong>new_dflt</strong> is the <strong>NULL</strong> pointer, the status of the default feature remains unchanged.</p>
+<p>In all cases, <code>CS_dtdflt</code> returns the previous status (or in the case of <code>new_dflt == NULL</code>, the current status) in the form of a pointer to a static character array which shall contain the name of the previous default datum. Should the returned pointer point to a null string, the indicated status is disabled.</p>
+<h3 id="errors_24">ERRORS</h3>
+<p><code>CS_dtdflt</code> will return the <strong>NULL</strong> pointer if the key name provided is not that of a valid datum. In this event, the status of the default datum feature remains unchanged.</p>
+<h2 id="cs_dtloc-datum-locate">CS_dtloc Datum locate</h2>
+<pre><code class="c">struct cs_Datum_ *CS_dtloc (Const char * key_nm) ;
+struct cs_Datum_ *Csdtloc1 (Const struct cs_Dtdef_ *dtPtr);
+struct cs_Datum_ *Csdtloc2 (Const struct cs_Dtdef_ *dtPtr, Const struct cs_Eldef_ *elPtr);
+</code></pre>
+
+<p><code>CS_dtloc</code> will return a pointer to a <code>malloc</code>'ed <code>cs_Datum_</code> structure which contains the definition of the datum indicated by <strong>key_nm</strong> along with the ellipsoid information referenced by the datum definition. <strong>Key_nm</strong> must point to an array that contains the key name of the desired datum. The memory allocated for the datum definition should be released using <code>CS_free</code> when no longer needed.</p>
+<p><code>CSdtloc1</code> and <code>CSdtloc2</code> are alternatives to <code>CS_dtloc</code> that enable alternative sources for datum and ellipsoid definitions. These have been provided for applications that may, for example, store the datum, and/or ellipsoid, definitions in an application database.</p>
+<p>Note that while <code>CSdtloc1</code> will not need to access the Datum Dictionary, it will need to access the Ellipsoid Dictionary to resolve the ellipsoid reference in the datum definition provided. <code>CSdtloc2</code> is completely independent of both dictionaries.</p>
+<h3 id="errors_25">ERRORS</h3>
+<p><code>CS_dtloc</code>, <code>Csdtloc</code>, and <code>CSdtloc2</code> will return a NULL pointer and set <code>cs_Error</code> if any of the following conditions are detected:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_NO_MEM</code></td>
+<td>Insufficient dynamic memory was available to allocate space for the <code>cs_Datum_</code> structure.</td>
+</tr>
+</tbody>
+</table>
+<p><code>CS_dtloc</code> uses <code>CS_dtdef</code> and <code>CS_eldef</code> to obtain definition records from the Datum and Ellipsoid Dictionaries. Therefore, all of the error conditions detected by these functions apply to this function as well.</p>
+<p><code>CSdtloc1</code> uses <code>CS_eldef</code> to obtain definition records from the Ellipsoid Dictionary. Therefore, all of the error conditions detected by this function apply to this function as well.</p>
+<h2 id="cs_dtupd-datum-dictionary-update">CS_dtupd Datum dictionary update</h2>
+<pre><code class="c">int CS_dtupd (struct cs_Dtdef_ *dt_def, int crypt);
+</code></pre>
+
+<p><code>CS_dtupd</code> will cause the datum definition pointed to by <strong>dt_def</strong> to be added to the Datum Dictionary. If a datum with the same key name exists, it is replaced by the definition provided. If no such definition exists, the new definition is added to the dictionary. If <strong>crypt</strong> is non-zero, the datum entry is encrypted before being written.</p>
+<p>In the event that the indicated datum already existed, <code>CS_dtupd</code> will return a 1 to indicate a successful update. In the event that the provided datum definition had to be added to the Datum Dictionary, a zero is returned. A -1 is returned if the update failed for any reason.</p>
+<p>Please note that the addition of a new datum definition requires the sorting of the Datum Dictionary file. This may take a few seconds to complete, depending upon the size of the Datum Dictionary.</p>
+<p>If the value of the global variable <code>cs_Protect</code> is greater than or equal to zero, <code>CS_dtupd</code> will not change a datum definition which is marked as being a distribution datum definition (i.e.
+<code>cs_Dtdef_.protect == 1</code>). If the value of <code>cs_Protect</code> is greater than zero, it is interpreted as the number of days after which a user defined datum is protected. For example, is <code>cs_Protect</code> is 60, a user-defined datum becomes protected 60 days after it is last modified.</p>
+<p>Additionally, if the value of the global character variable <code>cs_Unique</code> is not the null character, <code>CS_dtupd</code> will not add a datum definition if its key name does not contain the character indicated. For example, if <code>cs_Unique</code> is set to the colon character, <code>C</code>S_dtupd` will not add a datum definition whose key name does not contain a colon character.</p>
+<h3 id="errors_26">ERRORS</h3>
+<p><code>CS_dtupd</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered during the update:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_DTDICT</code></td>
+<td>The Datum Dictionary file could not be opened. (See <code>CS_altdr</code>)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred during the update process.</td>
+</tr>
+<tr>
+<td><code>cs_DT_BAD_MAGIC</code></td>
+<td>The file which, by virtue of its name and location, was assumed to be a Datum Dictionary wasn't a Datum Dictionary; its magic number was invalid.</td>
+</tr>
+<tr>
+<td><code>Cs_DISK_FULL</code></td>
+<td>There was insufficient disk space available to add the datum definition to the Datum Dictionary.</td>
+</tr>
+<tr>
+<td><code>Cs_DT_PROT</code></td>
+<td>The datum definition to be updated is a distribution datum definition and may not be updated.</td>
+</tr>
+<tr>
+<td><code>cs_DT_UPROT</code></td>
+<td>The datum is a user-defined datum that has not been modified for 60 days and is therefore protected.</td>
+</tr>
+<tr>
+<td><code>cs_UNIQUE</code></td>
+<td>The datum provided does not already exist and would need to be added; but the key name does not contain the unique character.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cs_eldef-ellipsoid-definition-locator">CS_eldef Ellipsoid definition locator</h3>
+<pre><code class="c">struct cs_Eldef_ * CS_eldef ( Const char * key_nm) ;
+</code></pre>
+
+<p><code>CS_eldef</code> will return a pointer to a <code>malloc</code>'ed <code>cs_Eldef_</code> structure which contains the definition of the ellipsoid indicated by <strong>key_nm</strong>. <strong>Key_nm</strong> must point to an array that contains the null terminated key name of the desired ellipsoid definition. The memory allocated for the ellipsoid definition should be released using <code>CS_free</code> when no longer needed.</p>
+<h3 id="errors_27">ERRORS</h3>
+<p><code>CS_eldef</code> will return a <code>NULL</code> pointer and set <code>cs_Error</code> if any of the following conditions are detected:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_ELDICT</code></td>
+<td>The Ellipsoid Dictionary file could not be found or otherwise opened. (See <code>CS_altdr</code>)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred during access to the Ellipsoid Dictionary file.</td>
+</tr>
+<tr>
+<td><code>cs_EL_BAD_MAGIC</code></td>
+<td>The file accessed under the assumption that it was an Ellipsoid Dictionary wasn't an Ellipsoid Dictionary after all; it had an invalid magic number on the front end.</td>
+</tr>
+<tr>
+<td><code>cs_EL_NOT_FND</code></td>
+<td>A ellipsoid definition with the name given by key_nm was not found in the Ellipsoid Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_NO_MEM</code></td>
+<td>Insufficient dynamic memory was available to allocate space for the <code>cs_Eldef_</code> structure</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_eldel-ellipsoid-definition-delete">CS_eldel Ellipsoid definition delete</h2>
+<pre><code class="c">
+int CS_eldel (struct cs_Eldef_ *eldef);
+</code></pre>
+
+<p><code>CS_eldel</code> will delete from the Ellipsoid Dictionary the definition of the Ellipsoid pointed to by <strong>eldef</strong>.</p>
+<p>The delete is accomplished by creating a new Ellipsoid Dictionary file and copying all but the referenced ellipsoid definition from the existing dictionary to the new one. This implies that sufficient disk space must be available to perform this copy. A zero is returned if the delete was successfully completed, a -1 if a problem occurred. An attempt to delete a non-existent ellipsoid definition is <strong>NOT</strong> considered a problem.</p>
+<p>If the value of the global variable <code>cs_Protect</code> is greater than or equal to zero, <code>CS_eldel</code> will not delete an ellipsoid definition which is marked as being a distribution ellipsoid definition (i.e. <code>cs_El def_.protect == 1</code>). If the value of <code>cs_Protect</code> is greater than zero, it is interpreted as the number of days after which a user defined ellipsoid is protected. For example, is <code>cs_Protect</code> is 60, a user-defined ellipsoid becomes protected 60 days after it is last modified.</p>
+<h3 id="errors_28">ERRORS</h3>
+<p><code>CS_eldel</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_ELDICT</code></td>
+<td>The Ellipsoid Dictionary could not be found or otherwise opened. (See <code>CS_altdr</code>)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in copying the Ellipsoid Dictionary to the new file.</td>
+</tr>
+<tr>
+<td><code>cs_EL_BAD_MAGIC</code></td>
+<td>The file assumed to be the Ellipsoid Dictionary by virtue of its name and location was not an Ellipsoid Dictionary; it had an invalid magic number.</td>
+</tr>
+<tr>
+<td><code>cs_TMP_CRT</code></td>
+<td>The attempt to create a new file, to which the modified Ellipsoid Dictionary was to be copied, failed.</td>
+</tr>
+<tr>
+<td><code>cs_DISK_FULL</code></td>
+<td>Insufficient disk space was available to accommodate the copying of the Ellipsoid Dictionary to the new file.</td>
+</tr>
+<tr>
+<td><code>cs_UNLINK</code></td>
+<td>The request to remove the old copy of the Ellipsoid Dictionary failed.</td>
+</tr>
+<tr>
+<td><code>cs_RENAME</code></td>
+<td>The request to rename the new Ellipsoid Dictionary file from its temporary name to ELIPSOID failed.</td>
+</tr>
+<tr>
+<td><code>cs_EL_PROT</code></td>
+<td>The ellipsoid definition to be updated is a distribution ellipsoid definition and may not be deleted.</td>
+</tr>
+<tr>
+<td><code>cs_EL_UPROT</code></td>
+<td>The ellipsoid is a user-defined ellipsoid which has not been modified for 60 days and is therefore protected.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_eldflt-ellipsoid-default">CS_eldflt Ellipsoid default</h2>
+<pre><code class="c">char *CS_eldlt (Const char *new_dflt);
+</code></pre>
+
+<p>Use <code>CS_eldflt</code> to control the status of the "defaultable" ellipsoid reference feature of CS-MAP.
+<strong>New_dflt</strong> must be either a pointer to a valid ellipsoid key name, a pointer to the null string, or the <code>NULL</code> pointer. In the case where <strong>new_dflt</strong> is a pointer to a valid ellipsoid definition key name, <code>CS_eldflt</code> causes the default ellipsoid feature to be activated, using the ellipsoid key name provided as the, possibly new, default value. When <strong>new_dflt</strong> is a pointer to the null string, <code>CS_eldflt</code> disables the default ellipsoid feature. When <strong>new_dflt</strong> is the <code>NULL</code> pointer, the status of the default feature remains unchanged.</p>
+<p>In all cases, <code>CS_eldflt</code> returns the previous status (or in the case of <code>new_dflt == NULL</code>, the current status) in the form of a pointer to a static character array that shall contain the name of the previous default ellipsoid. Should the returned pointer point to a null string, the indicated status is disabled.</p>
+<h3 id="errors_29">ERRORS</h3>
+<p><code>CS_eldflt</code> will return the <code>NULL</code> pointer if the key name provided is not that of a valid ellipsoid. In this event, the status of the default ellipsoid feature remains unchanged.</p>
+<h2 id="cs_elenum-ellipsoid-enumerator_1">CS_elEnum Ellipsoid enumerator</h2>
+<pre><code class="c">int CS_elEnum(int index, char *key_name, int size);
+</code></pre>
+
+<p><code>CS_elEnum</code> is used to enumerate all ellipsoids in the Ellipsoid Dictionary. <code>CS_elEnum</code> returns in the memory buffer pointer to by the <strong>key_name</strong> argument the key name of the <strong>index</strong>'th entry in the Ellipsoid Dictionary. <code>CS_elEnum</code> will never write more than size bytes to the indicated location. <strong>Index</strong> is a zero based index; the index of the first entry in the Ellipsoid Dictionary is zero.</p>
+<p><code>CS_elEnum</code> returns a positive 1 to indicate success. If <strong>index</strong> is too large, a zero is returned.</p>
+<h3 id="errors_30">ERRORS</h3>
+<p><code>CS_elEnum</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_ELDICT</code></td>
+<td>The Ellipsoid Dictionary could not be found or otherwise opened. (See <code>CS_altdr</code>)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred in accessing the Ellipsoid Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_DT_BAD_MAGIC</code></td>
+<td>The file assumed to be the Ellipsoid Dictionary by virtue of its name was not an Ellipsoid Dictionary; it had an invalid magic number.</td>
+</tr>
+<tr>
+<td><code>cs_INV_INDX</code></td>
+<td>The index argument was negative.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_elupd-ellipsoid-dictionary-update">CS_elupd Ellipsoid dictionary update</h2>
+<pre><code class="c">int CS_elupd (struct cs_Eldef_ *el_def, int crypt);
+</code></pre>
+
+<p><code>CS_elupd</code> will cause the ellipsoid definition pointed to by <strong>el_def</strong> to be added to the Ellipsoid Dictionary. If an ellipsoid with the same key name exists, it is replaced by the definition provided. If no such definition exists, the new definition is added to the dictionary. If <strong>crypt</strong> is non-zero, the ellipsoid entry is encrypted before being written.</p>
+<p>In the event that the indicated ellipsoid already existed, <code>CS_elupd</code> will return a 1 to indicate a successful update. In the event that the provided ellipsoid had to be added to the Ellipsoid Dictionary, a zero is returned. A -1 is returned if the update failed for any reason.</p>
+<p>Please note that the addition of a new ellipsoid definition requires the sorting of the Ellipsoid Dictionary file. This may take a few seconds to complete, depending upon the size of the Ellipsoid Dictionary.</p>
+<p>If the value of the global variable <code>cs_Protect</code> is greater than or equal to zero, <code>CS_elupd</code> will not change an ellipsoid definition which is marked as being a distribution ellipsoid definition (i.e.
+<code>cs_Elde_.protect == 1</code>). If the value of <code>cs_Protect</code> is greater than zero, it is interpreted as the number of days after which a user defined ellipsoid is protected. For example, is <code>cs_Protect</code> is 60, a user-defined ellipsoid becomes protected 60 days after it is last modified.</p>
+<p>Additionally, if the value of the global character variable <code>cs_Unique</code> is not the null character, <code>CS_elupd</code> will not add an ellipsoid definition if its key name does not contain the character indicated. For example, if <code>cs_Unique</code> is set to the colon character, <code>CS_elupd</code> will not add an ellipsoid definition whose key name does not contain a colon character.</p>
+<h3 id="errors_31">ERRORS</h3>
+<p><code>CS_elupd</code> will return a -1 and set <code>cs_Error</code> appropriately if any of the following conditions are encountered during the update:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_ELDICT</code></td>
+<td>The Ellipsoid Dictionary file could not be opened. (See <code>CS_altdr</code>)</td>
+</tr>
+<tr>
+<td><code>cs_IOERR</code></td>
+<td>A physical I/O error occurred during the update process.</td>
+</tr>
+<tr>
+<td><code>cs_EL_BAD_MAGIC</code></td>
+<td>The file which, by virtue of its name and location, was assumed to be an Ellipsoid Dictionary wasn't an Ellipsoid Dictionary; its magic number was invalid.</td>
+</tr>
+<tr>
+<td><code>cs_DISK_FULL</code></td>
+<td>There was insufficient disk space available to add the ellipsoid definition to the Ellipsoid Dictionary.</td>
+</tr>
+<tr>
+<td><code>cs_EL_PROT</code></td>
+<td>The ellipsoid definition to be updated is a distribution ellipsoid definition and may not be updated.</td>
+</tr>
+<tr>
+<td><code>cs_EL_UPROT</code></td>
+<td>The ellipsoid is a user-defined ellipsoid that has not been modified for 60 days and is therefore protected.</td>
+</tr>
+<tr>
+<td><code>cs_UNIQUE</code></td>
+<td>The ellipsoid provided does not already exist and would need to be added; but the key name does not contain the unique character.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_errmsg-error-message_1">CS_errmsg Error message</h2>
+<pre><code class="c">void CS_errmsg (char msg_bufr, int bufr_size);
+</code></pre>
+
+<p><code>CS_errmsg</code> returns to the calling function a null terminated string that describes the last error condition detected by the CS-MAP library. The result is returned in the buffer pointed to by the <strong>msg_bufr</strong> argument, which is assumed to be <strong>bufr_size</strong> bytes long. The message is returned in one character per byte ANSI code characters.</p>
+<p><code>CS_errmsg</code> will return the null string if called before any error condition is detected.</p>
+<h3 id="bugs_3">BUGS</h3>
+<p>After returning an error message to the user, <code>CS_errmsg</code> should reset itself to the null string preventing the same error message from being returned a second time. It should, but it doesn't.</p>
+<h2 id="cs_ll2cs-latitudelongitude-to-coordinate-system">CS_ll2cs Latitude/Longitude TO Coordinate System</h2>
+<pre><code class="c">void CS_ll2cs (Const struct cs_Csprm_ *csprm, double xy[2], Const double ll[2] );
+</code></pre>
+
+<p>Given the definition of the coordinate system, <strong>csprm</strong>, such as returned by <code>CS_csloc</code>, <code>CS_ll2cs</code> will convert the latitude and longitude given by <strong>ll</strong> to X and Y coordinates, returning the results in <strong>xy</strong>. The <strong>ll</strong> and <strong>xy</strong> arguments may point to the same array.</p>
+<p>In the arrays, the X coordinate and the longitude occupy the first element, the Y coordinate and the latitude the second element. The latitude and longitude must be given in degrees where negative values are used to indicate west longitude and south latitude.</p>
+<h2 id="cs_llchk-latlong-limits-check">CS_llchk Lat/Long limits check</h2>
+<pre><code class="c">int CS_llchk (Const struct cs_Csprm_ *csprm, int cnt, Const double pnts[][3]);
+</code></pre>
+
+<p><code>CS_llchk</code> determines if the points, great circles, and regions defined by the point list provided by the <strong>cnt</strong> and <strong>pnts</strong> arguments are within the mathematical domain and useful range of the coordinate system provided by the <strong>csprm</strong> argument. All points in the point list are expected to be geographic coordinates. Use <code>CS_xychk</code> to check a list of cartesian coordinates.</p>
+<p><code>CS_llchk</code> returns <code>cs_CNVRT_OK</code> if all coordinate subject to the determination are both within the mathematical domain of the coordinate system and the useful range of the coordinate system. <code>cs_CNVRT_DOMN</code> is returned if one or more coordinates is outside of the mathematical domain of the coordinate system. <code>cs_CNVRT_USFL</code> is returned if all coordinates subject to the determination are within the mathematical domain of the coordinate system, but one or more coordinates are outside of the useful range of the coordinate system.</p>
+<p>The useful range of a coordinate system may be defined by the user as part of the coordinate system definition. In the absence of such a definition, the setup function for each projection computes a useful range based on the parameters for the projection. In some cases, this computed useful range will be too liberal; in others it may be too conservative. In any case, checking coordinates to be converted against the useful range is a good way to alert users of a possible problem, such as using the wrong coordinate system for a set of coordinates.</p>
+<h2 id="cs_ludflt-linear-unit-default">CS_ludflt linear unit default</h2>
+<pre><code class="c">char *CS_ludlt (Const char *new_dflt);
+</code></pre>
+
+<p>Use <code>CS_ludflt</code> to control the status of the "defaultable" linear unit reference feature of CS-MAP. <strong>New_dflt</strong> must be either a pointer to a valid linear unit name, a pointer to the null string, or the <code>NULL</code> pointer. In the case where <strong>new_dflt</strong> is a pointer to a valid linear unit name, <code>CS_ludflt</code> causes the default linear unit feature to be activated, using the linear unit name provided as the, possibly new, default value. When <strong>new_dflt</strong> is a pointer to the null string, <code>CS_ludflt</code> disables the default linear unit feature. When <strong>new_dflt</strong> is the <code>NULL</code> pointer, the status of the linear unit default feature remains unchanged.</p>
+<p>In all cases, <code>CS_ludflt</code> returns the previous status (or in the case of <code>new_dflt == NULL</code>, the current status) in the form of a pointer to a static character array which shall contain the name of the previous default linear unit. Should the returned pointer point to a null string, the indicated status is disabled.</p>
+<h3 id="errors_32">ERRORS</h3>
+<p><code>CS_ludflt</code> will return the <code>NULL</code> pointer if the key name provided is not that of a valid linear unit. In this event, the status of the default linear unit feature remains unchanged.</p>
+<h2 id="cs_xychk-x-and-y-limits-check">CS_xychk X and Y limits check</h2>
+<pre><code class="c">int CS_xychk (Const struct cs_Csprm_ *csprm, int cnt, Const double pnts[][3]);
+</code></pre>
+
+<p><code>CS_xychk</code> determines if the points, line segments, and regions defined by the point list provided by the <strong>cnt</strong> and <strong>pnts</strong> arguments are within the mathematical domain and useful range of the coordinate system provided by the <strong>csprm</strong> argument. All points in the point list are expected to be cartesian coordinates. Use <code>CS_llchk</code> to check a list of geographic coordinates.</p>
+<p><code>CS_xychk</code> returns <code>cs_CNVRT_OK</code> if all coordinate subject to the determination are both within the mathematical domain of the coordinate system and the useful range of the coordinate system. <code>cs_CNVRT_DOMN</code> is returned if one or more coordinates is outside of the mathematical domain of the coordinate system. <code>cs_CNVRT_USFL</code> is returned if all coordinates subject to the determination are within the mathematical domain of the coordinate system, but one or more coordinates are outside of the useful range of the coordinate system.</p>
+<p>The useful range of a coordinate system may be defined by the user as part of the coordinate system definition. In the absence of such a definition, the setup function for each projection computes a useful range based on the parameters for the projection. In some cases, this computed useful range will be too liberal; in others it may be too conservative. In any case, checking coordinates to be converted against the useful range is a good way to alert users of a possible problem, such as using the wrong coordinate system for a set of coordinates.</p>
+<h2 id="cs_usrunitptr-units-look-up-hook-function">CS_usrUnitPtr - Units look up hook function</h2>
+<pre><code class="c">double CS_usrUnitPtr (short type, Const char *unitName);
+</code></pre>
+
+<p>This name, <code>CS_usrUnitPtr</code> , does not refer to a function. Rather, it refers to a global variable which is defined as a pointer to a function which is defined as the above given prototype declares. Applications can use a function as declared above, and the related global pointer variable, to implement unit definitions in a dynamic manner.</p>
+<p>If the global variable <code>CS_usrUnitPtr</code> (defined in <code>CSdata.c</code>) is not null, the indicated function is called whenever the CS-MAP library is asked to access a specific unit definition. This function, then, can be used to dynamically supply a unit conversion value which does not exist in the compiled unit table. Applications can use this to implement their own unit definition table or dynamically generate such a definition based on the unit name provided.</p>
+<p>CS-MAP passes the <strong>unitName</strong> argument to the hook function prior to any validation, thus dynamic definition names need not adhere to the CS-MAP key name conventions. In the event that the hook function determines that it wishes to supply the definition, the desired conversion value must be returned. CS-MAP passed the unit type requested to the hook function using the <strong>type</strong> argument.</p>
+<p>The hook function returns an integer value:</p>
+<ul>
+<li>a positive non-zero value to indicate that a conversion value is being supplied by the hook function, and the value returned is indeed the conversion value.</li>
+<li>zero is returned to indicate that normal CS-MAP unit table access is to be performed.</li>
+<li>a negative value is returned to indicate that an error is to be reported. It is expect that the nature of the error would have already reported through the use of CS_erpt.</li>
+</ul>
+<h2 id="cs_unitadd-add-unit-to-table">CS_unitAdd - Add  unit to table</h2>
+<pre><code class="c">int CS_unitAdd (struct cs_Unittab_ *unitPtr);
+</code></pre>
+
+<p>Use this function to add a new unit to the unit table at run time. Essentially, the unit definition pointed to by the <strong>unitPtr</strong> argument is copied to a disabled entry in the compiled unit table. This function does not check any of the entries in the provided unit definition, so use this function with great care.</p>
+<h3 id="errors_33">ERRORS</h3>
+<p><code>CS_unitAdd</code> returns a zero value for success. A negative return value indicates a failure. In this case, one of the following error conditions will have been reported through the use of <code>CS_erpt</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_UADD_TYP</code></td>
+<td>The type of unit specified in the provided definition was invalid. Must be either <code>cs_UTYP_LIN</code> or <code>cs_UTYP_ANG</code>.</td>
+</tr>
+<tr>
+<td><code>cs_UADD_DUP</code></td>
+<td>A unit definition with the (singular) name of given in the provided definition already exists in the unit table.</td>
+</tr>
+<tr>
+<td><code>cs_UADD_FULL</code></td>
+<td>All of the disabled slots in the unit table have been filled; thus the unit table is currently full.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cs_unitdel-delete-unit-from-table">CS_unitDel -- Delete unit from table</h2>
+<pre><code class="c">int CS_unitDel (short type, Const char *name);
+</code></pre>
+
+<p>Use this function to disable an entry in the unit table. The specific unit is identified by the <strong>type</strong> and <strong>name</strong> arguments. Type must be given as either <code>cs_UTYP_LIN</code> or <code>cs_UTYP_ANG</code>. Note that compiled (i.e. not necessarily added) unit entries can also be disabled. This will remove them from subsequent unit enumerations performed by <code>CS_unEnum</code>.</p>
+<h3 id="errors_34">Errors</h3>
+<p><code>CS_unitDel</code> will return a zero for success. A negative 1 is return to indicate failure. In the event of failure, one of the following error conditions will have been reported through <code>CS_erpt</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cs_UDEL_NONE</code></td>
+<td>The named unit, of the provided type, did not exist in the unit table.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="low-level-interface-functions">Low level interface functions</h1>
+<p>Functions which are considered part of the Low Level Interface are described in this section. Several of these functions require geographic arguments. Remember that these are required to be:</p>
+<ol>
+<li>in longitude, latitude, and height order, and</li>
+<li>given in degrees, and</li>
+<li>referenced to Greenwich meridian, and</li>
+<li>where west lonigtude and south latitude are represented by negative values.</li>
+</ol>
+<p>Function prototype definitions are given in the C syntax only.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

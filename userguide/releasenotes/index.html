@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Release Notes - CS-Map</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">CS-Map</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                    <li >
+                        <a href="../../installation/">Installation</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li class="active">
+    <a href="./">Release Notes</a>
+</li>
+                            
+<li >
+    <a href="../desc/">Descriptions/Discussions</a>
+</li>
+                            
+<li >
+    <a href="../executables/">Executables</a>
+</li>
+                            
+<li >
+    <a href="../libraryfunctions/">Library Functions</a>
+</li>
+                            
+<li >
+    <a href="../cartographicprojections/">Cartographic Projection Functions</a>
+</li>
+                            
+<li >
+    <a href="../datamodules/">Data Modules</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../license/">License</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../../installation/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../desc/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#distributionrelease-notes">Distribution/Release Notes</a></li>
+            <li><a href="#csv-file-support">CSV File Support</a></li>
+            <li><a href="#epsg-support">EPSG Support</a></li>
+            <li><a href="#wkt-flavor-support">WKT Flavor Support</a></li>
+        <li class="main "><a href="#the-distribution">The Distribution</a></li>
+        <li class="main "><a href="#source-layout">Source Layout</a></li>
+            <li><a href="#include-directory">Include Directory</a></li>
+            <li><a href="#library-source-code">Library Source Code</a></li>
+            <li><a href="#dictionary-source-code-and-data">Dictionary Source Code and Data</a></li>
+            <li><a href="#test-source-code-and-data">Test Source Code and Data</a></li>
+            <li><a href="#documentation-directory">Documentation Directory</a></li>
+            <li><a href="#data-directory">Data Directory</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="distributionrelease-notes">Distribution/Release Notes</h1>
+<p>Due to distribution permission issues, it was determined that the polynomial coefficients for the System 34 coordinate conversions could not be open sourced.  Thus, to properly incorporate Syatem 34 capabilities into your application, you will need to obtain a copy of these coefficients for yourself. Refer to the source module named CSsys34KMS.c for details.</p>
+<h2 id="csv-file-support">CSV File Support</h2>
+<p>Implemented as a C++ object, there now exists rather substantial support for reading and writing data
+file in the CSV (comma separated value) format.</p>
+<h2 id="epsg-support">EPSG Support</h2>
+<p>Still a work inprogress, there now exists substantial support for accessing data provided by the EPSG
+Parameter Dataset.  As this dataset is traditionally distributed in Microsoft Access format, this facility
+relies on the conversion of all EPSG data tables to .CSV format, and uses the new CSV FIle SUpport
+object to access them.</p>
+<h2 id="wkt-flavor-support">WKT Flavor Support</h2>
+<p>Using the new Name Mapper facility, CS-MAP's ability to handle various flavors of WKT has been
+imporved.  There is lots yet to be done, but a non-trivial improvement in the accuracy and number of
+flavors supported.</p>
+<p>So, there remains much to do to bring this document up to the standard desired by the CS-MAP
+contributor team.  For now, it's important to provide potential users with the basic information
+necessary to get started using CS-MAP.</p>
+<h1 id="the-distribution">The Distribution</h1>
+<p>Detailed instructions on how to obtain the distribution are available at
+<a href="http://trac.osgeo.org/csmap/wiki/HowToGetTheSourceCode">http://trac.osgeo.org/csmap/wiki/HowToGetTheSourceCode</a></p>
+<p>The distribution includes many somewhat voluminous grid data files known to OSGeo as being in the
+public domain.  There are several such grid data files which are not in the public domain and which
+must be obtained from the source on an individual user basis.  Simple registration is all that is required
+in many cases, license fees are rarely required.  Mostly, the issuing authority just wants to keep track of
+who is using the data in order to adhere to ISO quality control standards.</p>
+<p>The Canadian National Transformation data file is, perhaps, the most widely used example of a grid
+data file which OSGeo is not permitted to distribute.  You and your clients will need to obtain this file
+from the Canadian government. A license fee is no longer required, but Geomatics Canada still needs
+to know who is using the data file.  Contact: <a href="../www.geod.nrcan.gc.ca">www.geod.nrcan.gc.ca</a></p>
+<p>Since the distribution cannot include a copy of the Canadian National Transformation file, the test
+cases for this transformation are commented out in the provided TEST.DAT file.  After obtaining the
+Canadian National Transformation file, you will probably want to uncomment these test cases from the
+test file.</p>
+<p>Typically, a README.txt file is placed in the folder in which an undistributable grid data files would
+normally reside.  THis text file will usually provide information as to how to obtain a copy of the data
+file.  When a CS-MAP error message which indicates that a file is missing is encountered, check to see
+if there is not a README.txt file in the folder in which CS-MAP was looking for the file and examine
+its contents.</p>
+<h1 id="source-layout">Source Layout</h1>
+<h2 id="include-directory">Include Directory</h2>
+<p>You don't need to be a genius to figure out that all header files are installed into this sub-directory.
+What might surprise you is that there is only one real header file: <code>cs_map.h</code>.  While this file is quite
+large, the precompiled header feature of most modern compilers make this approach most convenient.</p>
+<p>Also, you never have to guess in which header file a specific item is defined in. They're all defined in
+<code>cs_map.h</code>.  Neither do you have to wonder which files must be included into your application; <code>cs_map.h</code>
+is the one.  There are other include files, but are those required by the rather strange environment used
+for MFC development.</p>
+<p>The <code>cs_map.h</code> header file will specifically include two files.  The files, and exactly where they are
+included, are described below.  These provide a means by which users can incorporate their own
+features without having to modify <code>cs_map.h</code> after each new release.</p>
+<ul>
+<li><code>cs_clientBeg.h</code> --  The inclusion of this file occurs immediately after the check for a previous include
+of <code>cs_map.h</code>, but before the <code>cs_map.h</code> file does anything else.  An excellent place to place defines
+which control the environment of the compilation.</li>
+<li><code>cs_clientEnd.h</code> -- The inclusion of this file occurs immediately before the <code>#endif</code> which terminates
+the multiple inclusion protection.  That is, it is included after everything else in <code>cs_map.h</code>.</li>
+</ul>
+<h2 id="library-source-code">Library Source Code</h2>
+<p>The directory named Source will contain all source code to the library proper.  The source code
+components of CS-MAP are normally compiled and the resulting objects used to construct an object
+module library.  Source code to dictionary compilers and test programs are provided elsewhere.  Make
+files for building the library are provided in this folder.</p>
+<ul>
+<li><code>Library.mak</code> can used used to build the object library in the Linux environment.</li>
+<li><code>Library.nmk</code> can use used int the Microsoft WIndows environment using the nmake facility.</li>
+</ul>
+<p>Each of the make files includes a list of all the modules that belong in the library.  This list represents
+most of the drudgery of creating a make file.  Adjust the actual rules as necessary for your
+platform/compiler.  Notice that leaving the manifest constant <code>__MFC__</code> undefined will cause all MFC
+related code to be skipped during the compilation process.  Obviously, if compiling in an environment
+other than Windows 32/64, be sure to leave the <code>__MFC__</code> constant undefined.</p>
+<h2 id="dictionary-source-code-and-data">Dictionary Source Code and Data</h2>
+<p>The directory named Dictionaries will contain the source code to the dictionary compiler, and the data
+files which this compiler compiles to produce the binary form of the Category Dictionary, the
+Coordinate System Dictionary, the Datum Dictionary, the Ellipsoid Dictionary, and the Multiple
+Regression Transformation data files.  Be sure to compile these dictionaries with the <code>/t</code> option if you
+intend to run the CS-MAP test program.  </p>
+<p>Make files for building the compiler are provided in this folder.</p>
+<ul>
+<li><code>Compiler.mak</code> can used used to build the compiler in the Linux environment.</li>
+<li><code>Compiler.nmk</code> can use used to build the compiler in the Microsoft Windows environment using the nmake facility.</li>
+</ul>
+<p>The distribution also uses this directory to convey sample Geodetic Data Catalogs which you will
+definitely want to inspect and perhaps modify.  Geodetic data files which OSGeo believes to be in the
+public domain are deposited in sub-folders of this folder in a specific hierarchy.  This hierarchy is
+consistent with the provided Geodetic Data Catalog (.gdc) files.  There is no specific requirement for
+the location of the geodetic data files other than their location must be consistent with the
+specifications int he Geodetic Data Catalog files.</p>
+<p>Also please note that the OSTN97.TXT and OSTN02.TXT data files must also reside in the primary data
+directory.  Again, by design, there is only one file for each of these transformations, and the
+implementation of a Geodetic Data Catalog file was skipped.  Also, due to the rather strange nature of
+these files, most of the features of a Geodetic Data Catalog file do not apply anyway.</p>
+<h2 id="test-source-code-and-data">Test Source Code and Data</h2>
+<p>The directory named Test will contain the source code to the CS-MAP test program and the supporting
+data file, TEST.DAT. Compilation and linking of this program will obviously require the inclusion of the
+header file and library.  Make files for building the test program are provided in this folder.</p>
+<ul>
+<li>Test.mak can used used to build the test program in the Linux environment.</li>
+<li>Test.nmk can use used int the Microsoft WIndows environment using the nmake facility.</li>
+</ul>
+<p>In order to execute the entire test sequence, you will need to have compiled the dictionaries with the <code>/t</code>
+option.  This causes the retention of the test coordinate systems (not normally distributed with an
+application) in the dictionary files.  The test program will also expect to have access to the NADCON
+and HPGN data files provided in the sub-directories of the Dictionaries directory.  When executing the
+test program, use the <code>/d</code> option to indicate the location of the directory in which the dictionaries,
+NADCON, and HPGN data files reside; e.g. /d..\Dictionaries.</p>
+<p>This program performs a fairly substantial test of most all features and capabilities of CS-MAP.  This
+program should be used each time CS-MAP is used in a new configuration or compiled with a different
+compiler.</p>
+<p>Note that a large number of the tests encoded in the TEST.DAT file are commented out as they rely on
+the existence of specific geodetic data files which OSGeo cannot distribute.  For example, since
+OSGeo cannot distribute the Canadian National Transformation, all test dependent upon that data file
+are commented out.  Upon obtaining geodetic data files which Mentor Software cannot distribute, you
+should consider un-commenting the tests related to such files.</p>
+<h2 id="documentation-directory">Documentation Directory</h2>
+<p>The directory named Documentation is where you will find a copy of this documentation.  Depending
+upon the format, it may consist of a single file, or a directory containing multiple files.  A printable
+version may also be present.</p>
+<p>Additionally, this directory will contain the source code to the help file which is provided for use with
+the MFC based components of CS-MAP.  The source code files include an .rtf file, a contents file (.cnt),
+and several screen shots in .bmp format.  Again, a make file compatible with Visual C++ Version 6 (or
+later) nmake is provided; it is named <code>help.nmk</code>.  (As the help file is not generally usable in the Linux
+environment, no Linux compatible make file is provided.)  Note, that the CS-MAP MFC based
+functions expect to find the help file in the same directory as the mapping data files.  Of course, a
+function exists which enables application programmers to override this default location
+(CS_setHelpPath).  If for any reason, the MFC based functions cannot locate the help file, the help
+button on all dialogs will be grayed out.</p>
+<p>Please note that the help file is designed for distribution with your application.  It does not mention
+OSGeo, CS-MAP, or the original developers of CS-MAP.  It uses a rather generic term "coordinate
+conversion system" to refer to that which it is describing.</p>
+<h2 id="data-directory">Data Directory</h2>
+<p>Several data files used in the construction of CS-MAP's Name Mapper facility are included in the Data
+directory.  It is envisioned that these files will be replaced by a more convenient and controllable
+means in the near future.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

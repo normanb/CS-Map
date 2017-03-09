@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-01-31</lastmod>
+     <lastmod>2017-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,15 +12,55 @@
     
     <url>
      <loc>/installation/</loc>
-     <lastmod>2017-01-31</lastmod>
+     <lastmod>2017-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
+        
+    <url>
+     <loc>/userguide/releasenotes/</loc>
+     <lastmod>2017-03-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/userguide/desc/</loc>
+     <lastmod>2017-03-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/userguide/executables/</loc>
+     <lastmod>2017-03-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/userguide/libraryfunctions/</loc>
+     <lastmod>2017-03-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/userguide/cartographicprojections/</loc>
+     <lastmod>2017-03-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/userguide/datamodules/</loc>
+     <lastmod>2017-03-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
     <url>
      <loc>/license/</loc>
-     <lastmod>2017-01-31</lastmod>
+     <lastmod>2017-03-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

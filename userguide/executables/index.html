@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Executables - CS-Map</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">CS-Map</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                    <li >
+                        <a href="../../installation/">Installation</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../releasenotes/">Release Notes</a>
+</li>
+                            
+<li >
+    <a href="../desc/">Descriptions/Discussions</a>
+</li>
+                            
+<li class="active">
+    <a href="./">Executables</a>
+</li>
+                            
+<li >
+    <a href="../libraryfunctions/">Library Functions</a>
+</li>
+                            
+<li >
+    <a href="../cartographicprojections/">Cartographic Projection Functions</a>
+</li>
+                            
+<li >
+    <a href="../datamodules/">Data Modules</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../license/">License</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../desc/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../libraryfunctions/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#executables">Executables</a></li>
+            <li><a href="#cs_compcoordinate-system-compiler">CS_COMP—Coordinate System COMPiler</a></li>
+            <li><a href="#byte-ordering">Byte Ordering</a></li>
+            <li><a href="#source-file-formats">Source File Formats</a></li>
+            <li><a href="#test-test-program">TEST -- TEST program</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="executables">Executables</h1>
+<p>This section describes the use and function of the three executable modules which are a part of the CS- MAP distribution. Note that the executables modules themselves are not provided. Source code which can be used to create the executable modules on your platform are included.</p>
+<h2 id="cs_compcoordinate-system-compiler">CS_COMP—Coordinate System COMPiler</h2>
+<p><code>CS_COMP [/c] [/b] [/s] [/t] [/w] source_file_dir output_dir</code></p>
+<p><code>CS_COMP</code> creates binary dictionary files from the ASCII source files provided with the CS-MAP distribution. This feature has been added to</p>
+<ol>
+<li>eliminate problems with the byte order of binary data on platforms other than Intel and</li>
+<li>provide a means by which coordinate system definitions can be committed to source control procedures. Release 6 (and later) of CS-MAP precludes, to a large extent, the first need described above. See Byte Ordering below.</li>
+</ol>
+<p>On UNIX systems, you will need to use the UNIX option character (i.e. the dash) when specifying options.</p>
+<p>Source code to <code>CS_COMP</code> and its components is provided to all licensees, and has been tested as a console application under Windows XP and Linux 3.2.2. As CS-MAP is intended for use in a large variety of systems, and for compilation and linking by users who may not have access to lex and yacc, the user interface and source file formats are very simple and basic.</p>
+<p>By compiling all four source files at the same time, <code>CS_COMP</code> can now perform consistency checks between all four files. To simplify use, the actual file names are hard coded into the program. Thus, the source files are required to be named <code>Coordsys.asc</code>, <code>Datums.asc</code>, <code>Elipsoid.asc</code>, and <code>Mreg.asc</code> for the Coordinate System, Datum, Ellipsoid, and Multiple Regression Transformation data files respectively. <code>CS_COMP</code> expects these files to reside in the directory specified as the first positional argument on the command line.</p>
+<p>Similarly, the names of the output files are fixed by the program, being the names specified in the <code>CSdata</code> module. These are the same names that the library in general searches for. The directory in which these files are written is specified as the second positional parameter on the command line.</p>
+<p>Since <code>CS_COMP</code> performs a consistency check between all files, it expects to compile all four files. It is not possible to compile the files individually.</p>
+<p><code>CS_COMP</code> is coded for possible compilation as a Windows XP console application. Therefore, it requires an acknowledgment before it exits, enabling the operator to verify successful completion before the window disappears. For use in make files and/or batch files, you may wish to use the <code>/b</code> option to suppress the requirement for acknowledgment before exit.</p>
+<p><code>CS_COMP</code> normally produces encrypted output files. Use the <code>/c</code> option to cause unencrypted versions of the dictionaries to be produced for testing and/or debugging purposes.</p>
+<p>Presence of the <code>/t</code> option instructs <code>CS_COMP</code> to include coordinates systems, datums, and ellipsoids in the Test group. Normally, these are neither compiled or distributed with your application.</p>
+<p>Use the <code>/w</code> option to instruct <code>CS_COMP</code> to report any inconsistency in the data which may only be suspicious.</p>
+<p>In the UNIX environment, the dash must be used as the option character.</p>
+<p>Use the <code>/s</code> option to instruct <code>CS_COMP</code> to produce dictionary files in big endian byte order regardless of the system on which the program has been compiled. This forces a byte swap before output on little endian processors (e.g. Intel) and omits the byte swap on big endian processors (e.g. Sun).</p>
+<h2 id="byte-ordering">Byte Ordering</h2>
+<p><code>CS_COMP</code> calls <code>CS_bswap</code> immediately prior to writing any data to the dictionary file in order to effect, as necessary, a byte order switch to little endian (i.e. Intel/DOS) byte order. This is the same byte order expected by the CS-MAP library on all platforms. It is also the byte order which the data file from other sources, such as the NADCON LAS/LOS files, are distributed. Use of the /s options reverses this effect, causing big endian data files to be produced, regardless of the processor in use.</p>
+<h2 id="source-file-formats">Source File Formats</h2>
+<h3 id="coordsysasc">Coordsys.asc</h3>
+<p>Records in the <code>COORDSYS.ASC</code> source file consist of a line of text. Blank lines are generally ignored. All characters following an un-escaped pound sign character ('#') are ignored. The pound sign character can be escaped by the backslash ('\') or pound sign ('#') characters. Note that this is required to get a pound sign character into a coordinate system description as these descriptions are not quoted. Leading and trailing whitespace on all records is also ignored. Records to be processed must start with one of the 39 keywords described below. The colon separator character is considered to be part of the keyword. The value of the keyword must follow the keyword on the same line of text, white space may be used to separate the keyword from its value.</p>
+<p>Each occurrence of the <code>CS_NAME</code>: keyword indicates the beginning of a new coordinate system definition and the end of any previous coordinate system definition. Otherwise, the order of the specifications is not important. However, to maintain your source in a comprehensible format, it is strongly recommended that each coordinate system definition begin with the <code>CS_NAME</code>: keyword and be terminated by one or more blank lines. No blank lines should appear within the definition itself. Further, while <code>CS_COMP</code> will sort the resulting binary Coordinate System Dictionary file, maintaining the coordinate system source file in sorted order makes it (relatively) easy to locate a definition should review or editing be required.</p>
+<p>For projection specific information, refer to the projection descriptions of this guide. Note that rarely will any projection require the use of all 39 keyword specifications.</p>
+<p>The 25 keywords and their values are:</p>
+<ol>
+<li><code>CS_NAME</code>: - Used to specify the key name of the coordinate system which is to be defined, 23
+characters max. See <code>CS_nampp</code> for conventions concerning key names.</li>
+<li><code>DESC_NM</code>: - Used to specify the 63 character descriptive name of the coordinate system being defined.</li>
+<li><code>DT_NAME</code>: - Used to specify the datum key name to which a geodetically referenced coordinate system is to be referenced to. The ellipsoid used is a part of this datum definition. Presence of a valid datum key name here indicates that the coordinate system is geodetically referenced. Either a <code>DT_NAME</code>: specification, or an <code>EL_NAME</code>: specification must be provided for each coordinate system definition. If both <code>DT_NAME</code>: and <code>EL_NAME</code>: specifications are provided, the <code>EL_NAME</code>: specification is ignored by CS-MAP.</li>
+<li><code>EL_NAME</code>: - Used to specify the ellipsoid key name for a cartographically referenced coordinate system. A coordinate system is cartographically referenced to the ellipsoid named by this specification if, and only if, the datum key name specification is omitted. If both <code>DT_NAME</code>: and <code>EL_NAME</code>: specifications are provided, the <code>EL_NAME</code>: specification is ignored by CS-MAP.</li>
+<li><code>ORG_LAT</code>: - Used to specify the origin latitude of the coordinate system. This value may be in any form acceptable to <code>CS_atof</code>, but is always in <strong>degrees</strong> relative to the equator. Use positive numbers for north latitude, negative numbers for south latitude.</li>
+<li><code>ORG_LNG</code>: - Used to specify the origin longitude of the coordinate system. This value may in any form acceptable to <code>CS_atof</code>, but always in degrees and is always relative to the Greenwich prime meridian. Use positive numbers for east longitude, negative numbers for west longitude.</li>
+<li><code>SCL_RED</code>: - Used to specify the scale reduction which may apply to a coordinate system. This value is ignored by the many projections which do not support this feature. The value may be specified as a decimal number, e.g. 0.9996, or as a ratio, e.g. 1:2500. A value of 1.0 or greater is unusual, but is accepted.</li>
+<li><code>ZERO_X</code>: - Used to specify the minimum X value which is to be considered non-zero. X coordinate values whose absolute value is less than the value specified here will be converted to hard zeros. This is used to suppress coordinate output such as 4.3472E-07 which can be of value in certain applications. A value of 0.0 is assumed if no specification is made.</li>
+<li><code>ZERO_Y</code>: - Used to specify the minimum Y value which is to be considered non-zero. Y coordinate values whose absolute value is less than the value specified here will be converted to hard zeros. This is used to suppress coordinate output such as 4.3472E-07 which can be of value in certain applications. A value of 0.0 is assumed if no specification is made.</li>
+<li><code>PARM1</code>: thru <code>PARM24</code>: - Used to specify the value of as many as 24 parameters which are specific to the particular projection in use. The use of these items varies from one projection to another. The value is always a real number. Where a longitude is specified, it must be given in degrees, relative to Greenwich, where west longitude is negative. Where a latitude is expected, it must be given in degrees relative to the equator where north latitude is positive and south latitude is negative. When an azimuth is specified, it must be given in degrees east of north (i.e. west of north would be negative). In all cases, the values are processed by <code>CS_atof</code>, and any form acceptable to that function may be used.</li>
+<li><code>X_OFF</code>: - Used to specify the value of the false easting of the coordinate system. A value of 0.0 is assumed if no specification is made. Any form acceptable to <code>CS_atof</code> may be used, including the use of the comma as a thousands separator.</li>
+<li><code>Y_OFF</code>: - Used to specify the value of the false northing of the coordinate system. A value of 0.0 is assumed if no specification is made. Any form acceptable to <code>CS_atof</code> may be used, including the use of the comma as a thousands separator.</li>
+<li><code>PROJ</code>: - Used to specify the code name of the projection upon which the coordinate system is based. This code value must be the value assigned to the desired projection in the <code>CSdataPJ</code> module, i.e. the projection table. This value is a character string of two to eight characters. Since projections can now have several variations, this code value is not the same as the five character code used to generate function and structure tag names. You will need to refer to the <code>CSdataPJ</code> module to determine the code name for a specific projection type.</li>
+<li><code>UNIT</code>: - Used to specify the name of the system unit for the coordinate system being defined. In the case of a normal cartesian coordinate system, this must be one of the supported unit of length names as defined in the <code>CSdataU</code> module. In the case of the Unity projection, i.e. the coordinate system being defined is latitude and longitude or a variation thereof, the unit name must be one of those names defined as a unit of angular measure in the <code>CSdataU</code> module.</li>
+<li><code>GROUP</code>: - Used to classify coordinate systems into groups to make selection of a coordinate system from the 5,000+ provided a bit easier. The supported group codes are defined in the <code>CSdata</code> module.</li>
+<li><code>SOURCE</code>: - Used to specify the source of the information used to define this coordinate system, 63 characters maximum. The term Authority is often used to describe this information.</li>
+<li><code>QUAD</code>: - Used to indicate the quadrant of the cartesian coordinates produced by the coordinate system. Zero or 1 indicate the normal right handed cartesian system where X increases to the east, and Y increases to the north. Quadrants are numbered counterclockwise, therefore a value of 2 specifies a cartesian system where X increases to the west, while Y increases north. A value of 3 indicates that X increases to the west and Y increases to the south. A value of 4 indicates that X increases to the east and Y increases to the south. A negative value will cause the axes to be swapped <strong>after</strong> the appropriate quadrant is applied. A value of 1 is assumed if this specification is absent.</li>
+<li><code>MIN_LNG</code>: - This parameter is optional and can be used to specify the minimum longitude of the useful range of the coordinate system. The value is given in degrees relative to Greenwich in any form acceptable to <code>CS_atof</code>. Positive values indicate east longitude, while negative values indicate west longitude. Its value should be normalized between -360 and +360 and when used must be algebraically less than the <strong>MAX_LNG</strong>: parameter.</li>
+<li><code>MAX_LNG</code>: - This parameter is optional and can be used to specify the maximum longitude of the useful range of the coordinate system. The value is given in degrees relative to Greenwich in any form acceptable to <code>CS_atof</code>. Positive values indicate east longitude, while negative values indicate west longitude. Its value should be normalized between -360 and +360 and when used must be algebraically greater than the <strong>MIN_LNG</strong>: parameter.</li>
+<li><code>MIN_LAT</code>: - This parameter is optional and can be used to specify the minimum latitude of the useful range of the coordinate system. The value is given in degrees relative to the equator in nay form acceptable to <code>CS_atof</code>. Positive values indicate north latitude while negative values indicate south latitude. Its value should be normalized between -90 and +90 and when used must be algebraically less than the <strong>MAX_LAT</strong>: parameter.</li>
+<li><code>MAX_LAT</code>: - This parameter is optional and can be used to specify the maximum latitude of the useful range of the coordinate system. The value is given in degrees relative to the equator in nay form acceptable to <code>CS_atof</code>. Positive values indicate north latitude while negative values indicate south latitude. Its value should be normalized between -90 and +90 and when used must be algebraically greater than the <strong>MIN_LAT</strong>: parameter.</li>
+<li><code>MIN_XX</code>: - This parameter is optional and can be used to specify the minimum X coordinate value of the useful range of the coordinate system. The value is given in system units and may be provided in any form acceptable to <code>CS_atof</code>. Its value must be algebraically less than the <strong>MAX_XX</strong>: parameter.</li>
+<li><code>MAX_XX</code>: - This parameter is optional and can be used to specify the maximum X coordinate value of the useful range of the coordinate system. The value is given in system units and may be provided in any form acceptable to <code>CS_atof</code>. Its value must be algebraically greater than the <strong>MIN_XX</strong>: parameter.</li>
+<li><code>MIN_YY</code>: - This parameter is optional and can be used to specify the minimum Y coordinate value of the useful range of the coordinate system. The value is given in system units and may be provided in any form acceptable to CS_atof. Its value must be algebraically less than the <strong>MAX_YY</strong>: parameter.</li>
+<li><code>MAX_YY</code>: - This parameter is optional and can be used to specify the maximum Y coordinate value of the useful range of the coordinate system. The value is given in system units and may be provided in any form acceptable to <code>CS_atof</code>. Its value must be algebraically greater than the <strong>MIN_YY</strong>: parameter.</li>
+</ol>
+<p>Other key words have been coded into the <code>CS_COMP</code> module but are reserved for future use by OSGeo contributors. They should not be used until their exact usage is defined in a future release.</p>
+<h3 id="datumsasc">Datums.asc</h3>
+<p>Records in the DATUMS.ASC source file consist of a line of text. Blank lines are ignored. All characters following an un-escaped pound sign character ('<strong>#</strong>') are ignored. The pound sign character can be escaped by the backslash ('\') or pound sign ('#') characters. Note that this is required to get a pound sign character into a datum description as these descriptions are not quoted. Leading and trailing whitespace on all records is also ignored. Records to be processed must start with one of the twelve keywords described below. The colon separator character is considered to be part of the keyword. The value of the keyword must follow the keyword on the same line of text, white space may be used to separate the keyword from its value.</p>
+<p>Each occurrence of the <code>DT_NAME</code>: keyword indicates the beginning of a new datum definition and the end of any previous datum definition. Otherwise, the order of the specifications is not important. However, to maintain your source in a comprehensible format, it is strongly recommended that each coordinate system definition begin with the <code>DT_NAME</code>: keyword and be terminated by one or more blank lines. No blank lines should appear within the definition itself. Further, while <code>CS_COMP</code> will sort the resulting binary Datum Dictionary file, maintaining the datums source file in sorted order makes it (relatively) easy to locate a definition should review or editing be required.</p>
+<p>Also note, that CS-MAP uses the Datum Key name as the base portion of a file name to access the Multiple Regression Transformation file. Therefore, a datum key name of more than 8 characters on a DOS based system may not work as expected.</p>
+<p>The twelve keywords and their required values are:</p>
+<ol>
+<li><code>DT_NAME</code>: - Used to specify the key name of the datum which is to be defined, 23 characters max. Refer to <code>CS_nampp</code> for conventions concerning key names. Since datum key names are used to link to the Multiple Regression Transformation files, datum key names longer than 8 characters may present problems on systems using the DOS FAT-16 file system (i.e. file name limited to 8 characters).</li>
+<li><code>DESC_NM</code>: - Used to specify the 63 character descriptive name of the datum being defined. ELLIPSOID: - Used to specify the key name of the ellipsoid definition upon which this datum is based.
+This name must be the key name of an entry in the Ellipsoid Dictionary.</li>
+<li><code>USE</code>: — This parameter is required and is used to specify the datum conversion technique to convert coordinates based on the datum being defined to WGS84 coordinates. There are, currently, ten valid values. They are:<ol>
+<li><code>MOLODENSKY</code> - Use the Molodensky transformation to convert to WGS84.</li>
+<li><code>GEOCENTRIC</code> - Use the geocentric translation method to convert to WGS84.</li>
+<li><code>BURSA</code> - Use the Bursa/Wolfe Seven Parameter Transformation to convert to WGS84.</li>
+<li><code>7PARAMETER</code> - Use the Seven Parameter Transformation to convert to WGS84, default to Molodensky if the necessary parameters are not present.</li>
+<li><code>MULREG</code> - Use the Multiple Regression Transformation formulas. If such a definition is not available, default to the Bursa/Wolfe Seven Parameter Transformation.</li>
+<li><code>NAD27</code> - Use the NADCON or Canadian National Transformation emulation as appropriateto convert to NAD83, and consider the result to be WGS84 coordinates.</li>
+<li>`NAD83 - Consider the coordinates to be WGS84 coordinates already, no shift is to be performed.</li>
+<li><code>WGS84</code> - The coordinates are WGS84 coordinates already, no datum shift is required.</li>
+<li><code>WGS72</code> - Use an internal formula to convert to WGS84.</li>
+<li><code>HPGN</code> - Use the NADCON algorithm, but use the HPGN data files, to shift the coordinates to NAD83, then consider the result to be WGS84 coordinates without any further datum shift.</li>
+</ol>
+</li>
+<li><code>DELTA_X</code>: - The X component of the vector from the geocenter of this datum to the geocenter of the WGS-84 datum in meters.</li>
+<li><code>DELTA_Y</code>: - The Y component of the vector from the geocenter of this datum to the geocenter of the WGS-84 datum in meters.</li>
+<li>`DELTA_Z : - The Z component of the vector from the geocenter of this datum to the geocenter of the WGS-84 datum in meters.</li>
+<li><code>BWSCALE</code>: - The scale of the Bursa/Wolfe or Seven Parameter Transformation, given as parts per million as is ordinarily the case for this transformation. This value can be positive or negative. The actual resulting scale factor used in the transformation is <code>1.0 + (BWSCALE * 1.0E-06)</code>.</li>
+<li><code>ROT_X</code>: - The rotation about the X axis, given in seconds of arc. Positive values indicate clockwise rotation of the right handed Helmert coordinate system.</li>
+<li><code>ROT_Y</code>: - The rotation about the Y axis given in seconds of arc. Positive values indicate clockwise rotation of the right handed Helmert coordinate system.</li>
+<li><code>ROT_Z</code>: - The rotation about the Z axis given in seconds of arc. Positive values indicate clockwise rotation of the right handed Helmert coordinate system.</li>
+<li><code>SOURCE</code>: - The source of information from which this definition was developed.</li>
+</ol>
+<p>Support of other keywords has been coded into the <code>CS_COMP</code> module; but use of these is reserved by
+OSGeo contributors for future use.</p>
+<h3 id="elipsoidasc">Elipsoid.asc</h3>
+<p>Records in the <code>ELIPSOID.ASC</code> source file consist of a line of text. Blank lines of text are ignored. All characters following an un-escaped pound sign character ('<strong>#</strong>') are ignored. The pound sign character can be escaped by the backslash ('\') or pound sign ('<strong>#</strong>') characters. Note that this is required to get a pound sign character into an ellipsoid description as these descriptions are not quoted. Leading and trailing white space on all records is also ignored. Records to be processed must start with one of the five keywords described below. The colon separator character is considered to be part of the keyword. The value of the keyword must follow the keyword on the same line of text, white space may be used to separate the keyword from its value.</p>
+<p>Each occurrence of the <code>EL_NAME</code>: keyword indicates the beginning of a new ellipsoid definition and the end of any previous ellipsoid definition. Otherwise, the order of the specifications is not important. However, to maintain your source in a comprehensible format, it is strongly recommended that each ellipsoid definition begin with the <code>EL_NAME</code>: keyword and be terminated by one or more blank lines. No blank lines should appear within the definition itself. Further, while <code>CS_COMP</code> will sort the resulting binary Ellipsoid Dictionary file, maintaining the ellipsoid definition source file in sorted order makes it (relatively) easy to locate a definition should review or editing be required.</p>
+<p>The six keywords and their required values are:</p>
+<ol>
+<li><code>EL_NAME</code>: - Used to specify the key name of the ellipsoid which is to be defined, 23 characters max.</li>
+<li><code>DESC_NM</code>: - Used to specify the 63 character descriptive name of the ellipsoid being defined.</li>
+<li><code>E_RAD</code>: - Used to specify the equatorial radius of the ellipsoid being defined. This radius <strong>must</strong> be specified in meters.</li>
+<li><code>P_RAD</code>: - Used to specify the polar radius of the ellipsoid being defined. This radius <strong>must</strong> be specified in meters. Use the same value given for <code>E_RAD</code>: to define a spherical ellipsoid.</li>
+<li><code>SOURCE</code>: - The source of the information used to make this definition.</li>
+<li><code>GROUP</code>: - This keyword is used to mark ellipsoid definitions as being for testing only. Additional
+groups may be established in the future.</li>
+</ol>
+<p><code>CS_COMP</code> will calculate the eccentricity and flattening from the provided radii.</p>
+<h3 id="mregasc">MReg.asc</h3>
+<p>Records in a <code>MREG.ASC</code> source file consist of a line of text. Blank lines are ignored. All characters following an un-escaped pound sign character ('<strong>#</strong>') are ignored. The pound sign character can be escaped by the backslash ('\') or pound sign ('<strong>#</strong>') characters. Note that this is required to get a pound sign character into a datum description as these descriptions are not quoted. Leading and trailing white space on all records is also ignored. Records to be processed must start with one of the 12 keywords described below. The colon separator character is considered to be part of the keyword. The value of the keyword must follow the keyword on the same line of text, white space may be used to separate the keyword from its value. In certain cases, the actual keyword contains numeric qualifiers which indicate the specific power series term the keyword applies to.</p>
+<p>Each occurrence of the <code>DATUM_NAME</code>: keyword indicates the beginning of a new multiple regression definition and the end of any previous multiple regression definition. The order of the specifications is not important. However, to maintain your source in a comprehensible format, it is strongly recommended that each multiple regression definition begin with the <code>DATUM_NAME</code>: keyword and be terminated by one or more blank lines. No blank lines should appear within the definition itself. Maintaining the multiple regression source file in sorted order makes it (relatively) easy to locate a definition should review or editing be required.</p>
+<p>Please note that a test case is required for each datum. A binary multiple regression coefficient data file will not be written unless the provided coefficients satisfy the provided test case. In the terminology used in this module, <code>LAMBDA</code> refers to longitude, and <code>PHI</code> refers to latitude. In preparation for future enhancements to CS-MAP, the <code>HEIGHT</code> coefficients are also required. If such are not currently available, simply use values which will produce a zero change in height to get around the required coefficient check.</p>
+<p>Values for the various keywords are given in a manner which is somewhat inconsistent with CS-MAP. However, the manner in which these values are specified is consistent with the conventions used in the source for most of this type of information: DMA TR-8350.2B.</p>
+<p>The 12 keywords and their required values are:</p>
+<ol>
+<li><code>DATUM_NAME</code>: - Used to specify the 23 character name of the datum for which the following coefficients represent the multiple regression coefficients. This is the name, with the .MRT extension appended, which is given to the coefficient data file. The association of a datum in the Datum Dictionary and the multiple regression data file is established by this name.</li>
+<li><code>TEST_LAMBDA</code>: - This keyword must be followed by the longitude of the test point. This longitude must be given in degrees, minutes, and seconds form, where west longitudes are given as values greater than 180. This entry is processed by a "%d %d %lf" <code>sscanf</code> format specification.</li>
+<li><code>TEST_PHI</code>: - This keyword must be followed by the latitude of the test point. This latitude must be given in degrees, minutes, and seconds form. Use a negative value to indicate south latitude. This entry is processed by a "%d %d %lf" <code>sscanf</code> format specification.</li>
+<li><code>DELTA_LAMBDA</code>: - This keyword must be followed by a single real value which represents the amount of longitude shift, in seconds of arc, which is expected at the provided test point.</li>
+<li><code>DELTA_PHI</code>: - This keyword must be followed by a single real value which represents the amount of latitude shift, in seconds of arc, which is expected at the provided test point.</li>
+<li><code>DELTA_HEIGHT</code>: - This keyword must be followed by a single real value which represents the amount of elevation shift, in meters, which is expected at the provided test point.</li>
+<li><code>LAMBDA_OFF</code>: - This keyword must be followed by the longitude offset used to normalize the coefficient formula. This value must be given in decimal degrees, use negative values for west longitude.</li>
+<li><code>PHI_OFF</code>: - This keyword must be followed by the latitude offset used to normalize the coefficient formula. This value must be given in decimal degrees, use negative values for west longitude.</li>
+<li><code>KK</code> - This keyword must be followed by the scale factor which is used to normalize the regression formula. This value is unitless.</li>
+<li><code>LAMBDA</code> - This keyword is used to identify a longitude formula coefficient. The keyword itself must be followed by a <code>Un</code> and a <code>Vn</code> sequence which indicates which coefficient follows. For example,
+      <code>LAMBDA U1 V2: 1.23456</code>
+indicates that 1.23456 is the coefficient for the longitude times latitude squared term in the regression formula. CS-MAP does not support terms with powers higher than 9.</li>
+<li><code>PHI</code> - This keyword is used to identify a latitude formula coefficient. The keyword itself must be followed by a <code>Un</code> and a <code>z</code> sequence which indicates which coefficient follows. For example,
+      <code>PHI U2 V1: 1.23456</code>
+indicates that 1.23456 is the coefficient for the longitude squared times latitude term in the regression formula. CS-MAP does not support terms with powers higher than 9.</li>
+<li><code>HEIGHT</code> - This keyword is used to identify an elevation formula coefficient. The keyword itself must be followed by a <code>Un</code> and a <code>z</code> sequence which indicates which coefficient follows. For example, <code>HEIGHT U0 V0: 1.23456</code> indicates that 1.23456 is the constant term in the regression formula. CS-MAP does not support terms with powers higher than 9.</li>
+</ol>
+<h2 id="test-test-program">TEST -- TEST program</h2>
+<p><code>TEST [/t12345...] [/dmap_dir] [/pnn] [/s] [/v] [/b] [test_data_file_name]</code></p>
+<p><code>TEST</code> will exercise most (but not all) of the functions included in the Coordinate System Mapping Package library. It can be used to verify the correct operation of the library in different environments, especially useful after compiling the library with a new or different C compiler or on a different platform.</p>
+<p>Since <code>TEST</code> relies on the test coordinate systems, datums, and ellipsoids, <code>CS_COMP</code> should be run with the <code>/t</code> option prior to using the <code>TEST</code> program.</p>
+<p>The program requires no arguments and normally expects the Ellipsoid Dictionary, the Datum Dictionary, the Coordinate System Dictionary, all Multiple Regression Transformation files, and Geodetic Data Catalogs to reside in their default locations and the file <code>TEST.DAT</code> to reside in the current working directory when executed. As a convenience, however, if a file named <code>COORDSYS</code> exists in the same directory from which <code>TEST</code> was executed, <code>TEST</code> will look to that directory for all supporting data files (except the <code>TEST.DAT</code> file). Alternatively, you may use the <code>/d</code> option to specify the directory you want <code>TEST</code> to look to for all supporting data files.</p>
+<p><code>TEST</code> will write all diagnostic messages to the console screen. On Windows 95/98/NT systems, you will need to use the MS-DOS option character (i.e. the forward slash) when specifying options.</p>
+<p>The provided test file, <code>TEST.DAT</code>, includes tests for the NAD27 to NAD83 datum conversion software. Therefore, the NADCON CONUS database file system must exist in the default data directory (see <code>CSdata(5CS)</code>) if these tests are to be successful. <code>TEST.DAT</code> also includes tests for the Canadian National Transformation. However, since OSGeo cannot distribute the data files associated with the Canadian National Transformation, these tests have been commented out. Canadian users may wish to uncomment these tests before using <code>TEST</code>.</p>
+<p>The command line options can be used to modify the operation of the test procedure. There are, currently, 19 separate tests performed by <code>TEST</code>, and each is designated with a number or a letter. Normally, <code>TEST</code> performs each of the first fifteen tests twice; first in forward numeric order, and then in reverse numeric order. Use the <code>/t</code> option to specify the specific test(s) you would like performed, and the order in which they are to be performed; one test per character (120 maximum).</p>
+<h3 id="individual-tests">Individual Tests</h3>
+<p>The nature of the 16 tests are:</p>
+<ol>
+<li><code>Test 1</code> - This test manipulates the Ellipsoid Dictionary using <code>CS_eldef</code>, <code>CS_elupd</code>, and <code>CS_eldel</code>.</li>
+<li><code>Test 2</code> - This test manipulates the Datums Dictionary using <code>CS_dtdef</code>, <code>CS_dtupd</code>, and <code>CS_dtdel</code>.</li>
+<li><code>Test 3</code> - This test manipulates the Coordinate System Dictionary using <code>CS_csdef</code>, <code>CS_csupd</code>, and <code>CS_csdel</code>.</li>
+<li><code>Test 4</code> - This test reads the file named <code>TEST.DAT</code> in the current directory and performs all of the conversions indicated, comparing the calculated results with the expected results recorded in the file. Of course, all discrepancies are reported to the user. You may specify an alternate file name (and directory) on the command line as the only positional argument. Each supported projection (except the Equidistant Cylindrical) has at least one test from a source other than CS-MAP in <code>TEST.DAT</code>. <code>TEST.DAT</code> also includes tests of datum conversions.</li>
+<li><code>Test 5</code> - Test 5 is a performance test. Normally, it records the amount of wall clock time necessary to make 300,000 conversions from "UTM27-13" to "CO83-C" using the High Performance Interface. Each conversion, therefore, includes an inverse Transverse Mercator, a NAD27 to NAD83 datum shift, and a forward Lambert Conformal Conic conversion. The test cycles through a list of 10 different coordinate pairs to add some reality to the test without distorting the numeric results with I/O time and/or system overhead. The elapsed time and the effective conversion rate are reported to the user. The <code>/p</code> option can be used to change the number of conversions in the test. For example, <code>/p45</code> would instruct <code>TEST</code> to perform 450,000 conversions whenever it performs test number 5.</li>
+<li><code>Test 6</code> - This test exercises the sorting and binary search functions of CS-MAP well beyond what would be experienced in normal use. This is accomplished by sorting the Coordinate System Dictionary into reverse order, binary searching the result, and resorting back into normal order. Finally, the order of the result is verified to be correct.</li>
+<li><code>Test 7</code> - This test exercises the <code>CS_csgrp</code> function and its supporting data.</li>
+<li><code>Test 8</code> - For each coordinate system in the Coordinate System Dictionary, this test will cause a coordinate to be converted in both the forward and inverse direction, as well as calculate the grid scale factor and the convergence angle. This test does not verify the accuracy of the results, but simply assures that every calculation function is exercised at least once. This test is somewhat superfluous now that Test C is available.</li>
+<li><code>Test 9</code> - This test exercises the functions which are used to calculate the power series solutions to the elliptical integrals used quite frequently in CS-MAP. It verifies the results against an outside source, and then compares forward and inverse calculations with each other. Please note that the external source for the correct values is limited in precision. Therefore the RMS discrepancy values may be alarmingly high. This is not the case, however, as indicated by the RMS discrepancies between forward and reverse calculations.</li>
+<li><code>Test A</code> - This test is identical to <code>test 4</code> in every way except it uses the High Level Interface function <code>CS_cnvrt</code> function for all conversions, thus testing the caching system for coordinate systems and datum conversions.</li>
+<li><code>Test B</code> - <code>Test B</code> tests the grid scale and convergence angle functions of all non-azimuthal projections. It uses an empirical technique to determine the grid scale and convergence angle of several random points within the useful range of each coordinate system. Azimuthal projections are skipped as the grid scale functions in these cases usually return scale factors along and normal to radials from the origin. An empirical means of calculating these scale factors eludes us at the current time.</li>
+<li><code>Test C</code> - This test tries very hard to produce a floating point exception. Very regular and randomly generated coordinate values, both geographic and cartesian, are generated and passed to all functions for each coordinate system in the coordinate system dictionary. The coordinates are, in most cases, completely outlandish numbers. Reporting floating point exceptions is very difficult, however, varying from compiler to compiler, system to system. However, CS-MAP has passed this test many times, on four different compilers.</li>
+<li><code>Test D</code> - This test tests the forward and inverse functions of each projection against each other. That is, random geographic coordinates within the useful range of each coordinate system are converted to cartesian form using the forward function, and then back to geographic using the inverse function. The results are then compared.</li>
+<li><code>Test E</code> - This test performs all the functions of Test D; but in this case the useful range of each of the projections is reduced by about one half, and thus enabling the error tolerance to be substantially reduced.</li>
+<li><code>Test F</code> - <code>Test F</code> tests the <code>CS_atof</code> and <code>CS_ftoa</code> functions in two phases. First, the standard system function <code>sprintf</code> is used to check the operation of the <code>CS_atof</code> function. In the second phase, <code>CS_atof</code> is used to test the <code>CS_ftoa</code> function. Neither phase, currently, tests the operation of the degree, minute. and/or second processing.</li>
+<li><code>Test G</code> - <code>Test G</code> is the coordinate creep test. Creep is defined as the number of millimeters a coordinate moves after repeated conversions from cartesian to geographic and back. <code>Test G</code> starts with a specific cartesian coordinate well within the useful range of a projection (but certainly not the natural origin) and converts the coordinate to geographic and back to cartesian 1,000 times. The distance between the original coordinate and the final result is calculated in millimeters to arrive at the creep value. A creep value greater than 10 is considered a failure. As of release 8.01, only the four most used projections are tested.</li>
+<li><code>Test S</code> - This is not really a test, per se, but a request that the test program switch its mode with regard to byte ordering. Thus, on an little endian processor such as Intel, the initial S in a test sequence will cause all binary data files to be swapped to big endian byte ordering and the <code>CS_bswap</code> module adjusted to cause the necessary byte swaps for the program to function. Thus, all byte swapping mechanisms can be tested on a single processor. Since the byte swap algorithm is its own inverse, a second occurrence of Test S reverses the effect of a previous execution. Note, including an odd number of S specifications in the test specification will leave all dictionary files in a swapped condition.</li>
+<li><code>Test V</code> - This is not a test. Occurrence of a <code>V</code> in the test string simply toggles the verbose flag. Thus, the verbose flag can be turned off , or on, for specific tests individually.</li>
+<li><code>Test Z</code> - This is not a test. When <code>TEST</code> encounters this character in the test sequence, it simply starts the test sequence again from the beginning. Thus, an infinite loop can be established. Typically, a <code>CONTROL-C</code> is used to terminate the program at some point.</li>
+</ol>
+<h3 id="test-data">Test Data</h3>
+<p>The <code>TEST.DAT</code> file specifies the actual coordinates which are to be converted and the expected results. TEST ignores empty lines in the file and lines which begin with the pound sign (<code>#</code>) character. Other records are expected to contain 8 fields separated by commas. The eight fields are expected to contain:</p>
+<ol>
+<li>Key name of the coordinate system of the coordinates specified in fields 2 and 3 of this line. That is, the name of the source coordinate system of the test conversion to be performed.</li>
+<li>&amp; 3. The X and then Y coordinates to be converted. These are expected in decimal form and are converted to binary using the <code>CS_atof</code> function of the CS-MAP library. Thus a variety of forms can be used.</li>
+<li>Key name of the coordinate system to which the coordinates given in fields 2 &amp; 3 are to be converted.</li>
+<li>&amp; 6. The expected X and Y coordinates of the conversion. Again, any form acceptable to <code>CS_atof</code> can be used.</li>
+<li>&amp; 8. The X and Y tolerance within which the converted values must agree with the expected values. If the converted values do not match the expected values within the specified tolerance, a diagnostic message is printed.</li>
+</ol>
+<p>Most conversion examples provided in <code>TEST.DAT</code> were obtained from reputable sources other than CS_MAP itself. Comments in the <code>TEST.DAT</code> file itself will indicate those specific tests which have not been verified with sources outside other than CS-MAP. The tolerance values given in the provided <code>TEST.DAT</code> file should not be considered as an indication of the accuracy or precision of the CS-MAP library. Rather, these values usually indicate the accuracy and precision of the source data from which the examples were obtained. Occasionally, the tolerance values do indicate the accuracy of the CS- MAP library; comments in the <code>TEST.DAT</code> file indicate when this is the case.</p>
+<h3 id="other-command-line-options">Other Command Line Options</h3>
+<p>Finally, the <code>/v</code> option can be used to cause <code>TEST</code> to operate in verbose mode. In this mode, <code>TEST</code> will report its progress through each test. In order to enable use of <code>TEST</code> as a Windows NT console application, <code>TEST</code> normally requires an acknowledgment when all tests are complete. The <code>/b</code> option can be used to suppress this feature. The <code>/s</code> option can be used to instruct <code>TEST</code> to start out in big endian mode; useful when testing the automatic byte swapping feature. Use the <code>/d</code> option to provide TEST with the full path to the directory containing the binary dictionary files it is to use. In the absence of this option, <code>TEST</code> uses the directory encoded into the <code>CSdata</code> module; except that if a valid <code>COORDSYS</code> file exists in the directory from which <code>TEST</code> was executed, that directory is used (MS-DOS only). Use the <code>/p</code> option to indicate the length of the performance test (i.e. <code>Test 5</code>). The value provided is multiplied by 10,000 to obtain the number of conversions which are performed and timed in order to produce the conversion rate.</p>
+<h3 id="bugs">BUGS</h3>
+<p><code>Test C</code>, the floating point exception test, does not exercise the datum conversion functions as yet.</p>
+<h3 id="mfctest-mfc-dialog-test">mfcTEST -- MFC Dialog TEST</h3>
+<p><code>mfcTEST</code></p>
+<p><code>mfcTest</code> is designed to test the MFC based GUI interactive dialogs provided with CS-MAP. The program is a simple dialog box MFC program which contains a menu. The single menu entry provides a selection for each of the primary dialogs provided. Note also, that the Test dialog can be very convenient for testing projection and datum shift calculations in an interactive environment (assuming you're using Windows, of course).</p>
+<p>This test program requires no arguments. All testing must be done in an interactive manner. Note, that each of the dialogs has a help button, and expects to find the help file in the same directory as the primary mapping data files. The help buttons are grayed out if the help file does not exist in this location.</p>
+<h3 id="dictionary-differences-program">Dictionary Differences Program</h3>
+<p>The source to Dictionary Difference program, <code>DictDiff</code>, is conveyed in a file named <code>CS_DictDiff.c</code>; the distribution places this file in the <code>Dictionary</code> directory. The main module calls functions named <code>CS_csDiff</code>, <code>CS_dtDiff</code>, and <code>CS_elDiff</code> which are defined in a module named <code>CSdictDiff.c</code> which the distribution deposits in the <code>Source</code> directory. These three functions are a part of the normal library build.</p>
+<p>Messages which report differences refer to "was" and "is". That is, messages report the previous value and the new value for all detected changes.</p>
+<p><code>DictDiff</code> is a command line program and can used in virtually any environment that supports a C compiler. It compares the binary forms of dictionary files and reports all differences detected. It requires exactly two positional arguments. The first command line argument is the directory containing the "was" or previous dictionary files. The second argument is the directory of the "is" or current dictionary files. All messages are reported to <code>stdout</code>, i.e. the terminal.</p>
+<p>In producing the differences, some tolerance numbers had to be chosen to delineate what a change consists of. You should examine the source code in file named <code>CSdiffDict.c</code> to verify that you are comfortable with the tolerance values that were chosen. The tolerance values are manipulated throughout the program, but the variable name <code>okValue</code> is consistent.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

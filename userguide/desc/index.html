@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Descriptions/Discussions - CS-Map</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">CS-Map</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                    <li >
+                        <a href="../../installation/">Installation</a>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../releasenotes/">Release Notes</a>
+</li>
+                            
+<li class="active">
+    <a href="./">Descriptions/Discussions</a>
+</li>
+                            
+<li >
+    <a href="../executables/">Executables</a>
+</li>
+                            
+<li >
+    <a href="../libraryfunctions/">Library Functions</a>
+</li>
+                            
+<li >
+    <a href="../cartographicprojections/">Cartographic Projection Functions</a>
+</li>
+                            
+<li >
+    <a href="../datamodules/">Data Modules</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../license/">License</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../releasenotes/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../executables/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#cs-map-overview">CS-Map Overview</a></li>
+            <li><a href="#initialization">Initialization</a></li>
+            <li><a href="#high-level-interface">High Level Interface</a></li>
+            <li><a href="#coordinate-system-dictionary">Coordinate System Dictionary</a></li>
+            <li><a href="#other-interfaces">Other Interfaces</a></li>
+            <li><a href="#other-dictionaries">Other Dictionaries</a></li>
+        <li class="main "><a href="#cartographic-vs-geodetic-referencing-of-coordinate-systems">Cartographic vs. Geodetic Referencing of Coordinate Systems</a></li>
+        <li class="main "><a href="#latitudes-and-longitudes">Latitudes and Longitudes</a></li>
+        <li class="main "><a href="#coordinate-arrays">Coordinate Arrays</a></li>
+        <li class="main "><a href="#selected-source-code">Selected Source Code</a></li>
+        <li class="main "><a href="#naming-conventions">Naming Conventions</a></li>
+        <li class="main "><a href="#name-collisions">Name Collisions</a></li>
+            <li><a href="#function-names">Function Names</a></li>
+            <li><a href="#structure-tags">Structure Tags</a></li>
+            <li><a href="#global-variable-names">Global Variable Names</a></li>
+            <li><a href="#manifest-contents">Manifest contents</a></li>
+            <li><a href="#naming-convention-examples">Naming Convention Examples</a></li>
+        <li class="main "><a href="#projection-code-names">Projection Code Names</a></li>
+        <li class="main "><a href="#high-level-interface_1">High Level Interface</a></li>
+            <li><a href="#basic-coordinate-conversion-cs_cnvrt">Basic Coordinate Conversion -- CS_cnvrt</a></li>
+            <li><a href="#grid-scale-factor-cs_scale">Grid Scale Factor -- CS_scale</a></li>
+            <li><a href="#convergence-angle-cs_cnvrg">Convergence Angle -- CS_cnvrg</a></li>
+            <li><a href="#data-directory-cs_altdr">Data Directory -- CS_altdr</a></li>
+            <li><a href="#recover-system-resources-cs_recvr">Recover System Resources -- CS_recvr</a></li>
+            <li><a href="#get-error-message-text-cs_errmsg">Get Error Message Text -- CS_errmsg</a></li>
+            <li><a href="#compute-azimuth-and-distance-cs_llazdd">Compute Azimuth and Distance -- CS_llazdd</a></li>
+            <li><a href="#unit-lookup-cs_unitlu">Unit Lookup -- CS_unitlu</a></li>
+            <li><a href="#coordinate-system-name-verification-cs_csisvalid">Coordinate System Name Verification – CS_csIsValid</a></li>
+            <li><a href="#datum-name-verification-cs_dtisvalid">Datum Name Verification – CS_dtIsValid</a></li>
+            <li><a href="#ellipsoid-name-verification-cs_elisvalid">Ellipsoid Name Verification – CS_elIsValid</a></li>
+        <li class="main "><a href="#low-level-functions">Low Level Functions</a></li>
+            <li><a href="#cartographic-projections">Cartographic Projections</a></li>
+            <li><a href="#definition-check-functions">Definition Check Functions</a></li>
+            <li><a href="#setup-function">Setup Function</a></li>
+            <li><a href="#forward-functions">Forward Functions</a></li>
+            <li><a href="#inverse-functions">Inverse Functions</a></li>
+            <li><a href="#scale-funcions">Scale Funcions</a></li>
+            <li><a href="#convergence-functions">Convergence Functions</a></li>
+            <li><a href="#geographic-limits-check-functions">Geographic Limits Check Functions</a></li>
+            <li><a href="#cartographic-limits-check-functions">Cartographic Limits Check Functions</a></li>
+        <li class="main "><a href="#geodetic-datum-shift-functions">Geodetic Datum Shift Functions</a></li>
+            <li><a href="#nadcon-emulation-functions">NADCON Emulation Functions</a></li>
+            <li><a href="#datum-conversion-functions">Datum Conversion Functions</a></li>
+        <li class="main "><a href="#general-utility-functions">General Utility Functions</a></li>
+            <li><a href="#geoid-height-functions">GEOID Height Functions</a></li>
+            <li><a href="#geocentric-coordinates">Geocentric Coordinates</a></li>
+            <li><a href="#mgrs-implementation">MGRS Implementation</a></li>
+            <li><a href="#forwardinverse-functions">Forward/Inverse Functions</a></li>
+            <li><a href="#error-handling">Error Handling</a></li>
+            <li><a href="#exception">Exception</a></li>
+        <li class="main "><a href="#data-structures">Data Structures</a></li>
+            <li><a href="#ellipsoid-definition-structure">Ellipsoid Definition Structure</a></li>
+            <li><a href="#datum-definition-structure">Datum Definition Structure</a></li>
+            <li><a href="#datum-composite-structure">Datum Composite Structure</a></li>
+            <li><a href="#coordinate-system-definition-structure">Coordinate System Definition Structure</a></li>
+            <li><a href="#preprocessed-projection-structures">Preprocessed Projection Structures</a></li>
+            <li><a href="#coordinate-system-parameter-structure">Coordinate System Parameter Structure</a></li>
+            <li><a href="#projection-name-table-structure">Projection Name Table Structure</a></li>
+            <li><a href="#datum-shift-definition-structure">Datum Shift Definition Structure</a></li>
+        <li class="main "><a href="#the-data-dictionaries">The Data Dictionaries</a></li>
+            <li><a href="#the-coordinate-system-dictionary">The Coordinate System Dictionary</a></li>
+            <li><a href="#the-datum-dictionary">The Datum Dictionary</a></li>
+            <li><a href="#the-ellipsoid-dictionary">The Ellipsoid Dictionary</a></li>
+            <li><a href="#dictionary-encryption">Dictionary Encryption</a></li>
+            <li><a href="#dictionary-definition-protection">Dictionary Definition Protection</a></li>
+            <li><a href="#byte-ordering">Byte Ordering</a></li>
+            <li><a href="#dictionary-compiler">Dictionary Compiler</a></li>
+            <li><a href="#multiple-regression-datum-transformation-files">Multiple Regression Datum Transformation Files</a></li>
+            <li><a href="#default-datums-ellipsoids-and-units">Default Datums, Ellipsoids, and Units</a></li>
+        <li class="main "><a href="#high-performance-interface">High Performance Interface</a></li>
+            <li><a href="#the-functions">The Functions</a></li>
+            <li><a href="#coordinate-system-to-coordinate-system">Coordinate System to Coordinate System</a></li>
+            <li><a href="#the-ll-coordinate-system">The LL Coordinate System</a></li>
+            <li><a href="#multiple-conversions">Multiple Conversions</a></li>
+            <li><a href="#adding-datum-conversions-to-the-interface">Adding Datum Conversions to the Interface</a></li>
+            <li><a href="#geodetically-referenced-coordinate-systems">Geodetically Referenced Coordinate Systems</a></li>
+            <li><a href="#cartographically-referenced-coordinate-systems">Cartographically Referenced Coordinate Systems</a></li>
+            <li><a href="#cartographic-projections_1">Cartographic Projections</a></li>
+        <li class="main "><a href="#program-environments">Program Environments</a></li>
+            <li><a href="#multi-threaded-programming">Multi-Threaded Programming</a></li>
+            <li><a href="#gui-considerations">GUI Considerations</a></li>
+        <li class="main "><a href="#customization">Customization</a></li>
+            <li><a href="#tuning-the-protection-system">Tuning the Protection System</a></li>
+            <li><a href="#turning-of-unique-names">Turning of Unique Names</a></li>
+            <li><a href="#eliminating-a-projection">Eliminating a Projection</a></li>
+            <li><a href="#data-dictionary-directory">Data Dictionary Directory</a></li>
+            <li><a href="#dictionary-file-names">Dictionary File Names</a></li>
+            <li><a href="#adding-units">Adding Units</a></li>
+            <li><a href="#language-translation">Language Translation</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="cs-map-overview">CS-Map Overview</h1>
+<p>As one programmer to another, I present this Overview Section as the manual for people who, like
+myself, don't read the manual (until something doesn't work).  This section contains all of the
+information you'll need to get started quickly, and the specific information you'll need to stay out of
+trouble.  Please read this section before attempting to use CS-MAP.  Refer to the remainder of the
+guide as necessary.</p>
+<p>Deferring the details to subsequent sections, it is helpful to consider CS-MAP as consisting of a
+Coordinate System Dictionary and a set of functions which use the information in the dictionary to
+accomplish the desired task.  All coordinate systems used by CS-MAP reside in the dictionary and are
+given a name, which we refer to as a key name, much like we give names to files.  CS-MAP, then,
+performs coordinate system conversion based on the names of the coordinate systems provided.  This
+technique eliminates the need to have your users process through a long list of parameters which they
+(usually) don't understand whenever a conversion is necessary.  All they need provide are the names of
+the appropriate coordinate systems.</p>
+<h2 id="initialization">Initialization</h2>
+<p>CS-MAP needs to be initialized.  Initialization consists of providing CS-MAP with the directory in
+which the dictionary files reside.  This is accomplished by calling the <code>CS_altdr</code> function.  This function
+takes a single argument, a character string which is the path to the appropriate directory.  Calling
+<code>CS_altdr</code> with a <code>NULL</code> pointer as an argument will cause the value of the environmental variable named
+<code>CS_MAP_DIR</code> to be used as the data directory.  <code>CS_altdr</code> returns and integer zero if the initialization was
+successful, -1 if not.</p>
+<p>This was not a requirement in the past, thus the rather strange name for this initialization function.</p>
+<p><strong>Important Note 1</strong>: Whenever CS-MAP needs to go to disk to find something, that something often needs
+to reside in the directory specified by this function call.</p>
+<p><strong>Important Note 2</strong>: Failing to call this function successfully prior to using CS-MAP almost always results
+in an memory addressing fault.</p>
+<h2 id="high-level-interface">High Level Interface</h2>
+<p>Given the name of the source and target coordinate systems, conversion of coordinate data from one to
+the other is as simple as a single function call.  The following example would cause the coordinate in
+the array of three doubles named coordinate to be converted from NAD27 based UTM Zone 13
+coordinates to NAD83 based Colorado State Plane, Central Zone, coordinates:</p>
+<pre><code class="c">status = CS_cnvrt(&quot;UTM27-13&quot;,&quot;CO83-C&quot;, coordinate);
+</code></pre>
+
+<p>It's that simple.  The simplicity of this hides several important features.  First, note that the datum shift
+implied by the coordinate systems, NAD27 to NAD83 in this case, is automatically applied.  Second,
+you would hardly ever code an application with hard coded coordinate system names as was done in
+this example.  Simple character arrays that are passed by argument, providing data entered by the user
+from a choice list, or providing data obtained from a database, whatever, all work just fine.  These are
+just very simple, case insensitive, null terminated strings.  Third, the application programmer has no
+need to know which projections, datums, and/or ellipsoids are involved.  Fourth, the source and/or
+target coordinate systems could just as easily be Latitude and Longitude coordinates, based on any of
+several units, and referenced to any prime meridian.</p>
+<p>Similarly, should your application need to know the grid scale factor at a specific point, all you need
+code is a function call similar to the following:</p>
+<pre><code class="c">grid_scale = CS_scale(&quot;CO83-C&quot;, coordinate);
+</code></pre>
+
+<p>Coordinate in this case must be geographic, i.e. the latitude and longitude of the point at which the grid
+scale is to be determined.  Again, it is unlikely that the name of the coordinate system would be hard
+coded as was done in this example.  Need the convergence angle?  You have probably figured it out
+already:</p>
+<pre><code class="c">convergence = CS_cnvrg(&quot;CO83-C&quot;, coordinate);
+</code></pre>
+
+<p>Concerned about performance?  Originally, the above interface was designed as a means by which
+applications written in languages other than 'C' could access CS-MAP; i.e. no pointers required.
+However, due to its design and the high speed processors with on-board caches which are common
+today, this interface provides amazing levels of performance.  It is now the interface which we
+recommend for all simple applications.</p>
+<p>Several other features are made available in what we call the High Level Interface; that is features
+which are available without the use of pointers.  The details of all such features are provided in the
+topic named High Level Interface.</p>
+<h2 id="coordinate-system-dictionary">Coordinate System Dictionary</h2>
+<p>The coordinate system is the heart of the CS-MAP package.  The CS-MAP distribution includes the
+definition of more than 5,000 coordinate systems.  Each definition includes the projection to be used,
+the projection parameters, the datum or ellipsoid to which the coordinate system is referenced, and the
+unit to be used.  Admittedly, many of the coordinate system definitions provided are very similar to
+others, differing only in the system unit or datum referenced. However, we believe your users will
+appreciate the simplicity of having only to remember and enter an easy to remember name or two to
+get what they need.  The default feature described elsewhere in this manual can be used in those cases
+where this design becomes inconvenient.</p>
+<p>Coordinate system definitions are stored in a file we refer to as the Coordinate System Dictionary.
+This file is a simple fixed length record file containing binary data.  It is maintained in sorted order by
+coordinate system name and is accessed using a binary search technique.  This provides portability to
+almost any environment without having to license any other software.  Your application will need to
+provide the CS-MAP functions with the location of the directory in which the Coordinate System
+Dictionary resides (see <code>CS_altdr</code>).  Once CS-MAP locates the Coordinate System Dictionary, it expects
+to find all most other data files in the same directory.</p>
+<p>CS-MAP distributions include an ASCII file which defines all of the coordinate systems included in
+the distribution. This file is usually committed to version control and treated has a highly valuable
+source file.  A compiler included with CS-MAP can convert this ASCII file into the binary form used
+by the system.</p>
+<p><strong>Important Note</strong>: The first four bytes of a binary coordinate system dictionary file is a "magic number".
+This sequence of bytes are used to identify that the file is indeed a coordinate system dictionary file.
+The revision level of the dictionary format is also encoded into this "magic number".</p>
+<h2 id="other-interfaces">Other Interfaces</h2>
+<p>It is probably obvious to you that the interface described above can not be the most efficient interface
+possible. Applications which require the absolute highest performance, may want to use the High
+Performance Interface.  This interface requires the knowledge of as many as ten functions.  It also
+requires the use of pointers to structures and, therefore, is usable only from languages such as C, C++,
+or Pascal which can handle pointers appropriately.  It does, however, provide the application
+programmer with the highest performance level possible, while still insulating your application from
+changes to the internals of CS-MAP.  Using this interface, performance levels of 1,000,000 non-trivial
+conversions per second are routinely observed.</p>
+<p>Applications which are hard coded around specific projections can use the Low Level Interface to
+obtain high performance solutions which do not require a Coordinate System Dictionary or, for that
+matter, any other supporting data.  That is, at this level, the application programmer has access to the
+specific code for each projection.  Similarly, applications can use the low level interface to access any
+of the 12 or so datum shift techniques supported by the library.</p>
+<p>The High Performance and Low Level Interfaces are described in detail in the remaining chapters of
+this guide.</p>
+<h2 id="other-dictionaries">Other Dictionaries</h2>
+<p>Like coordinate systems, datums are many and varied.  (The term datum is widely used to refer to a
+Horizontal Geodetic Reference System.  Although this usage is not technically incorrect, we will go
+along with the crowd and use the simpler term.)  While several datum conversion techniques are hard
+coded into CS-MAP, the actual definitions are not.  As you might suspect, there exists a Datum
+Dictionary which contains the definition of all datums known to the system and provides a name by
+which they can be accessed (i.e. key name).  Coordinate systems are referenced to a datum by
+including the datum key name in the coordinate system definition.  Thus, when converting from one
+coordinate system to another, CS-MAP can automatically activate the appropriate datum shifts
+necessary by examining the datum references in the coordinate system definitions.  While full support
+is provided, application programmers rarely, if ever, access the Datum Dictionary directly.</p>
+<p>All datum definitions <strong>must</strong> include a reference to an ellipsoid; coordinate system definitions can
+include a reference to an ellipsoid.  Again, there are many ellipsoid definitions and these are not hard
+coded into CS-MAP.  You guessed it!  There is an Ellipsoid Dictionary:</p>
+<ul>
+<li>that carries the definitions of all ellipsoids,</li>
+<li>that assigns each ellipsoid definition a name (i.e. a key name),</li>
+<li>to which CS-MAP provides a full set of access functions; and</li>
+<li>that the application programmer rarely, if ever, accesses directly.</li>
+</ul>
+<p><strong>Important Note</strong>: Datum and Ellipsoid dictionaries include a "magic number" as the first four bytes of
+the binary file.  These "magic numbers" identify the type of the file in addition to the file format
+revision level.</p>
+<h1 id="cartographic-vs-geodetic-referencing-of-coordinate-systems">Cartographic vs. Geodetic Referencing of Coordinate Systems</h1>
+<p>While coordinate system definitions can be referenced to a datum, they can also be referenced directly
+to an ellipsoid. In this manual, we will use the term <em>geodetically referenced</em> coordinate system to refer
+to the former case, and <em>cartographically referenced</em> coordinate system to refer to the latter.  When both
+the source and target coordinate systems involved in a conversion are geodetically referenced, CS-
+MAP can automatically perform the necessary datum shift without any additional information required
+from the user, or any additional code required by the application programmer.  When either or both
+coordinate system definitions are cartographically referenced, the datum shift feature is effectively
+disabled.  That is, CS-MAP cannot calculate a datum shift it does not know both the source and target
+datums.</p>
+<p>In many cases, the datums upon which coordinates are based are known.  In these cases, coordinate
+system definitions are usually geodetically referenced and CS-MAP can, therefore, include the
+appropriate datum shift automatically whenever appropriate.  In other cases, the datum upon which a
+coordinate system is based is not known and the coordinate system should be cartographically
+referenced to an ellipsoid.  CS-MAP's automatic datum shift feature is then disabled whenever this
+coordinate system is involved in a coordinate conversion.  Therefore, while the individual maintaining
+the coordinate system definitions may need to understand the distinctions between geodetic and
+cartographic references, the typical end user is not usually concerned.</p>
+<p>Cartographically referenced coordinate systems can be a great convenience to both user and application
+programmer.  For example, the LL coordinate system which you will find in the CS-MAP distribution is
+cartographically referenced to the WGS84 <strong>ellipsoid (not the WGS84 datum)</strong>.  This means that using the
+LL coordinate system as the target in any conversion produces geographic coordinates which are always
+based on the same datum as the source coordinate system.  This is often very convenient indeed.</p>
+<h1 id="latitudes-and-longitudes">Latitudes and Longitudes</h1>
+<p>Coordinate systems can be defined to be geographic, i.e. consist of latitude and longitude coordinates.
+This is achieved through the use of a pseudo projection we call the Unity projection.  The Unity
+Projection is simply a projection which does nothing, the results being geographic coordinates.  Since
+the definitions of a latitude and longitude coordinate systems are included in the Coordinate System
+Dictionary, they can, and indeed do, have datum references, origin longitudes, and units specifications.
+Thus, several latitude and longitude definitions appear in the coordinate system dictionary.  As with
+any other coordinate system definition, these definitions are either geodetically or cartographically
+referenced, have a unit specification, and have an origin longitude.  In this context, the units are the
+angular units of measure to be used (e.g. degrees, minutes, seconds, grads, etc.) and the origin
+longitude is the prime meridian (i.e. Greenwich, Meridian of Paris, etc.).  Thus, latitude and longitude
+coordinates are fully supported by the system, and the application programmer is not required to write
+any special code to process them.</p>
+<p>The distribution Coordinate System Dictionary contains a geographic coordinate system simply named
+<strong>LL</strong>.  This is a cartographically referenced latitude and longitude coordinate system which is referenced
+to the Greenwich Prime Meridian, using units of degrees.  Thus, <strong>LL</strong> should be considered to be the
+generic latitude and longitude coordinate system, and can be used as such.  For example, to obtain the
+grid scale factor of a coordinate system using cartesian coordinates (as opposed to the geographic
+coordinates required by the CS_scale function) one could simply write as follows:</p>
+<pre><code class="c">status = CS_cnvrt(&quot;CO83-C&quot;, &quot;LL&quot;, coordinate);
+grid_scale = CS_scale(&quot;CO83-C&quot;, coordinate);
+</code></pre>
+
+<p>Note, that due to the generic nature of the <strong>LL</strong> coordinate system (i.e. cartographically referenced,
+thereby disabling datum shifts), the intermediary latitude and longitude results will be always be based
+on the same datum as that of the source coordinate system.  Also, the <strong>LL</strong> coordinate system is defined
+to match the specific definition of latitude and longitude used internally within CS-MAP.  That is, in
+those few cases where CS-MAP specifically requires a coordinate in terms of latitude and longitude:</p>
+<ol>
+<li>the coordinates must be in degrees,</li>
+<li>referenced to the Greenwich Prime Meridian, and</li>
+<li>west longitude and south latitude must be negative values.</li>
+</ol>
+<h1 id="coordinate-arrays">Coordinate Arrays</h1>
+<p>As is common in the industry, cartesian coordinates are passed in arrays of doubles.  The X coordinate
+is always the first element in the array, the Y coordinate being the second element, and the Z
+coordinate being the third element.  When performing a two dimensional conversion, CS-MAP often
+ignores the Z coordinate.  Obviously, when performing a three dimensional conversion, a valid Z
+coordinate is required.  To simplify use of the library, all coordinate arrays should be dimensioned at
+three.  Typically, a Z value of zero is provided when performing a two dimensional conversion.</p>
+<p>In the case of cartesian coordinates, coordinates must be ordered as described above; specifically X, Y,
+and then Z.  While it is common usage to refer to geographic coordinates as latitude and longitude, and
+it is also common to give the latitude first and the longitude second, CS-MAP requires that the first
+element of a geographic coordinate be the longitude, the second element be the latitude, and the third
+element the height.  While negative values are usually used to indicate west longitude and south
+latitude, geographic coordinate systems can be defined where the opposite sign convention is used.</p>
+<p>It is important to note that there is a significant difference between coordinates returned to the user
+which may just happen to be geographic, and the geographic coordinates required by certain CS-MAP
+functions.  The conventions used in "user" coordinates are determined by the coordinate system
+definition.  Thus, in a "user" geographic coordinate, as returned by CS_cs2ll for example, the prime
+meridian may be other than Greenwich and the unit other than degrees.  Users can also define
+geographic coordinate systems where west longitude is positive and/or the order of the coordinates is
+swapped.</p>
+<p>However, wherever a CS-MAP function specifically requires a geographic coordinate, the values
+provided <strong>must</strong>:</p>
+<ol>
+<li>be given in degrees,</li>
+<li>be referenced to the Greenwich Prime Meridian, and</li>
+<li>west longitude and south latitude be given as negative values.</li>
+</ol>
+<h1 id="selected-source-code">Selected Source Code</h1>
+<p>For historical reasons, most all global data definitions are coded in distinct modules.  This has been
+very convenient over the years.  Many of the features of CS-MAP can be adjusted to better fit into your
+application by tweaking one of these source modules.  Four of these modules are worth mention in this
+overview: <code>CSdata</code>, <code>CSdataU</code>, <code>CSdataPJ</code>, and <code>CS_error</code>.  In <code>CSdata</code> you will find the definition of many
+global constants used throughout CS-MAP.  While you obviously don't want to change the definition
+of π, there are several other aspects of CS-MAP which are controlled by global variables defined in
+this module.  Make the modifications which you need, recompile, and re-link your application.</p>
+<p><code>CSdataU</code> contains the unit table which CS-MAP uses.  To add (or remove) a unit, simply modify the
+table and recompile.</p>
+<p><code>CSdataPJ</code> contains CS-MAP's projection table.  To remove a projection (to reduce the size of your
+executable, for example), simply remove the projection's entry in the table an all object code references
+to the projection will be removed.</p>
+<p><code>CS_error</code> contains the text of all error messages.</p>
+<p>All data which may be language related is contained in these four modules.  To translate the entire
+system to another language, only these four modules, and perhaps the help file, need attention.</p>
+<h1 id="naming-conventions">Naming Conventions</h1>
+<p>Originally, the names of global variables, manifest constants (i.e. defines), structures, and functions
+used in CS-MAP adhered to a very definitive naming convention.  Much of the library still adheres to
+this convention.  This convention was developed with three purposes in mind.  First, and foremost, it is
+necessary to insure that the probability of a name collision with existing application code is kept to a
+minimum.  Second, to enable programmers to quickly determine the type of entity being referenced by
+a name and to quickly determine where the definition of such can be found.  Third, provide an efficient
+means by which the libraries and other components of CS-MAP can be efficiently maintained and
+manufactured.</p>
+<p>In later developments of the library, such as the inclusion of some C++ elements and the planned
+porting of the entire library to C++, there are several modules no longer adhere to the original naming
+convention.</p>
+<h1 id="name-collisions">Name Collisions</h1>
+<p>All names whose scope extends outside the specific file in which is it is defined will start with the two
+character sequence <code>CS</code>.  As described below, this initial sequence may be in upper or lower case.
+Additionally, every such name will contain at least one upper case character and at least one lower case
+character.  In this way, the possibility of a CS-MAP global name being the same as a name already
+used in your application is virtually nil.</p>
+<h2 id="function-names">Function Names</h2>
+<p>All function names begin with an upper case <code>CS</code> sequence.  If the function is expected to be accessed
+by modules outside of the CS-MAP library in normal use, the initial CS sequence is followed by an
+underscore character.  The remainder of the function name follows, the first of which will be lower
+case if it is an alphabetic character.</p>
+<h2 id="structure-tags">Structure Tags</h2>
+<p>Structure tags begin with a lower case cs sequence.  If the structure is expected to be accessed by
+modules outside of the CS-MAP library in normal use, the initial sequence is followed by an
+underscore character.  The remainder of the structure tag follows, the first character of which will
+always be uppercase.  Finally, the last character of all structure tags will be the underscore character.</p>
+<h2 id="global-variable-names">Global Variable Names</h2>
+<p>Global variable names begin with a lower case cs sequence.  If the global variable is expected to be
+accessed by modules outside of the CS-MAP library in normal use, the initial sequence is followed by
+an underscore character.  The remainder of the global variable name follows, the first character of
+which will always be an upper case letter.  A global variable name will never end with the underscore
+character.  A global variable which is a definition of a structure, or a pointer to same, will usually have
+the same name as the structure tag, sans the trailing underscore.</p>
+<h2 id="manifest-contents">Manifest contents</h2>
+<p>Manifest constant names, e.g. include file define's, begin with a lower case cs sequence.  If the constant
+being defined is expected to be used by modules outside of the CS-MAP library, the initial sequence is
+followed by an underscore character.  The remainder of the constant name follows and will be all upper
+case.</p>
+<h2 id="naming-convention-examples">Naming Convention Examples</h2>
+<p>The table below shows several examples of the naming convention;</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CS_csloc</code></td>
+<td>Function, external</td>
+<td>Name of a function expected to be called from outside of the CS-MAP library.</td>
+</tr>
+<tr>
+<td><code>CSnad283</code></td>
+<td>Function, internal</td>
+<td>Name of a function not expected to be called from outside of the CS-MAP library.</td>
+</tr>
+<tr>
+<td><code>cs_Csdef_</code></td>
+<td>Structure tag, external</td>
+<td>Structure tag name for a structure expected to be referenced by modules outside of the CS-MAP library.</td>
+</tr>
+<tr>
+<td><code>csNaddir_</code></td>
+<td>Structure tag, internal</td>
+<td>Structure tag name for a structure not expected to be accessed outside of the CS-MAP library.</td>
+</tr>
+<tr>
+<td><code>cs_Dir</code></td>
+<td>Global Variable, external</td>
+<td>Global variable name expected to be accessed outside of the CS-MAP library</td>
+</tr>
+<tr>
+<td><code>csErrlng</code></td>
+<td>Global Variable, internal</td>
+<td>Global variable name not expected to be accessed outside of the CS-MAP library.</td>
+</tr>
+<tr>
+<td><code>cs_NO_MEM</code></td>
+<td>Manifest Constant, external</td>
+<td>Manifest constant expected to be referenced by modules outside of the CS-MAP library.</td>
+</tr>
+<tr>
+<td><code>csGRF_MAX_ACTIVE</code></td>
+<td>Manifest Constant, internal</td>
+<td>Manifest constant not expected to be referenced by modules outside of the CS-MAP library.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="projection-code-names">Projection Code Names</h1>
+<p>Each of the thirty eight projections has a five character code name which is used in all structure tags
+and function names associated with the specific projection.  The table below lists each projection, the five
+character code value, the structure tag name, and setup function name associated with each as examples
+of how this code value is used to identify the projection each is associated with.  All code elements
+which are specifically related to specific projection are named in a similar manner.</p>
+<table>
+<thead>
+<tr>
+<th>Projection</th>
+<th>Code</th>
+<th>Structure Tag</th>
+<th>Setup Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transverse Mercator</td>
+<td><code>trmer</code></td>
+<td><code>cs_Trmer_</code></td>
+<td><code>CStrmerS</code></td>
+</tr>
+<tr>
+<td>Lambert Conformal Conic</td>
+<td><code>lmbrt</code></td>
+<td><code>cs_Lmbrt_</code></td>
+<td><code>CSlmbrtS</code></td>
+</tr>
+<tr>
+<td>Hotine Oblique Mercator</td>
+<td><code>oblqm</code></td>
+<td><code>cs_Oblqm_</code></td>
+<td><code>CSoblqmS</code></td>
+</tr>
+<tr>
+<td>Alber's Equal Area</td>
+<td><code>alber</code></td>
+<td><code>cs_Alber_</code></td>
+<td><code>CSalberS</code></td>
+</tr>
+<tr>
+<td>Mercator</td>
+<td><code>mrcat</code></td>
+<td><code>cs_Mrcat_</code></td>
+<td><code>CSmrcatS</code></td>
+</tr>
+<tr>
+<td>Miller Cylindrical</td>
+<td><code>millr</code></td>
+<td><code>cs_Millr_</code></td>
+<td><code>CSmillrS</code></td>
+</tr>
+<tr>
+<td>Lambert Equidistant Azimuthal</td>
+<td><code>azmed</code></td>
+<td><code>cs_Azmed_</code></td>
+<td><code>CSazmedS</code></td>
+</tr>
+<tr>
+<td>Lambert Equal Area Azimuthal</td>
+<td><code>azmea</code></td>
+<td><code>cs_Azmea_</code></td>
+<td><code>CSazmeaS</code></td>
+</tr>
+<tr>
+<td>Polar Stereographic</td>
+<td><code>pstro</code></td>
+<td><code>cs_Pstro_</code></td>
+<td><code>CSpstroS</code></td>
+</tr>
+<tr>
+<td>Oblique Stereographic</td>
+<td><code>ostro</code></td>
+<td><code>cs_Ostro_</code></td>
+<td><code>CSostroS</code></td>
+</tr>
+<tr>
+<td>Snyder's Oblique Stereographic</td>
+<td><code>sstro</code></td>
+<td><code>cs_Sstro_</code></td>
+<td><code>CSsstroS</code></td>
+</tr>
+<tr>
+<td>Equidistant Conic</td>
+<td><code>edcnc</code></td>
+<td><code>cs_Edcnc_</code></td>
+<td><code>CsedcncS</code></td>
+</tr>
+<tr>
+<td>Sinusoidal</td>
+<td><code>sinus</code></td>
+<td><code>cs_Sinus_</code></td>
+<td><code>CSsinusS</code></td>
+</tr>
+<tr>
+<td>American Polyconic</td>
+<td><code>plycn</code></td>
+<td><code>cs_Plycn_</code></td>
+<td><code>CSplycnS</code></td>
+</tr>
+<tr>
+<td>Modified Polyconic</td>
+<td><code>modpc</code></td>
+<td><code>cs_Modpc_</code></td>
+<td><code>CsmodpcS</code></td>
+</tr>
+<tr>
+<td>Lambert Tangential</td>
+<td><code>lmtan</code></td>
+<td><code>cs_Lmtan_</code></td>
+<td><code>CSlmtanS</code></td>
+</tr>
+<tr>
+<td>Van der Grinten</td>
+<td><code>vdgrn</code></td>
+<td><code>cs_Vdgrn_</code></td>
+<td><code>CSvdgrnS</code></td>
+</tr>
+<tr>
+<td>Orthographic</td>
+<td><code>ortho</code></td>
+<td><code>cs_Ortho_</code></td>
+<td><code>CSorthoS</code></td>
+</tr>
+<tr>
+<td>Gnomonic</td>
+<td><code>gnomc</code></td>
+<td><code>cs_Gnomc_</code></td>
+<td><code>CsgnomcS</code></td>
+</tr>
+<tr>
+<td>Equidistant Cylindrical</td>
+<td><code>edcyl</code></td>
+<td><code>cs_Edcyl_</code></td>
+<td><code>CSedcylS</code></td>
+</tr>
+<tr>
+<td>Cassini</td>
+<td><code>csini</code></td>
+<td><code>cs_Csini_</code></td>
+<td><code>CScsiniS</code></td>
+</tr>
+<tr>
+<td>Modified Stereographic</td>
+<td><code>mstro</code></td>
+<td><code>cs_Mstro_</code></td>
+<td><code>CSmstroS</code></td>
+</tr>
+<tr>
+<td>New Zealand National Grid</td>
+<td><code>nzlnd</code></td>
+<td><code>cs_Nzlnd_</code></td>
+<td><code>CSnzlndS</code></td>
+</tr>
+<tr>
+<td>Robinson Cylindrical</td>
+<td><code>robin</code></td>
+<td><code>cs_Robin_</code></td>
+<td><code>CSrobinS</code></td>
+</tr>
+<tr>
+<td>Bonne</td>
+<td><code>bonne</code></td>
+<td><code>cs_Bonne_</code></td>
+<td><code>CsbonneS</code></td>
+</tr>
+<tr>
+<td>Equal Area (Authalic) Cylindrical, Normal Aspect</td>
+<td><code>nacyl</code></td>
+<td><code>cs_Nacyl_</code></td>
+<td><code>CSnacylS</code></td>
+</tr>
+<tr>
+<td>Equal Area (Authalic) Cylindrical, Transverse Aspect</td>
+<td><code>tacyl</code></td>
+<td><code>cs_Tacyl_</code></td>
+<td><code>CStacylS</code></td>
+</tr>
+<tr>
+<td>Mollweide</td>
+<td><code>molwd</code></td>
+<td><code>cs_Molwd_</code></td>
+<td><code>CsmolwdS</code></td>
+</tr>
+<tr>
+<td>Eckert IV</td>
+<td><code>ekrt4</code></td>
+<td><code>cs_Ekrt4_</code></td>
+<td><code>CSekrt4S</code></td>
+</tr>
+<tr>
+<td>Eckert VI</td>
+<td><code>ekrt6</code></td>
+<td><code>cs_Ekrt6_</code></td>
+<td><code>CSekrt6S</code></td>
+</tr>
+<tr>
+<td>Goode Homolosine</td>
+<td><code>hmlsn</code></td>
+<td><code>cs_Hmlsn_</code></td>
+<td><code>CShmlsnS</code></td>
+</tr>
+<tr>
+<td>Bipolar Oblique Conformal Conic</td>
+<td><code>bpcnc</code></td>
+<td><code>cs_Bpcnc_</code></td>
+<td><code>CSbpcncS</code></td>
+</tr>
+<tr>
+<td>Oblique Cylindrical</td>
+<td><code>swiss</code></td>
+<td><code>cs_Swiss_</code></td>
+<td><code>CSswissS</code></td>
+</tr>
+<tr>
+<td>Snyder Transverse Mercator</td>
+<td><code>trmrs</code></td>
+<td><code>cs_Trmrs_</code></td>
+<td><code>CStrmrsS</code></td>
+</tr>
+<tr>
+<td>Krovak Oblique Conformal Conic</td>
+<td><code>krovk</code></td>
+<td><code>cs_Krovk_</code></td>
+<td><code>CSkrovkS</code></td>
+</tr>
+<tr>
+<td>Non-georeferenced Coordinates</td>
+<td><code>nerth</code></td>
+<td><code>cs_Nerth_</code></td>
+<td><code>CSnerthS</code></td>
+</tr>
+<tr>
+<td>Danish System 34</td>
+<td><code>sys34</code></td>
+<td><code>cs_Sys34_</code></td>
+<td><code>CSsys34S</code></td>
+</tr>
+<tr>
+<td>Unity Pseudo Projection</td>
+<td><code>unity</code></td>
+<td><code>cs_Unity_</code></td>
+<td><code>CSunityS</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="high-level-interface_1">High Level Interface</h1>
+<p>Functions are provided which can convert a coordinate from one coordinate system to another with a single function call. This set of functions was originally developed specifically for the application programmer who is coding in <strong>BASIC</strong>, <strong>FORTRAN</strong>, <strong>APL</strong>, or other language (other than C or Pascal) which can make simple function calls. It does not use structure pointers of any sort. Since the affect on performance is small (about a 20% reduction), it is now the recommended interface for most applications.
+Most of the functions described in this section use <code>CSbcclu</code> and <code>CSbdclu</code> to cache coordinate system and datum conversion definitions. Therefore the performance penalty of these functions is reduced to a search of a linked list for the coordinate system names involved. These cache functions are smart enough to keep the most recently accessed items at the front of the list to further minimize the performance penalty.
+The information presented in this section is intended only to associate a function name with a specific capability.</p>
+<h2 id="basic-coordinate-conversion-cs_cnvrt">Basic Coordinate Conversion -- CS_cnvrt</h2>
+<p>Given a coordinate as an array of three doubles, and the names of two coordinate systems as two character arrays, <code>CS_cnvrt</code> converts the coordinate from one system to another. It's that simple. Where cartesian coordinates are provided and returned, the X coordinate is the first element of the array, the Y coordinate is the second, and the Z is the third element of the array. Where geographic coordinates are provided, the first element in the array must contain the longitude, the second the latitude, and the third element must contain the height. In either case, the manner in which the values are interpreted depends upon the coordinate systems involved. For example, if the source coordinate system definition specifies the unit to be meters, the X, Y, and Z coordinates are considered to be in meters. Similarly, if the target coordinate system is defined as a latitude and longitude system with an angular unit of grads, the returned latitude and longitude coordinates will be in units of grads.</p>
+<p>The status value returned by <code>CS_cnvrt</code> informs the calling application of the validity of the results. A zero return value indicates that the requested conversion was completed without complication and the results now occupy the coordinate array. A negative status return value indicates a hard error occurred and that the contents of the coordinate array remain unchanged. A positive, non-zero return status indicates that the conversion was performed, but an abnormality was encountered during the conversion. In this case, the results returned in the coordinate array may not be exactly what the user expects.</p>
+<p>In all cases of a negative status return, the values in the provided coordinate array will remain unchanged. Taking the absolute value of the returned status value will often produce the CS-MAP error code for the specific condition causing the hard error. The numeric error code which defines the specific cause of the problem will also be stored in the <code>cs_Error</code> global variable, and a textual description of the error condition can be obtained by calling the <code>CS_errmsg</code> function before calling any other CS-MAP function. Typically, when applications detect a negative status return, the application informs the user using the textual description obtained from <code>CS_errmsg</code> and terminates the current operation.</p>
+<p><code>CS_cnvrt</code> returns a positive non-zero status value whenever it encounters something suspicious, but not something that precludes a conversion. Positive non-zero return values are usually caused by coordinate systems and coordinates which are incompatible, or specific values which are singularity points for the projection(s) involved. A common cause of a positive non-zero return value is the conversion of a point at either pole. CS-MAP will return a positive non-zero value in these cases as longitude is undefined at the poles, and reversing the calculation is unlikely to reproduce the initial value. Another common cause of a positive non-zero status return is providing, say, UTM coordinates when the source coordinate system is given as "LL". UTM coordinates, usually, will not be in the normal range of geographic coordinates and CS-MAP will consider this to be suspicious. A positive return value will also be returned if, for example, it is requested to convert a geographic coordinate in Europe from NAD27 to NAD83.</p>
+<p>When a positive non-zero return value from <code>CS_cnvrt</code> is encountered, the typical application issues a warning message to the user and continues. These abnormal, but not necessarily fatal, conditions are often the result the user desires. It should be left the user to decide. For performance reasons, CS- MAP does not automatically generate a textual message for these conditions. However, application programs can analyze the returned status value in order to present a more specific warning message to the end user.</p>
+<h2 id="grid-scale-factor-cs_scale">Grid Scale Factor -- CS_scale</h2>
+<p>Given a coordinate system name and a location in the form of a geographic coordinate, <code>CS_scale</code> will return the grid scale factor of the coordinate system at the specified location. <code>CS_scale</code> returns a negative one in the event of an error condition. In such cases, the cause of the error can be determined by examining <code>cs_Error</code> which will contain the CS-MAP numeric error code of the condition which caused the error. <code>CS_errmsg</code> can be used to obtain a textual description of the error condition. An error caused by the location being outside of the domain of the coordinate system will be indicated by a <code>cs_Error</code> value of zero. In this case, no textual description will be available.</p>
+<p>Note that the coordinate provided as the second argument must be a geographic coordinate, i.e. latitude and longitude in degrees referenced to the Greenwich prime meridian. Longitude is the first element in the array, latitude is the second. (The third element is not currently used for grid scale calculations, but may be in the future.) As always for internal geographic coordinates, use negative values for west longitude and south latitude.</p>
+<h2 id="convergence-angle-cs_cnvrg">Convergence Angle -- CS_cnvrg</h2>
+<p>Given a coordinate system name and a location in the form of a geographic coordinate, <code>CS_cnvrg</code> will return the convergence angle of the coordinate system at the specified location, in degrees east of north. <code>CS_cnvrg</code> returns a negative 360 (i.e. -360) value in the event of an error condition. In such cases, the cause of the error can be determined by examining <code>cs_Error</code> which will contain the CS- MAP numeric error code of the condition which caused the error. <code>CS_errmsg</code> can then be used to obtain a textual description of the error condition. An error caused by the location being outside of the domain of the coordinate system will be indicated by a <code>cs_Error</code> value of zero. In this case, no textual description will be available.</p>
+<p>Note that the coordinate provided as the second argument must be a geographic coordinate, i.e. latitude and longitude in degrees referenced to the Greenwich prime meridian. Longitude is the first element in the array, latitude is the second. (The third element is not used for convergence calculations.) As always, use negative values for west longitude and south latitude.</p>
+<h2 id="data-directory-cs_altdr">Data Directory -- CS_altdr</h2>
+<p>In order to operate correctly, CS-MAP needs to access to several data files, the most important of which is the Coordinate System Dictionary. <code>CS_altdr</code> can be used to provide CS-MAP with the path to the directory it should look in for all of its data files. The single argument should contain the full path to the directory containing all of CS-MAP's supporting data files. You can instruct <code>CS_altdr</code> to use the value of the <code>CS_MAP_DIR</code> environmental variable by setting the argument to the NULL pointer. Should the argument point to the null string, CS-MAP will consider the current directory on the current drive as the directory in which to search for data file.</p>
+<p>In all cases, <code>CS_altdr</code> will return a -1 if a valid Coordinate System Dictionary file could not be located in the indicated directory, for whatever reason.</p>
+<p><strong>Important Note:</strong> Failure to successfully call this function prior to calling any other CS-MAP function is likely to cause a fatal addressing error and the host application to crash.</p>
+<h2 id="recover-system-resources-cs_recvr">Recover System Resources -- CS_recvr</h2>
+<p>Use this function to recover any and all system resources, such as file descriptors and heap memory, which CS-MAP may have allocated due to calls to <code>CS_cnvrt</code>, <code>CS_scale</code>, and <code>CS_cnvrg</code> functions.</p>
+<h2 id="get-error-message-text-cs_errmsg">Get Error Message Text -- CS_errmsg</h2>
+<p><code>CS_errmsg</code> returns in the buffer supplied by the calling module a null terminated string which is suitable for reporting the last error condition detected by CS-MAP. This function should be used only after any CS-MAP function returns a negative status. It should be called prior to any other CS-MAP function call.</p>
+<h2 id="compute-azimuth-and-distance-cs_llazdd">Compute Azimuth and Distance -- CS_llazdd</h2>
+<p><code>CS_llazdd</code> is a utility function which is a part of the High Level Interface. Use this function to compute the azimuth from one geographic coordinate to another. It also returns the distance between the two points. These calculations take full account of the ellipsoid, and ellipsoid parameters are part of the calling sequence.</p>
+<h2 id="unit-lookup-cs_unitlu">Unit Lookup -- CS_unitlu</h2>
+<p>Use <code>CS_unitlu</code> function to obtain the conversion constant for any of the unit systems understood by CS- MAP. <code>CS_unitlu</code> will return a zero if the supplied unit name is not valid.
+</p>
+<h2 id="coordinate-system-name-verification-cs_csisvalid">Coordinate System Name Verification – CS_csIsValid</h2>
+<p>Use the <code>CS_csIsValid</code> function to determine if a coordinate system key name is that of an existing coordinate system defined in the currently active Coordinate System Dictionary without any side affects.</p>
+<h2 id="datum-name-verification-cs_dtisvalid">Datum Name Verification – CS_dtIsValid</h2>
+<p>Use the <code>CS_dtIsValid</code> function to determine if a datum key name is that of an existing datum defined in the currently active Datum Dictionary without any side affects.</p>
+<h2 id="ellipsoid-name-verification-cs_elisvalid">Ellipsoid Name Verification – CS_elIsValid</h2>
+<p>Use the <code>CS_elIsValid</code> function to determine if a ellipsoid key name is that of an existing ellipsoid defined in the currently active Ellipsoid Dictionary without any side affects.</p>
+<h1 id="low-level-functions">Low Level Functions</h1>
+<p>While the use of the High Level or the High Performance Interfaces described above is highly recommended, certain applications may require the use of the lower level functions. The sub-sections of this section organize these functions into three major groups:</p>
+<ol>
+<li>cartographic projection functions,</li>
+<li>geodetic datum shift functions, and</li>
+<li>general mapping/geodetic functions.</li>
+</ol>
+<h2 id="cartographic-projections">Cartographic Projections</h2>
+<p>For each projection supported, there exist eight, possibly nine, functions which comprise the full implementation of a projection. The brief description of these functions is given below. These descriptions will be important to those adding a new projection as well.</p>
+<p>Those adding projections to the system only need to add an entry to the projection table <code>cs_Prjtab</code>. Doing so, you will need to add a pointer to the Definition Check and the Setup functions. To activate the proper parameter settings in the MFC dialog, you will also need to add the projection to the <code>cs_PrjprmMap</code> table. It is unlikely, but if your new projection uses a new type of parameter, you may need to add a new entry to the <code>cs_Prjprm</code> table. All of these tables are defined in the <code>CSdataPJ.c</code> module.</p>
+<h2 id="definition-check-functions">Definition Check Functions</h2>
+<p>For each projection there exists a function which verifies that a coordinate system definition adheres to the requirements of the projection. These functions are named in a manner similar to all other projection functions, but the distinguishing final character is Q. To prevent large scale duplication of code, each Q function checks only those elements of a coordinate system definition which are specific to the projection. The generalized check function, <code>CS_cschk</code>, checks those elements which are common to all coordinate systems (e.g. datum, ellipsoid, and units).</p>
+<p><code>CS_csloc</code> calls this function prior to calling the setup function, thus providing the setup function with data known to be valid for the given projection. This also implies that the pointer to the Q function for each projection must reside in the projection table.</p>
+<h2 id="setup-function">Setup Function</h2>
+<p>The setup function for each projection has two basic responsibilities. It should perform all of the one- time calculations which can be performed independent of the specific coordinates which are to be converted and insert in the <code>cs_Csprm_</code> structure pointers to the nine functions required for coordinate conversion. It is the setup function which is the primary repository for all knowledge about a specific projection. Therefore, it is one of the five elements required in the projection table other than the name of the projection. (C++ users would use the term constructor for the setup function. The design of CS- MAP predates the availability of C++ compilers on personal computers.)</p>
+<p>This function is always supplied with a pointer to a <code>cs_Csprm_</code> structure. This single argument supplies the setup function with the information required to perform the setup via the csdef and datum elements and the repository for the results of the setup by way of the <code>ll2cs</code>, <code>cs2ll</code>, <code>cs_csscl</code>, <code>cs_cscnv</code>, <code>cs_cssck</code>, <code>cs_cssch</code>, <code>llchk</code>, <code>xychk</code>, and <code>prj_prmselements</code>. Note that the <code>prj_prms</code> element of the <code>cs_Csprm_</code> structure is a union of all the pre-processed projection parameter structures, thus providing a repository for setup parameters regardless of the projection in use.</p>
+<p>Also note that in order to reduce the amount of duplicated code necessary to support the large number of projection variations now supported, the <code>prj_code</code> element of the <code>cs_Csprm_</code>structure must be filled in as well prior to calling the setup function.</p>
+<h2 id="forward-functions">Forward Functions</h2>
+<p>For each supported projection, there exists a forward function. It is responsible for converting latitudes and longitudes to the appropriate coordinates given a pointer to the projection parameters for the specific projection. A pointer to such function is inserted into the <code>ll2cs</code> element of the <code>cs_Csprm_</code> structure by the setup function. These functions require that they be given a pointer to the projection parameters calculated by the setup function, e.g. a pointer to a element of the <code>prj_prms</code> union in the <code>cs_Csprm_</code> structure.</p>
+<table>
+<thead>
+<tr>
+<th>Setup Function</th>
+<th>Forward Function</th>
+<th>Inverse Function</th>
+<th>Projection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CstrmerS</code></td>
+<td><code>CStrmerF</code></td>
+<td><code>CStrmerI</code></td>
+<td>Transverse Mercator</td>
+</tr>
+<tr>
+<td><code>CSlmbrtS</code></td>
+<td><code>CSlmbrtF</code></td>
+<td><code>CSlmbrtI</code></td>
+<td>Lambert Conformal Conic</td>
+</tr>
+<tr>
+<td><code>CsoblqmS</code></td>
+<td><code>CSoblqmF</code></td>
+<td><code>CSoblqmI</code></td>
+<td>Hotine Oblique Mercator</td>
+</tr>
+<tr>
+<td><code>CSalberS</code></td>
+<td><code>CSalberF</code></td>
+<td><code>CSalberI</code></td>
+<td>Alber’s Equal Area Conic</td>
+</tr>
+<tr>
+<td><code>CSmrcatS</code></td>
+<td><code>CSmrcatF</code></td>
+<td><code>CSmrcatI</code></td>
+<td>Mercator</td>
+</tr>
+<tr>
+<td><code>CSmillrS</code></td>
+<td><code>CSmillrF</code></td>
+<td><code>CSmillrI</code></td>
+<td>Miller Cylindrical</td>
+</tr>
+<tr>
+<td><code>CsazmedS</code></td>
+<td><code>CSazmedF</code></td>
+<td><code>CSazmedI</code></td>
+<td>Lambert Equidistant Azimuthal</td>
+</tr>
+<tr>
+<td><code>CsazmeaS</code></td>
+<td><code>CSazmeaF</code></td>
+<td><code>CSazmeaI</code></td>
+<td>Lambert Equal Area Azimuthal</td>
+</tr>
+<tr>
+<td><code>CSpstroS</code></td>
+<td><code>CSpstroF</code></td>
+<td><code>CSpstroI</code></td>
+<td>Polar Stereographic</td>
+</tr>
+<tr>
+<td><code>CSostroS</code></td>
+<td><code>CSostroF</code></td>
+<td><code>CsostroI</code></td>
+<td>Oblique Stereographic</td>
+</tr>
+<tr>
+<td><code>CSsstroS</code></td>
+<td><code>CSsstroF</code></td>
+<td><code>CSsstroI</code></td>
+<td>Snyder’s Oblique Stereographic</td>
+</tr>
+<tr>
+<td><code>CsedcncS</code></td>
+<td><code>CSedcncF</code></td>
+<td><code>CSedcncI</code></td>
+<td>Equidistant Conic</td>
+</tr>
+<tr>
+<td><code>CSsinusS</code></td>
+<td><code>CSsinusF</code></td>
+<td><code>CSsinusI</code></td>
+<td>Sinusoidal</td>
+</tr>
+<tr>
+<td><code>CSplycnS</code></td>
+<td><code>CSplycnF</code></td>
+<td><code>CSplycnI</code></td>
+<td>American Polyconic</td>
+</tr>
+<tr>
+<td><code>CsmodpcS</code></td>
+<td><code>CSmodpcF</code></td>
+<td><code>CSmodpcI</code></td>
+<td>Modified Polyconic</td>
+</tr>
+<tr>
+<td><code>CSlmtanS</code></td>
+<td><code>CSlmtanF</code></td>
+<td><code>CSlmtanI</code></td>
+<td>Lambert Tangential</td>
+</tr>
+<tr>
+<td><code>CSvdgrnS</code></td>
+<td><code>CSvdgrnF</code></td>
+<td><code>CSvdgrnI</code></td>
+<td>Van der Grinten</td>
+</tr>
+<tr>
+<td><code>CSorthoS</code></td>
+<td><code>CSorthoF</code></td>
+<td><code>CSorthoI</code></td>
+<td>Orthographic</td>
+</tr>
+<tr>
+<td><code>CsgnomcS</code></td>
+<td><code>CSgnomcF</code></td>
+<td><code>CSgnomcI</code></td>
+<td>Gnomonic</td>
+</tr>
+<tr>
+<td><code>CSedcylS</code></td>
+<td><code>CSedcylF</code></td>
+<td><code>CSedcylI</code></td>
+<td>Equidistant Cylindrical</td>
+</tr>
+<tr>
+<td><code>CScsiniS</code></td>
+<td><code>CScsiniF</code></td>
+<td><code>CScsiniI</code></td>
+<td>Cassini</td>
+</tr>
+<tr>
+<td><code>CSmstroS</code></td>
+<td><code>CSmstroF</code></td>
+<td><code>CSmstroI</code></td>
+<td>Modified Stereographic</td>
+</tr>
+<tr>
+<td><code>CSnzlndS</code></td>
+<td><code>CSnzlndF</code></td>
+<td><code>CSnzlndI</code></td>
+<td>New Zealand National Grid</td>
+</tr>
+<tr>
+<td><code>CSrobinS</code></td>
+<td><code>CSrobinF</code></td>
+<td><code>CSrobinI</code></td>
+<td>Robinson</td>
+</tr>
+<tr>
+<td><code>CSbonneS</code></td>
+<td><code>CSbonneF</code></td>
+<td><code>CSbonneI</code></td>
+<td>Bonne</td>
+</tr>
+<tr>
+<td><code>CSnacylS</code></td>
+<td><code>CSnacylF</code></td>
+<td><code>CSnacylI</code></td>
+<td>Normal Aspect, Equal Area (Authalic) Cylindrical</td>
+</tr>
+<tr>
+<td><code>CStacylS</code></td>
+<td><code>CStacylF</code></td>
+<td><code>CSnacylI</code></td>
+<td>Transverse Aspect, Equal Area (Authalic) Cylindrical</td>
+</tr>
+<tr>
+<td><code>CsmolwdS</code></td>
+<td><code>CSmolwdF</code></td>
+<td><code>CSmolwdI</code></td>
+<td>Mollweide</td>
+</tr>
+<tr>
+<td><code>CSekrt4S</code></td>
+<td><code>CSekrt4F</code></td>
+<td><code>CSekrt4I</code></td>
+<td>Eckert IV</td>
+</tr>
+<tr>
+<td><code>CSekrt6S</code></td>
+<td><code>CSekrt6F</code></td>
+<td><code>CSekrt6I</code></td>
+<td>Eckert VII</td>
+</tr>
+<tr>
+<td><code>CShmlsnS</code></td>
+<td><code>CShmlsnF</code></td>
+<td><code>CShmlsnI</code></td>
+<td>Goode Homolosine</td>
+</tr>
+<tr>
+<td><code>CSbpcncS</code></td>
+<td><code>CSbpcncF</code></td>
+<td><code>CSbpcncI</code></td>
+<td>Bipolar Oblique Conformal Conic</td>
+</tr>
+<tr>
+<td><code>CSswissS</code></td>
+<td><code>CSswissF</code></td>
+<td><code>CSswissI</code></td>
+<td>Oblique Cylindrical</td>
+</tr>
+<tr>
+<td><code>CStrmrsS</code></td>
+<td><code>CStrmrsF</code></td>
+<td><code>CStrmrsI</code></td>
+<td>Transverse Mercator ala Snyder</td>
+</tr>
+<tr>
+<td><code>CSkrovkS</code></td>
+<td><code>CSkrovkF</code></td>
+<td><code>CSkrovkI</code></td>
+<td>Krovak Oblique Conformal Conic</td>
+</tr>
+<tr>
+<td><code>CSnerthS</code></td>
+<td><code>CSnerthF</code></td>
+<td><code>CSnerthI</code></td>
+<td>Non-georeferenced coordinate system</td>
+</tr>
+<tr>
+<td><code>CSsys34S</code></td>
+<td><code>CSsys34F</code></td>
+<td><code>CSsys34I</code></td>
+<td>Danish System 34</td>
+</tr>
+<tr>
+<td><code>CSunityS</code></td>
+<td><code>CSunityF</code></td>
+<td><code>CSunityI</code></td>
+<td>Unity (pseudo projection)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="inverse-functions">Inverse Functions</h2>
+<p>Similarly, there exists for each projection an inverse function, responsible for converting coordinate system coordinates to latitudes and longitudes. A pointer to such function is inserted into the <code>cs2ll</code> element of the <code>cs_Csprm_</code> structure by the setup function, and these functions require a pointer to the setup parameters calculated by the setup function.</p>
+<h2 id="scale-funcions">Scale Funcions</h2>
+<p>The Coordinate System Mapping Package also includes the ability to determine the grid scale factor of a coordinate system at any point. In many cases there is an analytical formula which produces the desired results. Since analytical formulas for the grid scale factor for all thirty eight projections could not be found, the grid scale factor is determined empirically for some projections using the latitude/longitude azimuth and distance calculation function <code>CS_llazdd</code>.</p>
+<table>
+<thead>
+<tr>
+<th>K Scale Function</th>
+<th>H Scale Function</th>
+<th>Convergence Function</th>
+<th>Projection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CStrmerK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CStrmerC</code></td>
+<td>Transverse Mercator</td>
+</tr>
+<tr>
+<td><code>CSlmbrtK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSlmbrtC</code></td>
+<td>Lambert Conformal Conic</td>
+</tr>
+<tr>
+<td><code>CSoblqmK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSoblqmC</code></td>
+<td>Hotine Oblique Mercator</td>
+</tr>
+<tr>
+<td><code>CSalberK</code></td>
+<td><code>CSalberH</code></td>
+<td><code>CSalberC</code></td>
+<td>Alber's Equal Area Conic</td>
+</tr>
+<tr>
+<td><code>CSmrcatK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSmrcatC</code></td>
+<td>Mercator</td>
+</tr>
+<tr>
+<td><code>CSmillrK</code></td>
+<td><code>CSmillrH</code></td>
+<td><code>CSmillrC</code></td>
+<td>Miller Cylindrical</td>
+</tr>
+<tr>
+<td><code>CSazmedK</code></td>
+<td><code>CSazmedH</code></td>
+<td><code>CSazmedC</code></td>
+<td>Lambert Equidistant Azimuthal</td>
+</tr>
+<tr>
+<td><code>CSazmeaK</code></td>
+<td><code>CSazmeaH</code></td>
+<td><code>CSazmeaC</code></td>
+<td>Lambert Equal Area Azimuthal</td>
+</tr>
+<tr>
+<td><code>CSpstroK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSpstroC</code></td>
+<td>Polar Stereographic</td>
+</tr>
+<tr>
+<td><code>CSostroK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSostroC</code></td>
+<td>Oblique Stereographic</td>
+</tr>
+<tr>
+<td><code>CSsstroK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSsstroC</code></td>
+<td>Snyder's Oblique Stereographic</td>
+</tr>
+<tr>
+<td><code>CsedcncK</code></td>
+<td><code>CSedcncH</code></td>
+<td><code>CSedcncC</code></td>
+<td>Equidistant Conic</td>
+</tr>
+<tr>
+<td><code>CSsinusK</code></td>
+<td><code>CSsinusH</code></td>
+<td><code>CSsinusC</code></td>
+<td>Sinusoidal</td>
+</tr>
+<tr>
+<td><code>CSplycnK</code></td>
+<td><code>CSplycnH</code></td>
+<td><code>CSplycnC</code></td>
+<td>American Polyconic</td>
+</tr>
+<tr>
+<td><code>CsmodpcK</code></td>
+<td><code>CSmodpcH</code></td>
+<td><code>CSmodpcC</code></td>
+<td>Modified Polyconic</td>
+</tr>
+<tr>
+<td><code>CSlmtanK</code></td>
+<td><code>CSlmtanH</code></td>
+<td><code>CSlmtanC</code></td>
+<td>Lambert Tangential</td>
+</tr>
+<tr>
+<td><code>CSvdgrnK</code></td>
+<td><code>CSvdgrnH</code></td>
+<td><code>CSvdgrnC</code></td>
+<td>Van der Grinten</td>
+</tr>
+<tr>
+<td><code>CSorthoK</code></td>
+<td><code>CSorthoH</code></td>
+<td><code>CSorthoC</code></td>
+<td>Orthographic</td>
+</tr>
+<tr>
+<td><code>CsgnomcK</code></td>
+<td><code>CSgnomcH</code></td>
+<td><code>CSgnomcC</code></td>
+<td>Gnomonic</td>
+</tr>
+<tr>
+<td><code>CSedcylK</code></td>
+<td><code>CSedcylH</code></td>
+<td><code>CSedcylC</code></td>
+<td>Equidistant Cylindrical</td>
+</tr>
+<tr>
+<td><code>CScsiniK</code></td>
+<td><code>CScsiniH</code></td>
+<td><code>CScsiniC</code></td>
+<td>Cassini</td>
+</tr>
+<tr>
+<td><code>CSmstroK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSmstroC</code></td>
+<td>Modified Stereographic</td>
+</tr>
+<tr>
+<td><code>CSnzlndK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSnzlndC</code></td>
+<td>New Zealand National Grid</td>
+</tr>
+<tr>
+<td><code>CSrobinK</code></td>
+<td><code>CSrobinH</code></td>
+<td><code>CSrobinC</code></td>
+<td>Robinson</td>
+</tr>
+<tr>
+<td><code>CsbonneK</code></td>
+<td><code>CSbonneH</code></td>
+<td><code>CSbonneC</code></td>
+<td>Bonne</td>
+</tr>
+<tr>
+<td><code>CSnacylK</code></td>
+<td><code>CSnacylH</code></td>
+<td><code>CSnacylC</code></td>
+<td>Normal Aspect, Equal Area (Authalic) Cylindrical</td>
+</tr>
+<tr>
+<td><code>CStacylK</code></td>
+<td><code>CStacylH</code></td>
+<td><code>CSnacylC</code></td>
+<td>Transverse Aspect, Equal Area (Authalic) Cylindrical</td>
+</tr>
+<tr>
+<td><code>CsmolwdK</code></td>
+<td><code>CSmolwdH</code></td>
+<td><code>CSmolwdC</code></td>
+<td>Mollweide</td>
+</tr>
+<tr>
+<td><code>CSekrt4K</code></td>
+<td><code>CSekrt4H</code></td>
+<td><code>CSekrt4C</code></td>
+<td>Eckert IV</td>
+</tr>
+<tr>
+<td><code>CSekrt6K</code></td>
+<td><code>CSekrt6H</code></td>
+<td><code>CSekrt6C</code></td>
+<td>Eckert VII</td>
+</tr>
+<tr>
+<td><code>CShmlsnK</code></td>
+<td><code>CShmlsnH</code></td>
+<td><code>CShmlsnC</code></td>
+<td>Goode Homolosine</td>
+</tr>
+<tr>
+<td><code>CSbpcncK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSbpcncC</code></td>
+<td>Bipolar Oblique Conformal Conic</td>
+</tr>
+<tr>
+<td><code>CSswissK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSswissC</code></td>
+<td>Swiss Oblique Cylindrical</td>
+</tr>
+<tr>
+<td><code>CStrmrsK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CStrmrsC</code></td>
+<td>Transverse Mercator ala Snyder</td>
+</tr>
+<tr>
+<td><code>CSkrovkK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSkrovkC</code></td>
+<td>Krovak Oblique Conformal Conic</td>
+</tr>
+<tr>
+<td><code>CSnerthK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSnerthC</code></td>
+<td>Non-georeferenced coordinate system; scale is always 1.0, convergence is always zero.</td>
+</tr>
+<tr>
+<td><code>CSsys34K</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSsys34C</code></td>
+<td>Danish System 34 (believed to be conformal, but this is not a sure thing)</td>
+</tr>
+<tr>
+<td><code>CSunityK</code></td>
+<td><code>&lt;none&gt;</code></td>
+<td><code>CSunityC</code></td>
+<td>Unity</td>
+</tr>
+</tbody>
+</table>
+<p>As mentioned above, for non-conformal projections, there are two scale factors, K and H. Therefore, for all thirty eight projections, there exists a K function, and for all non-conformal projections there exists an H function. A pointer to the appropriate function is inserted into the cs_Csprm_ structure by the setup function and, as you might expect, each of these functions requires a pointer to the projection parameters as calculated by the setup function.</p>
+<p>Refer to the table above for the names of the K scale functions, i.e. grid scale factor along a parallel, and the H scale functions (i.e. scale along a meridian) for all thirty five projections currently supported. The name of the H function is given as <none> for conformal projections. In these cases, the H scale factor is the same as the K scale factor.</p>
+<h2 id="convergence-functions">Convergence Functions</h2>
+<p>For each projection there exists a function which computes the convergence angle for any point given a coordinate system definition. Refer to the table above for the names of the convergence angle functions for all thirty one projections currently supported. Again, analytical formulas for the convergence angle have not been located for all projections. Therefore, for some projections the convergence angle is determined empirically using the <code>CS_llazdd</code> function.</p>
+<h2 id="geographic-limits-check-functions">Geographic Limits Check Functions</h2>
+<p>For each projection, there exists a function which determines if a given geographic coordinate, great circle, or region is entirely within the mathematical domain of a coordinate system. These functions are named in a manner similar to all other projection functions, but the distinguishing final character is L.</p>
+<p>For performance reasons, the actual conversion functions of CS-MAP check the coordinate data they are provided only to the extent necessary to prevent floating point exceptions. The geographic limits function of each projection can be used prior to a conversion to determine if a specific geographic coordinate, great circle defined by two geographic coordinates, or a closed region defined by four or more geographic coordinates is entirely within the mathematical domain of the projection. It is not unusual for applications to know the extents of the data set which is to be converted, and thus the extents only, not each individual coordinate, need be checked. This can provide significant performance advantages.</p>
+<h2 id="cartographic-limits-check-functions">Cartographic Limits Check Functions</h2>
+<p>For each projection, there exists a function which determines if a given cartesian coordinate, line segment, or region is entirely within the mathematical domain of a coordinate system. These functions are named in a manner similar to all other projection functions, but the distinguishing final character is X.</p>
+<p>For performance reasons, the actual conversion functions of CS-MAP check the coordinate data they are provided only to the extent necessary to prevent floating point exceptions. The cartesian limits function of each projection can be used prior to a conversion to determine if a specific cartesian coordinate, line defined by two cartesian coordinates, or a closed region defined by four or more cartesian coordinates are entirely within the mathematical domain of the projection. It is not unusual for applications to know the extents of the data set which is to be converted, and thus the extents only, not each individual coordinate, need be checked. This can provide significant performance advantages.</p>
+<h1 id="geodetic-datum-shift-functions">Geodetic Datum Shift Functions</h1>
+<p>The methods/functions associated with geodetic datum shifts are not nearly as well organized as those of cartographic projections. This is the result of many different governmental agencies solving the problem independently and relying on different data sets and calculation techniques. However, the basic functions involved in the most generalized techniques are described in the following sub- sections.</p>
+<h2 id="nadcon-emulation-functions">NADCON Emulation Functions</h2>
+<p>Four lower level functions can be used to perform NAD27 to NAD83 conversions. Use <code>CSnadInit</code> to initialize the system, and <code>CSnadCls</code> to release all resources absorbed by <code>CS_nadinit</code>.</p>
+<p>Once <code>CSnadInit</code> has been called, <code>CSnad27ToNad83</code> can be called to convert geographic coordinates from NAD27 to NAD83. <code>CSnad83ToNad27</code> can be used to convert NAD83 to NAD27. Its that simple.</p>
+<h2 id="datum-conversion-functions">Datum Conversion Functions</h2>
+<p>The basic technique used for NAD83 and HARN described in previous sections is used for several other datums now defined worldwide. In the descriptions given below, you will see how this technique applies to AGD66; the Geodetic Datum of Australia of 1966. A similar pattern exists for the following datums and descriptions of these inidividual sets of functions will not be repeated in this section of the manual. In the future, there are likely to be a lot more of these.</p>
+<table>
+<thead>
+<tr>
+<th>Abbreviated Name</th>
+<th>Full Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AGD66</td>
+<td>Australian Geodetic Datum of 1966</td>
+</tr>
+<tr>
+<td>AGD84</td>
+<td>Australian Geodetic Datum of 1984</td>
+</tr>
+<tr>
+<td>GDA94</td>
+<td>Geocentric Datum of Australia, 1994</td>
+</tr>
+<tr>
+<td>NZGD49</td>
+<td>New Zealand Geodetic Datum of 1949</td>
+</tr>
+<tr>
+<td>NZGD2K</td>
+<td>New Zealand Geocentric Datum of 2000</td>
+</tr>
+<tr>
+<td>ATS77</td>
+<td>Average Terrestrial System of 1977</td>
+</tr>
+<tr>
+<td>CSRS</td>
+<td>Canadian Spatial Reference System</td>
+</tr>
+</tbody>
+</table>
+<p>Four lower level functions can be used to convert coordinates from AGD66 to GDA94. Use <code>CSagd66Init</code> to initialize the system, and <code>CSagd66Cls</code> to release all resources absorbed by <code>CSagd66Init</code>.</p>
+<p>Once <code>CSagd66Init</code> has been successfully called, <code>CSagd66ToGda94</code> can be used to convert geographic coordinates from AGD66 to GDA94. Similarly, <code>CSgda94ToAgd66</code> can be used to convert geographic coordinates from GDA94 to AGD66.</p>
+<h1 id="general-utility-functions">General Utility Functions</h1>
+<p>Supporting the generalized coordinate conversions described in the previous sections, are several functions which perform calculations which are quite useful to the GIS/GPS/Mapping application programmer. Several (but probably not all) of these are described in the following sub-sections.</p>
+<h2 id="geoid-height-functions">GEOID Height Functions</h2>
+<p>This facility enables applications to calculate and use, as appropriate, the geoid height (or geoid separation if you prefer) at locations for which data is available. Record the data files available, and desired to be used, in the Geodetic Data Catalog file named <code>GeoidHeight.gdc</code>.</p>
+<p>This implementation emulates C++, but is written in ANSI compliant C. The functions are named: <code>CSnewGeoidHeight</code>, <code>CSdeleteGeoidHeight</code>, and <code>CScalcGeoidHeight</code>; and are defined in the module named <code>cs_GeoidHeight.c</code>. Code specific to geoid height file formats can be found in modules named: <code>CS_geoid96.c</code>, <code>CS_geoid99.c</code>, <code>CS_bynFile.c</code>, and <code>CS_osgm91.c</code>. Low level applications may wish to access the functions defined in these modules directly.</p>
+<p>Note there is no inverse function, as it is unnecessary. To obtain orthometric height at a given location, add the geoid height returned by <code>CScalcGeoidHeight</code> to the ellipsoid height. To calculate the ellipsoid height, subtract the geoid height returned by <code>CScalcGeoidHeight</code> from the orthometric height.</p>
+<h2 id="geocentric-coordinates">Geocentric Coordinates</h2>
+<p>Converting between geographic and geocentric coordinates has been inside of CS-MAP for many years. However, this capability has been hidden inside of the datum conversion functions. In this release, this capability is now explicitly available in functions named <code>CS_llhToXyz</code> and <code>CS_xyzToLlh</code> which are defined in the <code>CS_dtCalc.c</code> module.</p>
+<p>Note that each of these functions requires the definition of the ellipsoid in use, expressed as two separate double arguments: equatorial radius and eccentricity squared.</p>
+<h2 id="mgrs-implementation">MGRS Implementation</h2>
+<p>Release 11.01 includes a series of new functions that provide the ability to generate MGRS designations from geographic coordinates, and vice versa. This implementation consists of 6 functions designed for application programmer use, and two supporting functions. The support functions may be of interest as they provide the ability to convert between geographic and UTM coordinates/zone number where the rather strange stuff which goes on in northern Europe (i.e. southern Norway and the Svaldberg Islands) is appropriately accounted for.</p>
+<p>While written in 'C' to be consistent with the rest of CS-MAP, the implementation of the MGRS capability has a definite C++ structure to it. That is, there exists a structure definition, three constructors, a destructor, two public functions and two private functions (i.e. the supporting functions).</p>
+<h3 id="mgrs-constructors">MGRS Constructors</h3>
+<p>Construction of a <code>cs_Mgrs_</code> object (i.e. allocation and initialization of a a <code>cs_Mgrs_</code> structure) requires knowledge of the ellipsoid definition to be used and if the alternative lettering sequence (i.e. Bessel) is to be used. Thus, the three constructors simply provide three different ways of specifying the ellipsoid which is to be used:</p>
+<pre><code class="c"> struct cs_Mgrs_ *CSnewMgrs (double e_rad,double e_sq,short bessel);
+ struct cs_Mgrs_ *CSnewMgrsE (const char *elKeyName,short bessel);
+ struct cs_Mgrs_ *CSnewMgrsD (const char *dtKeyName,short bessel);
+</code></pre>
+
+<p>where the <code>elKeyname</code> argument can be used to specify the ellipsoid by key name. Alternatively, application programmers can specify a datum name (the <code>dtKeyName</code> argument) and the calculations will be based on the ellipsoid upon which the datum is referenced. Of course, the application programmer can use the <code>e_rad</code> and <code>e_sq</code> version to specify the equatorial radius and square of eccentricity directly. In all cases, the <code>bessel</code> argument is zero to indicate the normal lettering scheme. +1 to indicate the alternative lettering scheme.</p>
+<p>All constructors return the null pointer in the event of an error. Use <code>CS_errmsg</code> to obtain a string that describes the nature of the error.</p>
+<h3 id="mgrs-destructor">MGRS Destructor</h3>
+<p>Use <code>CSdeleteMgrs</code> to delete a <code>cs_Mgrs_</code> object constructed by one of the constructors. Currently, a call of <code>CS_free</code> will accomplish the same thing, but maybe not in the future.</p>
+<pre><code class="c">void CSdeleteMgsr (struct cs_Mgrs_ * __This);
+</code></pre>
+
+<p>Like it's C++ equivalent, this function is smart enough not to attempt to free a null pointer.</p>
+<h3 id="mgrs-public-functions">MGRS Public Functions</h3>
+<p>Naturally enough, two conversion functions exists. Given a properly initialized <code>cs_Mgrs_</code> object (i.e. structure) and a geographic coordinate, <code>CScalcMgrsFromLl</code> will return the appropriate MGRS designation. <code>CScalcLlFromMgrs</code> reverses the process. In both cases, a return value of zero indicates success, non-zero indicates failure. Use <code>CS_errmsg</code> to obtain a description of the cause of failure.</p>
+<pre><code class="c">int CScalcMgrsFromLl (struct cs_Mgrs_ *__This, char *result, int size, double latLng [2], int prec);
+int CScalcLlFromMgrs (struct cs_Mgrs_ *__This,double latLng [2], Const char *mgrsString);
+</code></pre>
+
+<p>In these prototypes, the first argument is a pointer to an initialized <code>cs_Mgrs_</code> object obtained from one of the constructors described above. The <code>latLng</code> argument refers to an array of at least two doubles which contain the longitude and latitude (in that order) in degrees. The <code>prec</code> argument indicates the number of digits to be included in the resulting MGRS designation. Valid values range from 0 to 5. Note, that a value of 5 indicates that 5 easting, and 5 northing digits will be included in the resulting string. Of course, <code>CScalcMgrsFromLl</code> will never write more than <code>size</code> characters to the result array, and (assuming <code>size</code> is greater than zero) will cause result to be null terminated.</p>
+<h3 id="mgrs-private-functions">MGRS Private Functions</h3>
+<p>Two "private" functions, i.e. internal support functions, exist which convert geographic coordinates to UTM/UPS coordinates and zone number. These functions are aware of the missing/widened zones in the northern Europe region. They are also capable of switching between UTM and UPS (Universal Polar Stereographic) coordinates as appropriate. These functions use a <code>utmZone</code> variable which carries the UTM zone number where: 1) northern UTM zones are positive numbers between 1 and 60 inclusive, 2) southern UTM zones are negative numbers between –1 and –60 inclusive, 3) +61 refers to the North Pole UPS zone, 4) –61 refers to the South Pole UPS Zone,, and 5) the value zero is invalid and used to indicate an error condition.</p>
+<pre><code class="c">int CScalcUtmUps (struct cs_Mgrs_ *__This,double utmUps [2], const double latLng [2]);
+int CScalcLatLng (struct cs_Mgrs_ *__This,double latLng [2], const double utmUps [2], int utmZone);
+</code></pre>
+
+<p>Given a geographic coordinate, <code>CScalcUtmUps</code> calculates the appropriate UTM/UPS coordinates and returns the appropriate <code>utmZone</code> value. Given a UTM/UPS coordinate and <code>utmZone</code> value, <code>CScalcLatLng</code> returns the appropriate geographic coordinate. <code>CScalcLatLng</code> returns zero on success, non-zero on failure. In all cases, the calculation is based on the ellipsoid used to construct the <code>cs_Mgrs_</code> argument to the function.</p>
+<h2 id="forwardinverse-functions">Forward/Inverse Functions</h2>
+<p>The term Forward/Inverse is a common way of referring to what is also known as the basic geodesy problem. That is, given a geodetic latitude/longitude, calculate the a new position given an azimuth and distance. This may sound pretty simple, but the calculation must be carried out on the ellipsoid. Thus the calculation is rather complex.</p>
+<p>Forward refers to the calculation of a new geodetic position given an azimuth and a distance. Inverse refers to the calculation of an azimuth and distance given two geodetic positions.</p>
+<p><code>CS_llazdd</code> performs the forward calculation, and <code>CS_azddll</code> performs the inverse calculation.</p>
+<h2 id="error-handling">Error Handling</h2>
+<p>Having it origins in the 'C' language, error reporting in the CS-MAP library is implemented using the return status methodology. That is, functions which can detect abnormal situations will return an integer status value to indicate the success of the operation intended, Status returns are of two types.</p>
+<p>With the exceptions described below, all CS-MAP functions which can detect an abnormal situation will return a zero for success. A negative value will be returned for a failure which is considered fatal, and a non-zero positive value is returned for a warning or providing information about a remarkable condition.</p>
+<p>While fatal errors can and do occur during the setup phase of a conversion/transformation combination, it is an important part of the design of CS-MAP that fatal errors cannot occur with conversion and transformation functions. Thus, any function involved in the creation and/or initialization of a conversion or transformation can be expected to return a negative status value. Functions which actually perform the conversion and/or transformation calculations can be expected to never return a negative status.</p>
+<p>In the event of a negative status return, applications should immediately call the CS_errmsg function which will return an (8 bit character, English only) textual description of the cause of the problem. This description will often include, when appropriate, contextual information such as file names etc.</p>
+<p>Status return values from calculation functions are always positive and non-zero values usually indicate that the coordinate to be converted is:</p>
+<ul>
+<li>Outside the useful range of the coordinate system being used,</li>
+<li>Outside the coverage area of a grid shift data file,</li>
+<li>Would have produced a domain error (i.e. log (-1))</li>
+<li>Or the coordinate is at either pole (which means any longitude is equivalent to any other).</li>
+</ul>
+<p>In any case, the calculation function will indeed return a rational value. In many cases, this rational value will be produced by what is called a fallback technique.</p>
+<p>In the experience of the developers of CS-MAP, once a conversion/transformation operation has been successfully constructed (i.e. setup), applications should at most simply count the number of non-zero positive status values returned by the calculation functions and report this number to the user (assuming it is non-zero) upon completion of the conversion. That is, a non-zero status return from any and all calculation functions should be considered as information only. Otherwise, your application will be bogged down and end user's can easily come to the conclusion that your application has crashed.</p>
+<p>Also note, that to keep performance levels high, a non-zero positive status return value does not cause the generation of a descriptive error message and calling CS_errmsg after encountering a positive status return will produce misleading information, is anything at all.</p>
+<h2 id="exception">Exception</h2>
+<p>There are several functions in CS-MAP whose function in life is to enumerate a list of entries in internal lists or dictionaries. These functions tend to return a positive 1 value to indicate success. A zero is returned to indicate that the end of the sequence has been encounters. (Of course, a negative return value indicates a fatal error of some sort. This convention was chosen so as to make obtaining such a list or enumeration rather easy to code in a robust manner:</p>
+<pre><code class="c">int index;
+char elpName [cs_KEEN_DEC};
+.
+.
+.
+index = 0;
+while (CS_elEnum (index++,eleVate) &gt; 0)
+{
+  /* Do something with this name */
+  .
+  .
+  .
+}
+</code></pre>
+
+<h1 id="data-structures">Data Structures</h1>
+<p>Discussions which follow refer to the primary data structures of CS-MAP. Twelve such data structures are described. These structure provide the basis for the operation of the Coordinate System Mapping Package. All structure definitions are found in the <code>cs_map.h</code> header file.</p>
+<h2 id="ellipsoid-definition-structure">Ellipsoid Definition Structure</h2>
+<p>The Ellipsoid Definition structure, <code>cs_Eldef_</code>, carries the two principal data elements (among others) which define an ellipsoid for our purposes. These are the equatorial radius and the eccentricity of the ellipsoid. Among the other items contained in the structure is a key name, which is used to distinguish one ellipsoid definition from another.</p>
+<h2 id="datum-definition-structure">Datum Definition Structure</h2>
+<p>The Datum Definition structure, <code>cs_Dtdef_</code>, carries the eight principal data elements (among others) which define a datum for our purposes. These are the key name of the ellipsoid definition upon which the datum is based, the X, Y, and Z components of the vector from the geocenter of the datum being defined to the geocenter of the WGS84 ellipsoid, the three rotation components of the transformation, and the scale component of the transformation. Among the other elements contained in this structure is a datum key name which is used to distinguish one datum definition from another.</p>
+<h2 id="datum-composite-structure">Datum Composite Structure</h2>
+<p>The Datum Composite structure, <code>cs_Datum_</code>, carries the contents of both the Datum Definition structure and the Ellipsoid Definition structure in an composite form. This structure is never written to disk and is used internally as a programming convenience.</p>
+<h2 id="coordinate-system-definition-structure">Coordinate System Definition Structure</h2>
+<p>The Coordinate System Definition structure, <code>cs_Csdef_</code>, carries all the elements required to define a coordinate system. Twenty four of these elements are referred to as projection parameters as their use depends upon the projection in use (which is one of the other data elements). Therefore, it is difficult to describe their use without delving into the specifics of each projection.</p>
+<p>For our purposes here, let it be said that the <code>cs_Csdef_</code> structure is capable of carrying the definition of any coordinate system based on any one of the thirty eight projections supported by CS-MAP and (hopefully) any others which may be added in the future. This includes the parameters specific to the projection, the projection origin, the coordinate system units, the coordinate system scale, the false easting, the false northing, etc.</p>
+<h2 id="preprocessed-projection-structures">Preprocessed Projection Structures</h2>
+<p>There exists one structure for each of the thirty eight projections which carry the definition of a coordinate system based on the respective projection in a preprocessed form. That is, once the specific projection parameters applicable to a specific coordinate system are established, there are many calculations which can be performed independent of the specific coordinates to be converted. The results of these calculations are stored in these structures. The thirty five structure names are shown in Table III. It is the content of these structures which actually control the conversion of cartesian coordinates to and from latitudes and longitudes.</p>
+<h2 id="coordinate-system-parameter-structure">Coordinate System Parameter Structure</h2>
+<p>The Coordinate System Parameter Structure, <code>cs_Csprm_</code>, is used to carry a complete definition of a coordinate system and is the single structure used throughout the development of a coordinate conversion. It contains a copy of the <code>cs_Csdef_</code> structure of the coordinate system being used, a copy of the <code>cs_Datum_</code> structure which the coordinate system definition references, and the coordinate system in its pre-processed form as a union of the thirty eight pre-processed parameter structures described above. It also contains pointers to the functions which are capable of performing the forward and inverse coordinate conversions. Pointers are also included for grid scale and convergence angle functions. <code>cs_Csprm_</code> also includes information about the specific projection in use, as well as the limits of the coordinate system, both in cartesian and geographic form. While CS-MAP is designed such that the application should not need to know anything about the projection, there are instances (such as our own test program) where some knowledge of the projection in use, or its specific features, is helpful.</p>
+<p>As a result, this single structure represents a complete definition of a coordinate system which can be easily passed around by pointer. Through the use of pointers to the appropriate coordinate conversion functions contain in this structure, modules which receive a pointer to this structure do not ever have to know exactly which projection is in use in order to perform coordinate conversions.</p>
+<h2 id="projection-name-table-structure">Projection Name Table Structure</h2>
+<p>The Projection Name Table Structure, <code>cs_Prjtab_</code>, is used solely to create a table of the projections known to the system. It primarily associates a name with a projection code and a setup function. To add new projections to the system, one need only create an entry in this table and reference the code which, of course, must also be written. You can also add additional names for existing projections by simply making additions to this table.</p>
+<p>More importantly, to remove a projection from the system (in order to reduce the size of the text space within an executable, for example), one need simply remove (or comment out) the projection's entry in this table.</p>
+<p>In developing a coordinate system parameter structure, the name of the projection is extracted from the coordinate system definition. This name is located in the projection table. The projection setup function associated with the selected named entry is then called and given a pointer to the union of pre- processed structures. The setup function initializes the union as if it were the pre-processed structure associated with the projection under construction. Of course, CS-MAP does all of this, mostly in the function named <code>CS_csloc</code>.</p>
+<p>The Projection Name Table includes a fully descriptive name of each projection as well as a bit map of the features of the projection. Refer to <code>CSdataPJ</code>.</p>
+<h2 id="datum-shift-definition-structure">Datum Shift Definition Structure</h2>
+<p>The Datum Shift Definition structure, <code>cs_Dtcprm_</code>, carries all of the information necessary to perform a datum shift on geographic coordinates (i.e. latitude and longitude). The information contained in this structure includes the definition of the source and target datums and a road map of the various conversions necessary to get, in the most accurate form, from the source datum to the target datum. This structure is allocated upon request given the definitions of the source and target coordinate systems. Once properly allocated, a pointer to this structure is all that the datum shift function needs in order to calculate datum shifts.</p>
+<p>Thus, applications do not need to have any knowledge of what datums or how many different conversions are necessary to get from one datum to the next. In fact, quite often the conversion is the null conversion which implies that the source latitude and longitude are simply copied to the target array. Again, in this case, the application has no need to know of this situation.</p>
+<p>The above is possible only because CS-MAP (to a large extent) requires that all datum definitions define how to convert a specific datum to/from WGS84. Thus, by "going through" WGS84 CS-MAP can convert any coordinate system/datum to any other. There are certain exceptions to this basic theme.</p>
+<h1 id="the-data-dictionaries">The Data Dictionaries</h1>
+<p>The Coordinate System Mapping Package includes the definition of more than 1,000 commonly used coordinate systems, more than 130 datum definitions, and 37 commonly referenced ellipsoids. These definitions are carried in the Coordinate System Dictionary (a file usually named <code>Coordsys</code>), the Datum Dictionary (a file usually named Datums), and the Ellipsoid Dictionary (a file usually named <code>Elipsoid</code>) respectively. These files are normally expected to reside in the <code>C:\MAPPING</code> directory (<code>/usr/MAPPING</code> under UNIX). The location of these files can be modified to suit your requirements at compile time (see <code>CSdata</code>) or at run time (see <code>CS_altdr</code>). The names of these files can be changed either at run time (see <code>CS_csfnm</code>, <code>CS_dtfnm</code>, and <code>CS_elfnm</code>) or compile time (see <code>cs_map.h</code>).</p>
+<h2 id="the-coordinate-system-dictionary">The Coordinate System Dictionary</h2>
+<p>The Coordinate System Dictionary is a fixed length record file of <code>cs_Csdef_</code> structures, maintained in sorted order by the key_nm element, i.e. the coordinate system key name. Entries in this file are located through the use of the binary search technique, therefore it is important that this file remain in sorted order. The file has a magic number in the first four bytes. This is a sequence of bytes which identify the file as being a Coordinate System Dictionary file and is defined by the <code>cs_CSDEF_MAGIC</code> manifest constant in <code>cs_map.h</code>. This value is checked each time the file is opened to make sure that the file is indeed a Coordinate System Dictionary and that it has not been seriously corrupted. The specific value of the magic number is changed each time the format of the <code>cs_Csdef_</code> structure is changed.</p>
+<p>Functions are provided to access and maintain this file as a Coordinate System Dictionary. <code>CS_csopn</code> will open the file, verify its magic number, and return a file descriptor (or handle). <code>CS_csrd</code> and <code>CS_cswr</code> will perform sequential reads from and writes to a file of this type, handling encryption appropriately. <code>CS_cscmp</code> compares records in the file for sorting and searching purposes. <code>CS_csdef</code> will extract a particular record from the dictionary for you. <code>CS_csupd</code> will update an existing entry or add a new entry to the Coordinate System Dictionary, assuring that the file remains in sorted order. Finally, <code>CS_csdel</code> can be used to delete a record from the dictionary.</p>
+<p>Coordinate system definitions are verified for validity before they are written to the Coordinate System Dictionary through the use of the <code>CS_cschk</code> function. <code>CS_csloc</code> (described below) also checks each definition before it is actually used to create the active form of a coordinate system.</p>
+<h2 id="the-datum-dictionary">The Datum Dictionary</h2>
+<p>The Datum Dictionary is a fixed length record file of <code>cs_Dtdef_</code> structures, maintained in sorted order by the <code>key_nm</code> element, i.e. the datum key name. Entries in this file are located through the use of the binary search technique, therefore it is important that this file remain in sorted order. The file has a magic number in the first four bytes of the file and is defined by the <code>cs_DTDEF_MAGIC</code> manifest constant in <code>cs_map.h</code>. This is a sequence of bytes which identify the file as being a Datum Dictionary file. This value is checked each time the file is opened to make sure that the file is indeed a Datum Dictionary and that it has not been seriously corrupted. The specific value of the magic number is changed each time the format of the <code>cs_Dtdef_</code> structure is changed.</p>
+<p>Functions are provided to access and maintain this file as a Datum Dictionary. <code>CS_dtopn</code> will open the file, verify its magic number, and return a file descriptor (or handle). <code>CS_dtrd</code> and <code>CS_dtwr</code> will perform sequential reads from and writes to a file of this type, handling encryption appropriately. <code>CS_dtcmp</code> compares Datum Dictionary entries for sorting and searching purposes. <code>CS_dtdef</code> will extract a particular record from the dictionary for you. <code>CS_dtupd</code> will update an existing entry or add a new entry to the Datum Dictionary, assuring that the file remains in sorted order. Finally, <code>CS_dtdel</code> can be used to delete a record from the dictionary.</p>
+<h2 id="the-ellipsoid-dictionary">The Ellipsoid Dictionary</h2>
+<p>The Ellipsoid Dictionary is a fixed length record file of <code>cs_Eldef_</code> structures, maintained in sorted order by the key_nm element, i.e. the ellipsoid name. Entries in this file are located through the use of the binary search technique, therefore it is important that this file remain in sorted order. The file has a magic number in the first four bytes of the file and is defined by the <code>cs_ELDEF_MAGIC</code> manifest constant in <code>cs_map.h</code>. This is a sequence of bytes which identify the file as being a Ellipsoid Dictionary file. This value is checked each time the file is opened to make sure that the file is indeed an Ellipsoid Dictionary and that it has not been seriously corrupted. The specific value of the magic number is changed each time the format of the <code>cs_Eldef_</code> structure is changed.</p>
+<p>Functions are provided to access and maintain this file as a Ellipsoid Dictionary. <code>CS_elopn</code> will open the file, verify its magic number, and return a file descriptor (or handle). <code>CS_elrd</code> and <code>CS_elwr</code> will perform sequential reads from and writes to a file of this type, handling encryption appropriately. <code>CS_elcmp</code> compares Ellipsoid Dictionary entries for sorting and searching purposes. <code>CS_eldef</code> will extract a particular record from the dictionary for you. <code>CS_elupd</code> will update an existing entry or add a new entry to the Ellipsoid Dictionary, assuring that the file remains in sorted order. Finally, <code>CS_eldel</code> can be used to delete a record from the dictionary.</p>
+<h2 id="dictionary-encryption">Dictionary Encryption</h2>
+<p>The definitions of coordinate systems, datums, and ellipsoids can represent a significant investment on the part of the application developer. Under certain circumstances, a demonstration disk for example, the application developer may not wish to provide this information in a form from which this valuable data can be easily extracted. As a result, CS-MAP fully supports a means by which dictionary data can be encrypted. All CS-MAP functions will work equally as well with encrypted dictionaries as with normal versions. Dictionary compilers normally produce dictionaries in encrypted form. An option is provided to produce unencrypted dictionaries.</p>
+<h2 id="dictionary-definition-protection">Dictionary Definition Protection</h2>
+<p>Dictionary entries are normally protected. That is, changes to coordinate system, datum, and ellipsoid definitions are controlled. This reduces technical support calls significantly. Application programmers can control the extent of protection, or turn it off altogether. How this system works is described below.</p>
+<p>In normal operation, CS-MAP will not allow end users to change definitions distributed with the application. More specifically, definitions created by the Dictionary Compiler are marked as to be protected. End users can, and often do, create new coordinate system definitions. Therefore, rather than change a coordinate system as distributed with the application, users would typically create a new definition which is modified as necessary to achieve the desired results.</p>
+<p>Definitions created by end users, and which remain unchanged for 60 days, are also protected. This is done under the assumption that a definition which remains unchanged for 60 days will have been used and judged satisfactory, and therefore should be preserved as a means of recording the actual definition used to produce the results.</p>
+<p>Finally, CS-MAP normally requires that the key names for all user defined definitions contain the colon character. By adopting this convention, application updates can include coordinate system updates without the possibility of the update overwriting a valid and valuable user defined definition. (This, of course, assumes that the distribution will never contain a coordinate system definition with a key name containing a colon character.)</p>
+<p>Application programmers can control to what degree the protection system is active by simply setting the value of either, or both, of two global variables, either at compile time (see <code>CSdata.c</code>) or at run time.</p>
+<p><code>char cs_Unique</code>; In the CS-MAP distribution, the value of this global variable is set to the colon. Set the value of this variable to the null character to turn the user definition key name protection feature described above off. You can select a character other than the colon by simply setting this variable to the desired character.</p>
+<p><code>short cs_Protect</code>; Use this variable to control the protect applied to dictionary definitions. A positive, non-zero value is the number of days associated with the user defined definition protection described above. For example, in the CS-MAP distribution, this value is set to 60, indicating that after a user defined definition remains unchanged for 60 days, it automatically becomes protected. Set <code>cs_Protect</code> to zero to maintain distribution coordinate system protection, but disable all user defined definition protection. Set <code>cs_Protect</code> to a negative value to disable all dictionary definition protection.</p>
+<p><strong>Programmer Note</strong>: Dictionary definitions include a short which controls the protection of the definition. If this value is set to zero, the dictionary entry is permanently unprotected. If this value is set to one, the entry is permanently protected. Otherwise, this value is set to the date at which the definition was last modified expressed as the number of days since January 1, 1990. Thus, changing the value of <code>cs_Protect</code> will change the protection of user defined definitions in a dynamic manner</p>
+<h2 id="byte-ordering">Byte Ordering</h2>
+<p>All three dictionary files described in this section contain data in binary form, thus byte ordering becomes a serious issue when using CS-MAP on different platforms. Beginning with Release 6.0 of CS-MAP, dictionaries are expected to be in little endian byte order regardless of the platform in use. A byte swapping function, <code>CS_bswap</code>, is called immediately after each read from any of these dictionaries, and immediately before the write of any data to any of the dictionaries. <code>CS_bswap</code> is programmed to automatically determine if byte swapping is required based on a compile time constant. Thus, a single copy of these dictionaries can be distributed for use on all platforms.</p>
+<p>The term "all platforms" is perhaps misleading. <code>CS_bswap</code> will only swap between little endian and big endian byte orders. The rather odd byte orderings of some older DEC machines is not supported at the current time.</p>
+<p>The automatic byte ordering feature is easy to disable if so desired. Refer to <code>CS_bswap</code> for more information.</p>
+<p>The automatic byte ordering feature also applies to all other binary data files upon which CS-MAP relies. That is, automatic byte swapping is applied to all reads from NADCON database files, Multiple Regression data files, Canadian National Transformation files, and all HPGN database files. The choice of using little endian byte ordering was natural as these files are generally distributed by their sources in this form.</p>
+<h2 id="dictionary-compiler">Dictionary Compiler</h2>
+<p>ASCII versions of the three dictionaries are provided in the distribution. The names of these files are <code>COORDSYS.ASC</code>, <code>DATUMS.ASC</code>, and <code>ELIPSOID.ASC</code>. Binary versions of the dictionary files can be produced by using the dictionary compiler program <code>CS_COMP</code>. This enables the definition files to be committed to version control procedures and the dictionaries remade as part of your product manufacturing process.</p>
+<p>Originally, the ASCII files and the compilers were provided as a means of overcoming the byte order problem on different platforms. Now that CS-MAP has been modified to process little endian files on all platforms, this purpose is now obsolete. The version control purpose of these files remains valid.</p>
+<h2 id="multiple-regression-datum-transformation-files">Multiple Regression Datum Transformation Files</h2>
+<p>The compiler referred to above will also compile a fourth ASCII source file named <code>MREG.ASC</code> which is also supplied in the distribution. <code>MREG.ASC</code> contains in an ASCII, version controllable form, the definition of all multiple regression transformations known to the system. Compiling this file produces the <code>.MRT</code> files which CS-MAP accesses, as necessary, when performing datum conversions. Your application distribution should include the <code>.MRT</code> files produced by compiling the <code>MREG.ASC</code> file.</p>
+<h2 id="default-datums-ellipsoids-and-units">Default Datums, Ellipsoids, and Units</h2>
+<p>CS-MAP supports the concept of default datums, ellipsoids, and/or units. Defaults represent a convenient way to switch a coordinate system definition between different datums, ellipsoids, and/or units without having to change the Coordinate System Dictionary. How this feature applies to datums is described first; and this description is then extended to ellipsoids and units.</p>
+<p>A datum reference in a coordinate system definition may be marked as "defaultable" by enclosing the name in square brackets. The actual datum name provided must be a valid datum reference as this reference will be used whenever the default feature is not active. This also implies that the default feature need not be active for the coordinate system definition to be valid and usable.</p>
+<p>Upon activation of a coordinate system, regardless of the interface used, CS-MAP will check to see if the datum specified is "defaultable". If so, it examines the current default datum setting. If a valid default datum has been specified, the "defaultable" datum reference is replaced by the current default setting and coordinate system setup continues. If there is no current default setting, the "defaultable" datum is used as is. Thus, in the absence of a default specification, the coordinate system definition operates as defined. Whenever a default replacement is performed, the replaced datum name in the <code>cs_Csdef_</code> element of the <code>cs_Csprm_</code> structure will be enclosed in parenthesis to indicate that a default replacement has occurred.</p>
+<p>Use the <code>CS_dtdflt</code> function to define a default datum. It will return the status and the name of any previous default. It will not allow an invalid default setting to be made. Calling <code>CS_dtdflt</code> with the <code>NULL</code> pointer as its argument can be used to determine if the datum default feature is active and, if so, what the current default setting is. Call <code>CS_dtdflt</code> with a pointer to the null string to disable the datum default feature. Until <code>CS_dtdflt</code> is called with a valid datum reference, the datum default feature remains disabled.</p>
+<p>Cartographically referenced coordinate systems, and datum definitions, can contain "defaultable" ellipsoid references. Use <code>CS_eldflt</code> to enable and disable the "defaultable" ellipsoid feature.</p>
+<p>Coordinate system unit specifications can also be "defaultable". Separate default values are maintained for linear and angular units. Use <code>CS_ludflt</code> to control the state of linear unit defaults, and <code>CS_audflt</code> to control the state of angular unit defaults.</p>
+<p>You can completely ignore this concept of default datums, ellipsoids, and units by simply not calling (or even referencing) any of the default functions mentioned above. Default processing is off by default, and by never calling any of these functions, it never gets turned on. This is how most users deal with the default feature.</p>
+<h1 id="high-performance-interface">High Performance Interface</h1>
+<p>The High Performance Interface to the Coordinate System Mapping Package consists of thirteen functions. By virtue of the data structures described above, use of these functions is independent of the actual coordinate systems, projections, or datums in use. This represents the most efficient means to use CS-MAP to convert coordinates from one coordinate system to another. It also insulates your applications from most changes which could be made to the CS-MAP in the future. This basic API has not changed since 1992. This interface requires the use of structure pointers and, therefore, may not be appropriate for use with some languages. Therefore, use this interface wherever high performance is a top priority and the application is written in a language which can handle pointers such as C, C++, or Pascal.</p>
+<p>These functions make use of the Coordinate System Dictionary, the Datum Dictionary, the Ellipsoid Dictionary, and the functions which access them. This need not be of concern to the application programmer using the High Performance Interface as it all goes on "behind the scenes".</p>
+<p>In this section, our intent is to associate function names with capabilities and features.</p>
+<h2 id="the-functions">The Functions</h2>
+<p>The thirteen functions which comprise the High Performance Interface are <code>CS_csloc</code>, <code>CS_dtcsu</code>, <code>CS_ll2cs</code>, <code>CS_dtcvt</code>, <code>CS_cs2ll</code>, <code>CS_dtcls</code>, <code>CS_csscl</code>, <code>CS_cnvrg</code>, <code>CS_cssch</code>, <code>CS_cssck</code>, <code>CS_llchk</code>, <code>CS_xychk</code>, and <code>CS_free</code>. The typical coordinate conversion application uses only seven of these function.</p>
+<p>Refer to the major sections following this to see how the use of these functions is combined to produced generalized coordinate conversion capabilities.</p>
+<h3 id="coordinate-system-locate">Coordinate System Locate</h3>
+<p>Given the key name of a coordinate system defined in the Coordinate System Dictionary, <code>CS_csloc</code> returns a pointer to a fully initialized <code>cs_Csprm_</code> structure. This initialization includes all of the "one- time" calculations and the establishment of pointers to the appropriate coordinate conversion functions. This structure is <code>malloc</code>'ed from dynamic memory. Therefore, you may have several such definitions active at any given time. Also, you should release these structures when your application no longer has need of them; use <code>CS_free</code>.</p>
+<h3 id="datum-conversion-setup">Datum Conversion Setup</h3>
+<p>Given pointers to the both the source and target coordinate systems as returned by <code>CS_csloc</code>, <code>CS_dtcsu</code> returns a pointer to a <code>malloc</code>'ed <code>cs_Dtcprm_</code> structure which is a required argument to the <code>CS_dtcvt</code> function which actually calculates datum shifts. As its name implies, <code>CS_dtcsu</code> "sets up" a datum conversion by allocating and initializing a <code>cs_Dtcprm_</code> structure. Since datum conversions often require the use of file descriptors, grid cell caches, and the like, do not use <code>free</code> or <code>CS_free</code> to release the <code>cs_Dtcprm_</code> structure returned by <code>CS_dtcsu</code>. The sixth function of this interface, <code>CS_dtcls</code> must be used instead to prevent memory and file descriptor leaks in your application. Note, when appropriate, <code>CS_dtcsu</code> returns a pointer to a null datum conversion; a conversion which does nothing successfully and rapidly.</p>
+<h3 id="coordinate-system-to-latlong-conversion">Coordinate System to Lat/Long Conversion</h3>
+<p>Given a pointer to an initialized <code>cs_Csprm_</code> structure which describes the coordinate system in use, the <code>CS_cs2ll</code> function will convert a cartesian coordinate to geographic form in terms of latitude and longitude in internal form. The resulting geographic coordinate will be based on the same datum as the coordinate system defined in the provided <code>cs_Csprm_</code> structure.</p>
+<p>The conversion function pointers inserted into the <code>cs_Csprm_</code> structure by <code>CS_csloc</code> are used to select the proper code for the conversion. The application has no need to know what projection is in use or, for that matter, anything else about the coordinate system in use</p>
+<h3 id="datum-conversion">Datum Conversion</h3>
+<p>Given a pointer to an initialized datum conversion parameter structure, <code>cs_Dtcprm_</code>, as returned by <code>CS_dtcsu</code>, the <code>CS_dtcvt</code> function will convert the supplied geographic coordinates from the source datum to the target datum.</p>
+<h3 id="latlong-to-coordinate-system-conversion">Lat/Long to Coordinate System Conversion</h3>
+<p>Given a pointer to an initialized <code>cs_Csprm_</code> structure, the <code>CS_ll2cs</code> function will convert a geographic coordinate specified in terms of latitude and longitude (in degrees) to the coordinates of the coordinate system defined by the <code>cs_Csprm_</code> structure.</p>
+<p>The conversion function pointers inserted into the <code>cs_Csprm_</code> structure by <code>CS_csloc</code> are used to select the proper code for the conversion. The application has no need to know what projection is in use or, for that matter, anything else about the coordinate system in use.</p>
+<h3 id="close-datum-conversion">Close Datum Conversion</h3>
+<p>Given a pointer to an initialized datum conversion parameter structure, as returned by the <code>CS_dtcsu</code> function, <code>CS_dtcls</code> will release all system resources allocated for the specific datum conversion. Note, that since several datum conversions may be initialized and operative at any given time, <code>CS_dtcls</code> does not necessarily release all resources associated with certain datum transformations until such time as the last datum conversion parameter block referencing such resources is closed.</p>
+<h3 id="grid-scale-factor">Grid Scale Factor</h3>
+<p>Given a pointer to an initialized <code>cs_Csprm_</code> structure as returned by the <code>CS_csloc</code> function, <code>CS_csscl</code> will return the grid scale factor for the coordinate system at a location indicated by a geographic coordinate. It is important to note that the concept of Grid Scale as a single number applies only to coordinate systems based on conformal projections such as the Transverse Mercator, Lambert Conformal Conic, and the Oblique Mercator. Other projections, such as equal area projections, will have two such scale factors. In the case of equidistant projections, there are two such scale factors but one of them will usually be one. In the case on non-conformal projections, <code>CS_csscl</code> will return what the designers of CS-MAP consider the more interesting of the two scale factors for the specific projection involved.</p>
+<h3 id="scale-along-a-parallel">Scale Along a Parallel</h3>
+<p>The two scale factors mentioned above consist of the scale along a parallel, often referred to as 'k', and the scale along a meridian, referred to as 'h'. Given a pointer to an initialized <code>cs_Csprm_</code> structure as returned by <code>CS_csloc</code>, <code>CS_cssck</code> will always return the scale factor along a parallel at the location provided.</p>
+<p>The nomenclature referred to here is that used by J. P. Snyder in <em>Map Projections - A Working Manual</em>. Other authors use different symbology. In his later work, <em>Map Projections - A Reference Manual</em>, Snyder uses the more common notation. CS-MAP, whose origins date back to 1987, uses the original Snyder notation.</p>
+<h3 id="scale-along-a-meridian">Scale Along a Meridian</h3>
+<p>Given a pointer to an initialized <code>cs_Csprm_</code> structure, <code>CS_cssch</code> returns the scale along a meridian, often referred to as 'h', at the location given by its second argument which must be a geographic coordinate.</p>
+<h3 id="convergence-angle">Convergence Angle</h3>
+<p>Given a pointer to an initialized <code>cs_Csprm_</code> structure as returned by <code>CS_csloc</code>, <code>CS_cnvrg</code> returns the convergence angle of the coordinate system, at the location indicated by the second argument which must be a geographic coordinate. The return value is in degrees; positive is east of north.</p>
+<h3 id="check-limits-geographic">Check Limits, Geographic</h3>
+<p>Given a pointer to an initialized <code>cs_Csprm_</code> structure as returned by <code>CS_csloc</code>, <code>CS_llchk</code> will determine if all coordinates in the list provided are within the mathematical domain of the coordinate system and/or with the useful range of the coordinate system. In the case where the provided list contains two or more points, the determination applies to each coordinate on each great circle arc formed by consecutive geographic coordinates. In those cases where the provided coordinate list consists of four or more geographic coordinates which define a closed region, the determination applies to all coordinates enclosed within the region, or which reside the provided boundary.</p>
+<h3 id="check-limits-cartesian">Check Limits, Cartesian</h3>
+<p>Given a pointer to an initialized <code>cs_Csprm_</code> structure as returned by <code>CS_csloc</code>, <code>CS_xychk</code> will determine if all coordinates in the list provided are within the mathematical domain of the coordinate system and/or with the useful range of the coordinate system. In the case where the provided list contains two or more points, the determination applies to each coordinate on each line segment formed by consecutive cartesian coordinates. In those cases where the provided coordinate list consists of four or more cartesian coordinates which define a closed region, the determination applies to all coordinates enclosed within the region, or which reside on the provided boundary.</p>
+<h3 id="free-coordinate-system-parameters">Free Coordinate System Parameters</h3>
+<p>Use <code>CS_free</code> to free memory allocated by the any CS-MAP functions. This function is to be used, for example, to free the coordinate system parameter block returned by <code>CS_csloc</code>. It is important that CS_free be used as in certain environments (a Windows DLL for example), the heap used by the library is not necessarily the same as the heap used by the application. Thus, if CS-MAP allocated the memory, it is best if CS-MAP releases it also.</p>
+<h2 id="coordinate-system-to-coordinate-system">Coordinate System to Coordinate System</h2>
+<p>In order to convert from one coordinate system to another, one simply obtains, from the <code>CS_csloc</code> function, a definition of the two coordinate systems of concern. The inverse function, <code>CS_cs2ll</code>, is used to convert the source coordinates to latitude and longitude and the forward function, <code>CS_ll2cs</code>, is used to convert to the target coordinate system. The sample code segment shown is, for example, all the code necessary to convert a file of NAD27 based UTM Zone 13 (UTM27-13) coordinates to NAD27 based Colorado State Plane, Southern Zone (CO-S). To change the conversion to use other coordinate systems, only the names provided to the <code>CS_csloc</code> function need be changed. Of course, these strings are rarely hard coded as has been done in this example.</p>
+<pre><code class="c">int input, output;
+double xy [2], ll [2];
+struct cs_Csprm_ *utm, *co_s;
+utm = CS_csloc (&quot;UTM27-13&quot;);
+co_s = CS_csloc (&quot;CO-S&quot;);
+while (read (input, xy, sizeof (xy)) != 0)
+{
+   CS_cs2ll (utm,ll,xy);
+   CS_ll2cs (co_s,xy,ll);
+   write (output,xy,sizeof (xy));
+}
+CS_free (utm);
+CS_free (co_s);
+</code></pre>
+
+<h2 id="the-ll-coordinate-system">The LL Coordinate System</h2>
+<p>Many products will use the above scheme to provide the ability to convert from any coordinate system to any another. This scheme is completely general, supporting any combination of coordinate systems. Sometimes, however, it is desirable to convert from or to geographic coordinates. The <strong>LL</strong> coordinate system and the Unity projection accommodate this within the general scheme of things described above. That is, the <strong>LL</strong> coordinate system is simply a coordinate system in which the coordinates are latitudes and longitudes, and the Unity projection is simply a set of conversion functions which do little other than possible units and prime meridian conversion.</p>
+<p>Therefore, supplying a coordinate system name of <strong>LL</strong>, for example, for either the input or output coordinate system will produce the desired results without the application program having to know about this specific situation. (Please note that <strong>LL</strong> is a cartographically referenced coordinate system. Coordinate systems <strong>LL27</strong> and <strong>LL83</strong> are usually used in practice.)</p>
+<p>Latitude and longitude coordinates in different units or referenced to a prime meridian other than Greenwich are possible by defining different <strong>LL</strong> type coordinate systems. These definitions, all based on the Unity pseudo-projection, can include a units specification and a specification of a prime meridian other than zero (i.e. Greenwich).</p>
+<h2 id="multiple-conversions">Multiple Conversions</h2>
+<p>Please note, that since coordinate system definitions (as returned by <code>CS_csloc</code>) reside in "heap" memory, there is no practical limit as to the number of definitions which can be active at any given time. Therefore, using the three functions described above, several different coordinate conversions can be active at the same time.</p>
+<h2 id="adding-datum-conversions-to-the-interface">Adding Datum Conversions to the Interface</h2>
+<p>Datum conversions can be added to the basic scheme described above by adding calls to the datum conversion functions. Refer to the code given below for an example, paying special attention to the emphasized code. Once the two coordinate system definitions have been initialized, they are passed to <code>CS_dtcsu</code>. By examining both the source and target coordinate system definitions, <code>CS_dtcsu</code> is able to determine which, if any, datum transformation techniques need to be applied to accomplish the desired conversion. <code>CS_dtcsu</code> will select one or more datum conversions as necessary to accomplish the desired conversion. For example, to convert from NAD27 to WGS72, three conversions are actually setup:</p>
+<ol>
+<li>from NAD27 to NAD83 via the NADCON technique</li>
+<li>NAD83 to WGS84 (which is currently a null conversion), and finally</li>
+<li>WGS84 to WGS72 using a hard coded formula.</li>
+</ol>
+<p><code>CS_dtcsu</code> assures that all preparations necessary for these conversions are initialized, and saves the results in the <code>cs_Dtcprm_</code> structure to which it returns a pointer.</p>
+<p>In the actual coordinate conversion loop, <code>CS_dtcvt</code> is called for each coordinate once its geographic form has been obtained from <code>CS_cs2ll</code>. Note that if <code>CS_dtcsu</code> determined that no datum conversion was required, the information contained in the <code>cs_Dtcprm_</code> structure which it returns causes <code>CS_dtcvt</code> to simply copy the source geographic coordinates to the target array. Finally, when the conversion process is complete, <code>CS_dtcls</code> is used to release any system resources which were allocated for the datum conversion and which are no longer needed.</p>
+<pre><code class="c">int input, output;
+double xy [2], ll [2];
+struct cs_Csprm_ *utm, *co83_s;
+struct cs_Dtcprm_ *dtc_ptr;
+.
+.
+utm = CS_csloc (&quot;UTM27-13&quot;);
+co83_s = CS_csloc (&quot;CO83-S&quot;);
+dtc_prm = CS_dtcsu (utm,co83_s,dat_err,blk_err);
+
+while (read (input,xy,sizeof (xy)) != 0)
+{
+   CS_cs2ll (utm,ll,xy);
+   CS_dtcvt (dtc_prm,ll,ll);
+   CS_ll2cs (co83_s,xy,ll);
+   write (output,xy,sizeof (xy));
+}
+
+CS_dtcls (dtc_prm);
+CS_free (utm);
+CS_free (co_s);
+</code></pre>
+
+<h2 id="geodetically-referenced-coordinate-systems">Geodetically Referenced Coordinate Systems</h2>
+<p>In the normal case, CS-MAP converts from one geodetically referenced system to another. In the sample code segment in the previous topic, for example, <strong>UTM27-13</strong> is referenced to <strong>NAD27</strong> and <strong>CO83-C</strong> is referenced to <strong>NAD83</strong>. The need for NAD27 to NAD83 conversion is unambiguous and performed automatically by CS-MAP's High Performance Interface without the application having to know of this situation. However, there are circumstances where a coordinate system cannot be referenced to a specific datum. For example, what datum should UTM zone 25 (middle of the Atlantic Ocean) be referenced to?</p>
+<p>For various reasons, it is not always possible or convenient to reference a coordinate system to a specific datum. To handle such cases, CS-MAP supports the concept of a cartographically referenced coordinate system.</p>
+<h2 id="cartographically-referenced-coordinate-systems">Cartographically Referenced Coordinate Systems</h2>
+<p>The <code>cs_Csdef_</code> structure, which carries the definition of all coordinate systems, has an ellipsoid key name element as well as a datum key name element. If the datum key name element is not the null string, the coordinate system is said to be geodetically referenced. If the datum key name element is the null string, the ellipsoid key name element must then carry the key name of an ellipsoid definition in the ellipsoid dictionary. In this case, the coordinate system is said to be cartographically referenced. (If both elements are not the null string, the ellipsoid key name field is ignored.)</p>
+<p>The example shown previously in this section showed how conversions are performed between two geodetically referenced systems. If either of the two coordinate systems involved is cartographically referenced, or if both are cartographically referenced, <code>CS_dtcsu</code> simply returns the null datum conversion. Thus, for example, when the target coordinate system is cartographically referenced, the resulting coordinates are based on the source datum, whatever it may happen to be. Similarly, if the source is cartographically referenced and the target is geodetically referenced, there is an implied assumption that the source coordinates are based on the datum of the target. If both coordinate systems are cartographically referenced, we have no knowledge of the datums in either case and the conversion is strictly cartographic, hence the semantic convention adopted here.</p>
+<p>Examination of the <code>COORDSYS.ASC</code> file will produce several cartographically referenced coordinate systems. Many of these are UTM zones in areas other than the US and Canada. (In the US and Canada, UTM zones can be reliably said to be based on either NAD27 or NAD83.) Perhaps the most important cartographically referenced coordinate system is that which is named LL. This enables us to use the LL coordinate system to convert generic Lat/Long's to any coordinate system, or convert any coordinate system to Lat/Long's based on the same datum as the source, what ever it might be.</p>
+<h2 id="cartographic-projections_1">Cartographic Projections</h2>
+<p>For each projection supported, there exist eight, possibly nine, functions which comprise the full implementation of a projection. The brief description of these functions is given below. These descriptions will be important to those adding a new projection as well.</p>
+<p>Those adding projections to the system only need to add an entry to the projection table <code>cs_Prjtab</code>. Doing so, you will need to add a pointer to the Definition Check and the Setup functions. To activate the proper parameter settings in the MFC dialog, you will also need to add the projection to the <code>cs_PrjprmMap</code> table. It is unlikely, but if your new projection uses a new type of parameter, you may need to add a new entry to the <code>cs_Prjprm</code> table. All of these tables are defined in the <code>CSdataPJ.c</code> module.</p>
+<h1 id="program-environments">Program Environments</h1>
+<p>Portability to a large variety of program environments is a major feature of CS-MAP. Thus, programmers accustomed to a single environment may consider some of the code and design of CS- MAP rather awkward or old fashioned. Nevertheless, by keeping things very basic and simple (e.g. binary searching a sorted fixed length record file), CS-MAP ports to just about any other environment without change and without requiring any additional software beyond the contents of a normal C runtime library.</p>
+<p>However, simplicity is insufficient to cover the entire range of issues. In this section we discuss features and aspects of CS-MAP which are specifically intended for differing program environments.</p>
+<h2 id="multi-threaded-programming">Multi-Threaded Programming</h2>
+<p>Beginning with release 8.0, CS-MAP is fully compatible with multi-threaded Windows environments. Threads are different from processes in that not only do they share their parents code space, the data space is also shared. Since CS-MAP uses several global variables, this presents a problem.</p>
+<p>This problem is addressed by declaring each of the several dynamically used (i.e. non-constant) global variables to be (using the Microsoft vernacular) <code>__declspec</code> (thread). (In the Borland vernacular, its <code>__thread</code>.) This causes each new thread to have it's own copy of these variables; but the initialization of these variables upon starting a new thread is unclear. In any case, we do count on the operating system being able to give us a separate copy of all of these variables for each new thread instance which is started.</p>
+<p>In order to insure that each of these variables is properly initialized, we have provided the function named <code>CS_init</code>. It should be called in each new thread just once, prior to any other CS-MAP function call in the thread. If the parent thread's value of the global <code>cs_Dir</code> and <code>cs_DirP</code> variables are valid, these values are preserved. If not they are initialized. In the case of several other variables, such as defaults, the application programmer may specify if these are to be inherited from the parent thread. Variables dealing with NAD27 to NAD83 datum conversions and the like are always initialized to the NULL state.</p>
+<p>Thus, each thread will have its own set of NADCON data file buffers. In certain applications, this may be wasteful, but in most cases this provides the highest performance. Otherwise, we would be wasting considerable resources with resource locks etc.</p>
+<p>UNIX users need not fear. All declarations and definitions in the CS-MAP code where the <code>__declspec</code> (thread) or <code>__thread</code> are appropriate are accomplished using the manifest constant <strong>Thread</strong> defined in the CS-MAP header file. This constant is defined to be nothing in most cases. Only in the event that compiler pre-defined constants indicate a multi-thread environment (i.e. <strong>_MT</strong>), is <strong>Thread</strong> defined to be something other than nothing. None of this applies if you are building a DLL. In a DLL, there is a single data segment, and multi-threading has no effect.</p>
+<h2 id="gui-considerations">GUI Considerations</h2>
+<p>CS-MAP supports a graphic user interface based on Microsoft's MFC library. This is, admittedly, non portable but does provide useful product capability for a large percentage of our clients. Use of these functions requires that you include the <code>csmap.rc</code> file into your projects resources. This can be accomplished by adding an include <code>csmap.rc</code> statement to your project's <code>.rc2</code> file. Please note that the use of these functions implies that your application activates the basic infrastructure of the MFC library. Accessing the functions in an isolated application does not work without special effort. Also note, that MFC is a multi-threaded environment. You will need to compile the CS-MAP library using the multi-threaded options to eliminate frustrations generated by the Microsoft linker.</p>
+<p>The <code>CS_csEditor</code> function causes activation of the coordinate system editor. Similarly, the <code>CS_dtEditor</code> and <code>CS_ellEditor</code> functions cause the activation of the datum and ellipsoid editors respectively. In all three cases, the functions require a single input and return a single result. The input is the key name of the definition which is to be initially displayed. The result is the key name that was displayed when the user caused the dialog to exit. All other user activity is recorded in the appropriate dictionary.</p>
+<p>The <code>CS_csBrowser</code> function activates a coordinate system browser and can be used to obtain a coordinate system key name from the user. The <code>CS_csDataDr</code> function displays a dialog which enables the user to specify the directory in which the mapping data files reside.</p>
+<h1 id="customization">Customization</h1>
+<p>Some users will, no doubt, require modification to the basic capabilities of the Coordinate System Mapping Library as provided by OSGeo. The following sections describe how some of the more common requirements can be accomplished with a minimum of effort.</p>
+<h2 id="tuning-the-protection-system">Tuning the Protection System</h2>
+<p>As distributed, CS-MAP will not allow users to modify or delete a dictionary definition which is produced by the dictionary compiler; i.e. a distribution definition. Further, CS-MAP will not permit modification or deletion of a user defined coordinate system after such definition has remained unaltered for 60 days. The behavior of this feature is controlled by the <code>cs_Protect</code> global variable, an int defined in the <code>CSdata</code> module. You can change the value of this variable in <code>CSdata</code> and recompile, or at run time.</p>
+<p>Setting <code>cs_Protect</code> to a negative value disables all of the above described protection features. Setting <code>cs_Protect</code> to zero enables distribution coordinate system protection, but disables the user defined protection system. Setting <code>cs_Protect</code> to a positive value enables the user definition protection feature, and also specifies the number of days which must elapse from the last modification before the definition is protected.</p>
+<h2 id="turning-of-unique-names">Turning of Unique Names</h2>
+<p>As distributed, CS-MAP requires that a colon appear in all dictionary definition key names. By doing so, CS-MAP guarantees that the names of all user definitions will be different from any definition which may be contained in a future distribution of CS-MAP. You can disable this feature of CS-MAP by setting the global char variable named <code>cs_Unique</code> to the null character (i.e. <code>'\0'</code>). Alternatively, you can enable this feature using a different character by setting the value of <code>cs_Unique</code> to that character. <code>cs_Unique</code> is defined in the <code>CSdata</code> module and be set at compile time or run time.</p>
+<h2 id="eliminating-a-projection">Eliminating a Projection</h2>
+<p>If you do not have a need for all thirty eight supported projections, you can simply remove from the projection table (defined in <code>CSdataPJ</code>) the entry which references any projection which you do not need. Doing so will eliminate all references to the code for a specific projection and reduce the code size of your executable.</p>
+<h2 id="data-dictionary-directory">Data Dictionary Directory</h2>
+<p>The directory in which <code>CS_csdef</code>, <code>CS_dtdef</code>, and <code>CS_eldef</code> look for their respective dictionary files is defined in the <code>CSdata.c</code> module. You must use the <code>CS_altdr</code> function to initialize this variable to point to the directory which contains all data files. <code>CS_altdr</code> will use the value of an environmental variable when called with a <code>NULL</code> pointer as an argument. The name of this environmental variable, <code>CS_MAP_DIR</code> by default, is established in <code>cs_map.h</code> as a manifest constant.</p>
+<h2 id="dictionary-file-names">Dictionary File Names</h2>
+<p>The names assigned to the three dictionary files are defined as manifest constants in the <code>cs_map.h</code> header file, declared and initialized in the <code>CSdata</code> module. They can also be modified at run time by using the <code>CS_csfnm</code>, <code>CS_dtfnm</code>, and <code>CS_elfnm</code> function.</p>
+<h2 id="adding-units">Adding Units</h2>
+<p>The units which are recognized by the Coordinate System Mapping Package are defined in the <code>CSdataU</code> module. You can add or delete as necessary. Note that this table has provisions for an abbreviation in addition to the full name. Use the code as provided as an example of how to incorporate a new unit. Also note that the factor is the multiplier required to change the new unit to meters, or degrees, by multiplication depending upon the type of unit.</p>
+<h2 id="language-translation">Language Translation</h2>
+<p>Textual descriptions of all error conditions are provided in the <code>CSerpt</code> module. All language oriented text is located either in the <code>cs_map.h</code> header file, one of the three data modules: <code>CSdata</code>, <code>CSdataU</code>, <code>CSdataPJ</code>, or in the ASCII form of the dictionary files (<code>COORDSYS.ASC</code>, <code>DATUMS.ASC</code>, and <code>ELIPSOID.ASC</code>). Language translations efforts need only address these eight files (MFC dialogs excepted).</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
